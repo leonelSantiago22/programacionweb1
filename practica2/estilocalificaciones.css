@@ -1,0 +1,22 @@
+table thead tr:first-child
+{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    background: beige;
+}
+table
+{
+    width: 80%;
+    border: 1px solid black;
+    border-spacing: 0px;
+}
+caption
+{
+    color: white;
+    background-color: black;
+}
+table tbody th:first-child
+{
+    color: white;
+    background-color: black;
+}
