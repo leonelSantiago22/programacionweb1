@@ -1,0 +1,45 @@
+p
+{
+    color: red;
+}
+.textoazul
+{
+ color: blue;   
+}
+.textoverde
+{
+    color: rgb(26, 225, 26);
+}
+
+table thead tr:first-child
+{
+    color: red;
+    font-weight: bold;
+    background: gray;
+}
+table
+{
+    width: 80%;
+    border: 5px;
+    border-spacing: 10px;
+}
+tbody tbody td:first-child
+{
+    color: red;
+
+}
+tbody tr:nth-child(odd) /*Esto implica que a las lineas impares les aplique estas propiedades*/
+{
+    color: white;
+    background-color: rgb(58, 53, 53);
+}
+tbody tr:nth-child(even)
+{
+    color: black;
+    background-color:bisque;
+}
+/*
+body
+{
+    background-color: rgb(40, 32, 32);
+}*/
