@@ -1,0 +1,5 @@
+table,td{
+    border: 4px;
+    border-color: black;
+    border-style: double;
+}
