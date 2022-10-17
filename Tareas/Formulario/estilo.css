@@ -1,0 +1,62 @@
+html
+{
+   
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    font-feature-settings: "liga", "kern";
+    font-family: "Montserrat", "HelveticaNeueLTStd", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    line-height: 1.5;
+    background-color: rgb(101, 118, 131);
+}
+/*Variable que voy a ocupar
+#3282b8
+*/
+
+
+form{
+	width:450px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:#63b3e9;
+}
+
+form label{
+	width:70px;
+	font-weight:bold;
+	display:block;
+}
+
+form input[type="text"]{
+	width:180px;
+    
+	padding:3px 10px;
+	border-radius:2px;
+	margin:8px 0;
+	font: inherit;
+    line-height: normal;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    padding-left: 0;
+    background: transparent;
+    
+  
+}
+
+form input[type="submit"],[type="reset"]{
+	width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:#fff;
+	background-color:#000;
+} 
+
+form input[type="submit"]:hover{
+	cursor:pointer;
+}
+
