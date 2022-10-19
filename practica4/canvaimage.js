@@ -1,15 +1,12 @@
+
 var canvas=document.getElementById("miCanvas");
 var ctx = canvas.getContext('2d');
 
 var img = new Image();
-img.src = "descarga.png";
+img.src = "mario2.png";
 
 img.onload = function()
 {
-<<<<<<< HEAD
-    ctx.drawImage(img,20,30,400,500);
-=======
-
     ctx.drawImage(img,0,275,47,47,0,50,50,50);
     ctx.drawImage(img,47,275,47,47,50,50,50,50);
     ctx.drawImage(img,141,275,47,48,100,50,50,50);
@@ -31,8 +28,8 @@ img.onload = function()
     ctx.drawImage(img,323,415,47,48,250,200,50,50);
     ctx.drawImage(img,323,416,47,48,250,150,50,50);
     ctx.drawImage(img,276,462,47,48,200,200,50,50);
->>>>>>> 8476626c2ae32e3d7751ca7b0e320e6a1388d1e4
 }
+    
     
     
 
