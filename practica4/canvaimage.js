@@ -2,11 +2,11 @@ var canvas=document.getElementById("miCanvas");
 var ctx = canvas.getContext('2d');
 
 var img = new Image();
-img.src = "mario.png";
+img.src = "descarga.png";
 
 img.onload = function()
 {
-    ctx.drawImage(img,40,35,25,20,50,50,50,50);
+    ctx.drawImage(img,20,30,400,500);
 }
     
     
