@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Introducción formularios web</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="Un formulario sirve para enviar datos a otra página que los recoge para usarlos o almacenarlos."/>
+    <link href="estilo.css" rel="stylesheet" type="text/css">
+	<style>
+
+	</style>
+
+</head>
+<body>
+
+<form action="#" target="" method="get" name="formDatosPersonales">
+
+	<label for="nombre">Nombre</label>
+	<input type="text" name="nombre" id="nombre" placeholder="  Escribe tu nombre"/>
+
+	<label for="apellidos">Apellidos</label>
+	<input type="text" name="apellidos" id="apellidos" placeholder="    1r Apellido"/>
+
+	<label for="fecha">Fecha</label>
+    <input type="date" name="date" required placeholder="12/10/22">
+
+	<label for="textoarea">Texto</label>
+    <input type="text" name="textoarea" id="textoarea" placeholder="    texto mas largo">
+
+    <label for="color">Color</label>
+    <input type="color" name="nombre" id="nombre" required>
+
+    <label for="tiempodate">Tiempo</label>
+    <input type="datetime" name="tiempodate" id="tiempodate">
+
+    <label for="archivo">Archivo</label>
+    <input type="file" name="archivo" id="archivo">
+
+    <label for="oculto">Oculto</label>
+    <input type="hidden" name="oculto" id="oculto">
+
+    <label for="mes">Mes</label>
+    <input type="month" name="mes" id="mes">
+
+    <label for="week">Week</label>
+    <input type="week" name="semana" id="semana">
+
+    <label for="radio">Radio</label>
+    <input type="radio" name="radio" id="radio">
+
+    <label for="cheackbox">Cheackbox</label>
+    <input type="checkbox" name="checkbox" id="checkbox">
+
+    <label for="rango">Rango</label>
+    <input type="range" name="rango" id="rango">
+
+    <label for="busqueda">Busqueda</label>
+    <input type="search" name="busqueda" id="busquea">
+
+	<input type="submit" name="enviar" value="enviar datos"/>
+    <input type="reset" name="reiniciar" value="Reiniciar Formulario">
+</form>
+
+</body>
+</html>
+
+
