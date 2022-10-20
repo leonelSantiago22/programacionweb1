@@ -24,4 +24,4 @@ function dibujodePlanoenejeY()
     ctx.lineTo(canvas.width,y);//donde termina
     ctx.stroke();
 }
-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
+//ctx.drawImage(img,50,50,45,45,x,100,50,50);
