@@ -6,15 +6,7 @@ canvas
     right: 0px; 
     bottom: 0px; 
     margin: auto; 
-}
-.imagen
-{
-    position: absolute; 
-    top: 195px; 
-    left: 520px; 
-    right: 0px; 
-    bottom: 0px; 
-    margin: auto;
+    background-color: white;
 }
 body
 {
