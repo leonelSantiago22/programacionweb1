@@ -46,7 +46,7 @@ function dibujarEscenario()
                 posicionXimagen = (Matriz[j][i]%13)*17;
                 posicionYimagen = (Math.floor(Matriz[j][i]/13)*17);
                 //console.log(posicionXimagen,posicionYimagen);
-                ctx.drawImage(img,posicionXimagen,posicionYimagen,15,15, i*64, j*64,64, 64);
+                ctx.drawImage(img,posicionXimagen+1,posicionYimagen+1,14,14, i*64, j*64,64, 64);
             }
         }
     }
