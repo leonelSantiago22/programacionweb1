@@ -6,8 +6,8 @@ var sx=1;
 var sy=1;
 var indice = 0 ;
 var img = new Image();
-desplazamientox =400;
-desplazamientoy = 375;
+desplazamientox =250;
+desplazamientoy = 350;
 var teclaprecionada = 0;
 
 var i=0;
@@ -28,14 +28,23 @@ function dibujarBarra()
     {
         desplazamientox = desplazamientox - 5;
     }
+    if(teclaprecionada == 40)
+    {
+        desplazamientoy = desplazamientoy+5;
+    }
+    if(teclaprecionada == 38)
+    {
+        desplazamientoy = desplazamientoy-5;
+    }
 }
 
 document.addEventListener('keydown',manejadordetecladobajo, false);
-//document.addEventListener('keyup', manejadordeltecladoalto, false);
+document.addEventListener('keyup', manejadordeltecladoalto, false);
 setInterval(dibujarBarra,100);
 
 function manejadordetecladobajo(e)
 {
+    console.log("tecla:", e.keyCode)
     if (e.keyCode == 39)
     {
         console.log("Mover hacia derecha");
@@ -49,14 +58,18 @@ function manejadordetecladobajo(e)
         //desplazamientoy = desplazamientoy - 5;
        
     }
-    
 }
-/*
+
 function manejadordeltecladoalto(e)
 {
-    if (e.keyCode == 39)
+    if (e.keyCode == 40)
     {
-    console.log("Presione una tecla:",e.keyCode);
+        console.log("Mover hacia arriba", e.keyCode);
+        teclaprecionada = 40; 
+    }
+    if(e.keycode == 38)
+    {
+        console.log("Mover hacia abajo", e.keyCode);
+        teclaprecionada = 38;
     }
 }
-*/
