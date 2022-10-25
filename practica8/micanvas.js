@@ -10,8 +10,8 @@ var teclaprecionada = 0;
 var img = new Image();
 //estas variables me permiten dibujar los ladrillos ya que son arreglos
 var ladrillos = [];
-var ladrillosColumnas = 6;
-var ladrillosFilas = 5;
+var ladrillosColumnas = 4;
+var ladrillosFilas = 7;
 //variables de uso para el ladrillo 
 var anchuradelladrillo = 75;
 var alturadelLadrillo = 20; 
@@ -19,11 +19,6 @@ var paddingdelladrillo = 10;
 var separacionArrLadrillo = 30;
 var separacionIzquierdaLadrillo = 30;
 
-dibujarBola();
-dibujarBarra();
-//dibujarlosLadrillos();
-setInterval(dibujarBarra,100);
-setInterval(dibujarBola,100);
 
 document.addEventListener('keydown',manejadordetecladobajo, false);
 
@@ -33,17 +28,17 @@ function dibujarBola()
     //uso de arc 
     //arc (x,y,angulo inicial, angulofinal);
     ctx.arc(200,540,10, 0, Math.PI*2);
-    ctx.fillStyle= "#0095DD";
+    ctx.fillStyle= "#34495E";
     ctx.fill();
     ctx.closePath();
 }
 
 function dibujarBarra()
 {
-    ctx.clearRect(0,0,canvas.width, canvas.height);
+    ctx.clearRect(0,550,canvas.width, canvas.height);
     ctx.beginPath();
     ctx.rect(desplazamientoxdelabarra,desplazamientoydelabarra,40,20);
-    ctx.fillStyle="#0095DD";
+    ctx.fillStyle="#8E44AD";
     ctx.fill();
     ctx.closePath();
     if(teclaprecionada == 39 && desplazamientoxdelabarra<canvas.width-40)
@@ -102,13 +97,18 @@ function dibujarlosLadrillos()
                 var yladrillo = (r*(alturadelLadrillo+paddingdelladrillo))+separacionArrLadrillo;
                 ladrillos[c][r].x = xladrillo;
                 ladrillos[c][r].y = yladrillo;
-                ctx.beginPath()
-                {
-                    ctx.rect(xladrillo,yladrillo,anchuradelladrillo, alturadelLadrillo);
-                    ctx.fillStyle = "#BB6755";
-                    ctx.fill();    
-                }ctx.closePath();
+                ctx.beginPath();
+                ctx.rect(xladrillo,yladrillo,anchuradelladrillo, alturadelLadrillo);
+                ctx.fillStyle = "#BB6755";
+                ctx.fill();    
+                ctx.closePath();
             }
         }
     }
 }
+
+dibujarBarra();
+dibujarBola();
+dibujarlosLadrillos();
+
+setInterval(dibujarBarra,50);
