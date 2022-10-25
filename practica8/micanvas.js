@@ -1,10 +1,19 @@
 var canvas  = document.getElementById("miCanvas");
 var ctx = canvas.getContext("2d");
-//variables para conocer el posicionamiento
-var posiciondelabolaenx = 200;
-var posiciondelabolaeny = 540;
-var desplazamientoxdelabarra =180;
+//variables para conocer el posicionamiento de la bola 
+var posiciondelabolaenx = canvas.width/2;
+var posiciondelabolaeny = canvas.height-60;
+var dx = 2; 
+var dy=-2;
+var x = canvas.width/2;
+var y=canvas.height-60;
+var radiodelapelota = 10;
+
+//variables para el uso de la barra y su movimiento 
+var desplazamientoxdelabarra =170;
 var desplazamientoydelabarra = 550;
+var alturadelabarra = 10; 
+var anchodelabarra = 70 ;
 
 var teclaprecionada = 0;
 var img = new Image();
@@ -27,7 +36,7 @@ function dibujarBola()
     ctx.beginPath();
     //uso de arc 
     //arc (x,y,angulo inicial, angulofinal);
-    ctx.arc(200,540,10, 0, Math.PI*2);
+    ctx.arc(posiciondelabolaenx,posiciondelabolaeny,radiodelapelota, 0, Math.PI*2);
     ctx.fillStyle= "#34495E";
     ctx.fill();
     ctx.closePath();
@@ -37,7 +46,7 @@ function dibujarBarra()
 {
     ctx.clearRect(0,550,canvas.width, canvas.height);
     ctx.beginPath();
-    ctx.rect(desplazamientoxdelabarra,desplazamientoydelabarra,40,20);
+    ctx.rect(desplazamientoxdelabarra,desplazamientoydelabarra,anchodelabarra, alturadelabarra);
     ctx.fillStyle="#8E44AD";
     ctx.fill();
     ctx.closePath();
@@ -107,6 +116,18 @@ function dibujarlosLadrillos()
     }
 }
 
+function draw()
+{
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+    dibujarlosLadrillos();
+    dibujarBola();
+    x+=dx;
+    y+=dy;
+    if(x+dx > canvas.width-radiodelapelota || x+dx<radiodelapelota)
+    {
+
+    }
+}
 dibujarBarra();
 dibujarBola();
 dibujarlosLadrillos();
