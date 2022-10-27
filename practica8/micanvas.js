@@ -19,18 +19,22 @@ var teclaprecionada = 0;
 var img = new Image();
 //estas variables me permiten dibujar los ladrillos ya que son arreglos
 var ladrillos = [];
-var ladrillosColumnas = 4;
+var ladrillosColumnas = 6;
 var ladrillosFilas = 7;
 var coloresdelosladrillos = ["#78281f","#b03a2e", "#e74c3c", "#ec7063", "#f5b7b1"];
 //variables de uso para el ladrillo 
-var anchuradelladrillo = 75;
-var alturadelLadrillo = 20; 
+var anchuradelladrillo = 50;
+var alturadelLadrillo = 50; 
 var paddingdelladrillo = 10; 
 var separacionArrLadrillo = 30;
 var separacionIzquierdaLadrillo = 30;
+var pixelestamano = 124;
+var arreglodebloques = [[624,349],[155,155],[437,349],[533,158],[63,437],[343,158]];
 //variables para el marcador 
 var marcador = 0;
 
+var imagen = new Image();
+imagen.src = "blocks.png"
 
 document.addEventListener('keydown',manejadordetecladobajo, false);
 
@@ -99,13 +103,12 @@ function dibujarlosLadrillos()
             {
                 var xladrillo = (c*(anchuradelladrillo+paddingdelladrillo))+separacionIzquierdaLadrillo;
                 var yladrillo = (r*(alturadelLadrillo+paddingdelladrillo))+separacionArrLadrillo;
+                var aux = (ladrillos[c][r].estado)-1;
                 ladrillos[c][r].x = xladrillo;
                 ladrillos[c][r].y = yladrillo;
-                ctx.beginPath();
-                    ctx.rect(xladrillo,yladrillo,anchuradelladrillo, alturadelLadrillo);
-                    ctx.fillStyle = coloresdelosladrillos[ladrillos[c][r].estado-1];
-                    ctx.fill();    
-                    ctx.closePath();
+              
+                ctx.drawImage(imagen,arreglodebloques[aux][0],arreglodebloques[aux][1],pixelestamano,pixelestamano,xladrillo, yladrillo, anchuradelladrillo, alturadelLadrillo);
+                    
             }
         }
     }
@@ -118,7 +121,7 @@ function draw()
     dibujarBola();
     dibujarlosLadrillos();
     detectarlaColision();
-
+    dibujarMarcador();
     posiciondelabolaenx+=dx;
     posiciondelabolaeny+=dy;
 
@@ -132,10 +135,12 @@ function draw()
    }
    else if (posiciondelabolaeny+dy>canvas.height-radiodelapelota){
         alert("Fin del juego");
+        
    }
-   if(posiciondelabolaenx>desplazamientoxdelabarra && x<desplazamientoxdelabarra+anchodelabarra){
-    dy=-dy;
-   }
+   if(posiciondelabolaenx>desplazamientoxdelabarra && posiciondelabolaeny>desplazamientoydelabarra+radiodelapelota)
+    {
+            dy=-dy;
+    }
     //detecion del desplazamiento de la barra
     if(teclaprecionada == 39 && desplazamientoxdelabarra<canvas.width-40)
     {
@@ -154,9 +159,9 @@ function detectarlaColision()
             var aux = ladrillos[c][r];
             if(aux.estado>0)
             {
-                if(posiciondelabolaenx>aux.x && posiciondelabolaenx<aux.x+anchuradelladrillo && posiciondelabolaeny>aux.y && posiciondelabolaeny<aux.y + alturadelLadrillo)
+                if(posiciondelabolaenx>aux.x && posiciondelabolaenx<aux.x+anchuradelladrillo && posiciondelabolaeny>aux.y && posiciondelabolaeny<aux.y+alturadelLadrillo)
                 {
-                    dy = -dy; 
+                    dy=-dy; 
                     aux.estado-=1; 
                     marcador++;
                 }
@@ -165,6 +170,12 @@ function detectarlaColision()
         }
     }
 }
+function dibujarMarcador() {
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText("Marcador: " + marcador, canvas.width / 2 - 60, 20);
+}
+
 //dibujarBarra();
 //dibujarBola();
 //dibujarlosLadrillos();
