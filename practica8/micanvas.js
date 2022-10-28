@@ -29,7 +29,7 @@ var paddingdelladrillo = 10;
 var separacionArrLadrillo = 30;
 var separacionIzquierdaLadrillo = 30;
 var pixelestamano = 124;
-var arreglodebloques = [[624,349],[155,155],[437,349],[533,158],[63,437],[343,158]];
+var arreglodebloques = [[626,351],[155,155],[437,349],[533,158],[63,437],[343,158]];
 //variables para el marcador 
 var marcador = 0;
 
@@ -103,7 +103,7 @@ function dibujarlosLadrillos()
             {
                 var xladrillo = (c*(anchuradelladrillo+paddingdelladrillo))+separacionIzquierdaLadrillo;
                 var yladrillo = (r*(alturadelLadrillo+paddingdelladrillo))+separacionArrLadrillo;
-                var aux = (ladrillos[c][r].estado)-1;
+                var aux = (ladrillos[c][r].estado)-4;
                 ladrillos[c][r].x = xladrillo;
                 ladrillos[c][r].y = yladrillo;
               
@@ -181,3 +181,14 @@ function dibujarMarcador() {
 //dibujarlosLadrillos();
 
 setInterval(draw,10);
+document.addListener('mousemove', manejadordelRaton, false);
+
+function manejardelRaton(e)
+{
+    var relativeX = e.clientX - canvas.offsetLeft; 
+    
+    if(relativeX > 0 && relativeX < canvas.width)
+    {   
+        desplazamientoxdelabarra  = relativeX - anchodelabarra/2;
+    }
+}
