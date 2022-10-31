@@ -1,18 +1,18 @@
 var canvas  = document.getElementById("miCanvas");
 var ctx = canvas.getContext("2d");
-//variables para conocer el posicionamiento de la bola 
+//variables para conocer el posicionamiento de la bola
 var posiciondelabolaenx = canvas.width/2;
 var posiciondelabolaeny = canvas.height-60;
-var dx =1; 
+var dx =1;
 var dy=-1;
 var x = canvas.width/2;
 var y=canvas.height-60;
 var radiodelapelota = 10;
 
-//variables para el uso de la barra y su movimiento 
+//variables para el uso de la barra y su movimiento
 var desplazamientoxdelabarra =(canvas.width)-159;
 var desplazamientoydelabarra = 550;
-var alturadelabarra = 10; 
+var alturadelabarra = 10;
 var anchodelabarra = 70 ;
 
 var teclaprecionada = 0;
@@ -22,15 +22,15 @@ var ladrillos = [];
 var ladrillosColumnas = 6;
 var ladrillosFilas = 7;
 var coloresdelosladrillos = ["#78281f","#b03a2e", "#e74c3c", "#ec7063", "#f5b7b1"];
-//variables de uso para el ladrillo 
+//variables de uso para el ladrillo
 var anchuradelladrillo = 50;
-var alturadelLadrillo = 50; 
-var paddingdelladrillo = 10; 
+var alturadelLadrillo = 50;
+var paddingdelladrillo = 10;
 var separacionArrLadrillo = 30;
 var separacionIzquierdaLadrillo = 30;
 var pixelestamano = 124;
 var arreglodebloques = [[626,351],[155,155],[437,349],[533,158],[63,437],[343,158]];
-//variables para el marcador 
+//variables para el marcador
 var marcador = 0;
 
 var imagen = new Image();
@@ -38,10 +38,10 @@ imagen.src = "blocks.png"
 
 document.addEventListener('keydown',manejadordetecladobajo, false);
 
-function dibujarBola() 
+function dibujarBola()
 {
     ctx.beginPath();
-    //uso de arc 
+    //uso de arc
     //arc (x,y,angulo inicial, angulofinal);
     ctx.arc(posiciondelabolaenx,posiciondelabolaeny,radiodelapelota, 0, Math.PI*2);
     ctx.fillStyle= "#34495E";
@@ -75,11 +75,11 @@ function manejadordetecladobajo(e)
         console.log("mover hacia la izquierda");
         teclaprecionada = 37;
         //desplazamientoy = desplazamientoy - 5;
-       
+
     }
 }
 
-//funcion que nos permite rellenar los ladrillos 
+//funcion que nos permite rellenar los ladrillos
 for(c = 0; c<ladrillosColumnas; c++)
 {
     ladrillos[c] = [];
@@ -87,10 +87,10 @@ for(c = 0; c<ladrillosColumnas; c++)
     {
         ladrillos[c][r] = {
             x:0,
-            y:0, 
+            y:0,
             estado:5
         }
-    }   
+    }
 }
 
 function dibujarlosLadrillos()
@@ -103,12 +103,12 @@ function dibujarlosLadrillos()
             {
                 var xladrillo = (c*(anchuradelladrillo+paddingdelladrillo))+separacionIzquierdaLadrillo;
                 var yladrillo = (r*(alturadelLadrillo+paddingdelladrillo))+separacionArrLadrillo;
-                var aux = (ladrillos[c][r].estado)-4;
+                var aux = (ladrillos[c][r].estado);
                 ladrillos[c][r].x = xladrillo;
                 ladrillos[c][r].y = yladrillo;
-              
+
                 ctx.drawImage(imagen,arreglodebloques[aux][0],arreglodebloques[aux][1],pixelestamano,pixelestamano,xladrillo, yladrillo, anchuradelladrillo, alturadelLadrillo);
-                    
+
             }
         }
     }
@@ -135,7 +135,7 @@ function draw()
    }
    else if (posiciondelabolaeny+dy>canvas.height-radiodelapelota){
         alert("Fin del juego");
-        
+
    }
    if(posiciondelabolaenx>desplazamientoxdelabarra && posiciondelabolaeny>desplazamientoydelabarra+radiodelapelota)
     {
@@ -161,12 +161,12 @@ function detectarlaColision()
             {
                 if(posiciondelabolaenx>aux.x && posiciondelabolaenx<aux.x+anchuradelladrillo && posiciondelabolaeny>aux.y && posiciondelabolaeny<aux.y+alturadelLadrillo)
                 {
-                    dy=-dy; 
-                    aux.estado-=1; 
+                    dy=-dy;
+                    aux.estado-=1;
                     marcador++;
                 }
             }
-            
+
         }
     }
 }
@@ -185,10 +185,10 @@ document.addListener('mousemove', manejadordelRaton, false);
 
 function manejardelRaton(e)
 {
-    var relativeX = e.clientX - canvas.offsetLeft; 
-    
+    var relativeX = e.clientX - canvas.offsetLeft;
+
     if(relativeX > 0 && relativeX < canvas.width)
-    {   
+    {
         desplazamientoxdelabarra  = relativeX - anchodelabarra/2;
     }
 }
