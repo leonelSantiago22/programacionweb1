@@ -29,14 +29,27 @@ var paddingdelladrillo = 10;
 var separacionArrLadrillo = 30;
 var separacionIzquierdaLadrillo = 30;
 var pixelestamano = 124;
-var arreglodebloques = [[626,351],[155,155],[437,349],[533,158],[63,437],[343,158]];
+var arreglodebloques = [[626,351],[155,155],[437,349],[533,158],[63,437],[343,158],[1008,169], [40,338], [520, 336], [983,305]];
 //variables para el marcador
 var marcador = 0;
-
 var imagen = new Image();
 imagen.src = "blocks.png"
+var imagenexplosion = new Image();
+imagenexplosion.serc = "explosion.png";
 
+//arreglo para la imagenexplosion
+var explosionesdarreglo = [[799,43], [61,196], [535,190], [750,323], [992,311]];
+var indiceexplocion=0;
+var banderaexplosion = true;
+var posicionYdelaexplosion;
+var posicionXdelaexplosion;
 document.addEventListener('keydown',manejadordetecladobajo, false);
+
+function animaciondelaexplocion()
+{
+    ctx.drawImage(imagenexplosion,explosionesdarreglo[indiceexplocion][0],explosionesdarreglo[indiceexplocion][1],160,110,xladrillo, yladrillo, 50, 50);
+
+}
 
 function dibujarBola()
 {
@@ -66,13 +79,13 @@ function manejadordetecladobajo(e)
     console.log("tecla:", e.keyCode)
     if (e.keyCode == 39)
     {
-        console.log("Mover hacia derecha");
+        //console.log("Mover hacia derecha");
         teclaprecionada = 39;
         //desplazamientoy = desplazamientoy + 5;
     }
     if(e.keyCode == 37 )
     {
-        console.log("mover hacia la izquierda");
+        //console.log("mover hacia la izquierda");
         teclaprecionada = 37;
         //desplazamientoy = desplazamientoy - 5;
 
@@ -120,10 +133,20 @@ function draw()
     dibujarBarra();
     dibujarBola();
     dibujarlosLadrillos();
-    detectarlaColision();
+    let a,b;
+    [a,b]=detectarlaColision();
     dibujarMarcador();
     posiciondelabolaenx+=dx;
     posiciondelabolaeny+=dy;
+    console.log(a,b);
+    if(banderaexplosion == true)
+    {
+      animaciondelaexplocion();
+      indiceexplocion++;
+      if (indiceexplocion<5) {
+        indiceexplocion = 0;
+      }
+    }
 
    if(posiciondelabolaenx+dx > canvas.width-radiodelapelota || posiciondelabolaenx+dx<radiodelapelota)
    {
@@ -164,6 +187,8 @@ function detectarlaColision()
                     dy=-dy;
                     aux.estado-=1;
                     marcador++;
+                    banderaexplosion = true;
+                    return [c,r];
                 }
             }
 
@@ -181,7 +206,7 @@ function dibujarMarcador() {
 //dibujarlosLadrillos();
 
 setInterval(draw,10);
-document.addListener('mousemove', manejadordelRaton, false);
+//document.addListener('mousemove', manejadordelRaton, false);
 
 function manejardelRaton(e)
 {
