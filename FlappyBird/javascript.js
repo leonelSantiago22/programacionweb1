@@ -7,7 +7,8 @@ var largodeljuego=canvas.height;
 var posicionXdelave=canvas.width/2;
 var posicionYdelave=canvas.height/2;
 
-var gravedad=10;
+var gravedad=8;
+
 
 var largodelave=50;
 var anchodelave=35;
@@ -23,20 +24,26 @@ var avepos = 3;
 var largodelescenario = canvas.width;
 var anchodelesenario = canvas.height-100;
 var escenarios = [[0,0], [146,0]];
+//var pipesarriba = [[56,322];
+//var pipesabajo =  [[83,322]];
 //llamado a la imagen donde estan los materiales a usar
 var posicionXdelobstaculo = canvas.width;
 var pos1= posicionXdelobstaculo-100;
-var pos2= posicionXdelobstaculo - (100 * 2);
-var pos3 = posicionXdelobstaculo-(100*3);
-var pos4 = posicionXdelobstaculo-(100*4);
-var separacionEntreObstaculos = 100;
+var pos2= posicionXdelobstaculo - (150 * 2);
+var pos3 = posicionXdelobstaculo-(150*3);
+var pos4 = posicionXdelobstaculo-(150*4);
+var separacionEntreObstaculos = 150;
 var separacion = 120;
 var iniciodereaparicion = -100;
 //primero haremos que aparezca el background
-
+var pausa = false;
+let  estadodelJuego = false;
 //ajustes del teclado
 teclaprecionada = 0;
 imagen.src ="imagenes/flappybirdimage.png";
+//marcador que nos permite llevar el conteo
+var marcador=0;
+//inicio del juego
 
 
 function draw()
@@ -44,40 +51,47 @@ function draw()
     dibujarBackGround();
     dibujarObstaculos();
     dibujarAve();
-    if(posicionYdelave<=largodelescenario+60 && posicionYdelave>=0){
-      aumentarAve();
-    if(pos1<0)
+    dibujarMarcador();
+    //que es la ave este dentro de los juegos
+    if(posicionYdelave<=largodelescenario+60 && posicionYdelave>=0)
     {
-        pos1=canvas.width;
-    }
-    if(pos2<0)
-    {
-        pos2 = canvas.width;
-    }
-    if(pos3<0)
-    {
-        pos3 = canvas.width;
-    }
-    if(pos4<0)
-    {
-        pos4 = canvas.width;
-    }
-    if(posicionXdelobstaculo<0)
-    {
-        posicionXdelobstaculo = canvas.width;
-    }
+      animacionDevolar();
+      detectarColision();
+      aumentarmarcador();
+      recorrido_de_los_pipes();
 
-    if(posicionXdelobstaculo>-1 || pos1>-1)
-    {
-        posicionXdelobstaculo= posicionXdelobstaculo-5;
-        pos1-=5;
-        pos2-=5;
-        pos3-=5;
-        pos4-=5;
-    }
+      posicionYdelave = posicionYdelave + gravedad; //me permite  que el ave se mantenga bajando para asi poder detectar las caidas
+  }else {
+    document.removeEventListener('keyup', detectarSalto,false);
+    pantalladederrota();
+    setTimeout(recargarpagina,2000);
+  }
+}
 
+function recorrido_de_los_pipes()
+{
+  if(pos1<0)
+  {
+      pos1=canvas.width;
+      alturadeltubo1partedeabajo = getRandomInt(min,max);
+      alturadeltubo1partedearriba = getRandomInt(min,max2);
+  }
+  if(pos2<0)
+  {
+      pos2 = canvas.width;
+      alturadeltubo2partedeabajo = getRandomInt(min,max)
+      alturadeltubo2partedearriba = getRandomInt(min,max2);
+  }
+  if(posicionXdelobstaculo<0)
+  {
+      posicionXdelobstaculo = canvas.width;
+  }
 
-    posicionYdelave = posicionYdelave + gravedad; //me permite  que el ave se mantenga bajando para asi poder detectar las caidas
+  if(posicionXdelobstaculo>-1 || pos1>-1)
+  {
+      posicionXdelobstaculo= posicionXdelobstaculo-5;
+      pos1-=5;
+      pos2-=5;
   }
 }
 
@@ -85,13 +99,16 @@ document.addEventListener('keyup', detectarSalto,false);
 
 function detectarSalto(e)
 {
-
-
+    //tecla enter es de codigo 13
+    //console.log(e.keyCode);
     if(e.keyCode==38)
-        {
-            posicionYdelave -=(70);
-        }
-
+    {
+            posicionYdelave -=(50);
+    }
+    if(e.keyCode==13)
+    {
+          estadodelJuego = !estadodelJuego;
+    }
 
 }
 //void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
@@ -107,32 +124,40 @@ function dibujarBackGround()
 function dibujarAve()
 {
     //ctx.clearRect(posicionXdelave, posicionYdelave, largodelave, anchodelave);
-
     ctx.drawImage(imagen,Skinaves[avepos][0],Skinaves[avepos][1], largopixelesdelave,anchopixelesdelave, posicionXdelave, posicionYdelave, largodelave, anchodelave)
     posicionYdelave = posicionYdelave;
 }
+//me permite dibujar los dibujarObstaculos
 
+let alturadeltubo2partedeabajo=150;
+let alturadeltubo1partedeabajo=100
+let alturadeltubo1partedearriba = 100;
+let alturadeltubo2partedearriba = 150;
 function dibujarObstaculos()
 {
-    //ctx.clearRect(posicionXdelobstaculo,0,45, 240);
-    ctx.drawImage(imagen, 56,322,27,161,pos1, -100,50,290);
-    ctx.drawImage(imagen, 83,322,27,161,pos1, largodelescenario-100,50,200);
+    //llamamos a la funcion para tener numeros aleatorios
+    //tubos derechos
+    ctx.drawImage(imagen, 56,322,27,161,pos1, 0,50,alturadeltubo1partedearriba);
+    ctx.drawImage(imagen, 83,322,27,161,pos1, largodelescenario-alturadeltubo1partedeabajo+100,50,alturadeltubo1partedeabajo);
+    //tubos izquierdo
+    ctx.drawImage(imagen, 56,322,27,161,pos2, 0,50,alturadeltubo2partedearriba);
+    ctx.drawImage(imagen, 83,322,27,161,pos2, largodelescenario-alturadeltubo2partedeabajo+100,50,alturadeltubo2partedeabajo);
 
-    ctx.drawImage(imagen, 56,322,27,161,pos2, -100,50,340);
-    ctx.drawImage(imagen, 83,322,27,161,pos2, largodelescenario-100,50,200);
-
-    ctx.drawImage(imagen, 56,322,27,161,pos3, -100,50,340);
-    ctx.drawImage(imagen, 83,322,27,161,pos3, largodelescenario-100,50,200);
-
-    //ctx.drawImage(imagen, 56,322,27,161,pos4, -100,50,340);
-    //ctx.drawImage(imagen, 83,322,27,161,pos4, largodelescenario-100,50,200);
-
-    ctx.drawImage(imagen, 56,322,27,161,posicionXdelobstaculo, -100,50,340);
-    ctx.drawImage(imagen, 83,322,27,161,posicionXdelobstaculo, largodelescenario-100,50,200);
+}
+//generar numeros aleatorios entre 2 valores
+// Notesé que también en este caso `min` será incluido y `max` excluido
+let min = 100;
+let max =230;
+let max2=210;
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
+
 //nos permite permutar entre imagenes de la ave para parecer que vuela
-function aumentarAve()
+function animacionDevolar()
 {
     //ctx.clearRect(posicionXdelobstaculo,0,45, 240);
     avepos++;
@@ -142,4 +167,100 @@ function aumentarAve()
     }
 }
 
-setInterval(draw,55);
+function animaciondeperder()
+{
+  while(posicionYdelave<= largodelescenario+60)
+  {
+    posicionYdelave = posicionYdelave + (gravedad);
+  }
+
+  setTimeout(recargarpagina,2000);
+}
+
+function recargarpagina()
+{
+  location.reload(true);
+}
+
+function detectarColision()
+{
+    //pipes de arriba
+    if(pos2-25==posicionXdelave && posicionYdelave<=alturadeltubo2partedearriba || pos2+25==posicionXdelave && posicionYdelave<=alturadeltubo2partedearriba)
+    {
+      //console.log("Defeat");
+
+      animaciondeperder();
+    }
+    if(pos1-25==posicionXdelave && posicionYdelave<=alturadeltubo1partedearriba || pos1+25==posicionXdelave && posicionYdelave<=alturadeltubo1partedearriba)
+    {
+      //console.log("Defeat");
+      animaciondeperder();
+    }
+    //pipes de abajo
+    if(pos2-25==posicionXdelave && posicionYdelave>=(canvas.height-100)-alturadeltubo2partedeabajo-50||pos2+25==posicionXdelave && posicionYdelave>=(canvas.height-100)-alturadeltubo2partedeabajo-50)
+    {
+      //console.log("Defeat");
+      animaciondeperder();
+    }
+    if(pos1-25==posicionXdelave && posicionYdelave>=(canvas.height-100)-alturadeltubo1partedeabajo-50||pos1+25==posicionXdelave && posicionYdelave>=(canvas.height-100)-alturadeltubo1partedeabajo-50)
+    {
+      //console.log("Defeat");
+      animaciondeperder();
+    }
+}
+
+function dibujarMarcador(){
+    ctx.font="bold 48px serif";
+    ctx.fillStyle="#000000";
+    ctx.fillText(marcador,canvas.width/2,40);
+    //ctx.font="20px ComicSans";
+    //ctx.fillStyle="#000000";
+    //ctx.fillText("Vidas="+vida,520,20);
+}
+
+function pantalladederrota()
+{
+  ctx.font="bold 48px serif";
+  ctx.fillStyle="#000000";
+  ctx.fillText(marcador,canvas.width/2,canvas.height/2);
+  //392,58
+  ctx.drawImage(imagen,392,58,100,24,canvas.width/2-150,canvas.height/2,300,100);
+}
+
+
+function aumentarmarcador()
+{
+    if(pos1 == posicionXdelave)
+    {
+      marcador++;
+    }
+    if (pos2 == posicionXdelave) {
+      marcador++;
+    }
+    // /console.log(marcador);
+}
+
+var velocidad = 55;
+setInterval(mainprincipal,velocidad);
+
+function pantalladeInicio()
+{
+  //348.89 //441.88
+  //441-348 = 93
+  //348,116
+  //116-89 = 27
+  dibujarBackGround();
+  dibujarObstaculos();
+  dibujarAve();
+}
+
+function mainprincipal()
+{
+  pantalladeInicio();
+  //document.removeEventListener('keyup', detectarSalto,false);
+  if(estadodelJuego != false)
+  {
+  draw();
+  }
+
+}
