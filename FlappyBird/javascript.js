@@ -19,7 +19,7 @@ var Skinaves= [ [113,327], [113,354], [85,489], //aves azules [0][0,1,2]
                 [113,406], [113,431], [113,379],   //aves rojas
                 [31,490],  [57,490], [2,490]       //aves amarillas
                 ];
-var avepos = 3;
+var avepos = 0;
 //variables para los dos dintintos escenarios
 var largodelescenario = canvas.width;
 var anchodelesenario = canvas.height-100;
@@ -36,7 +36,7 @@ var separacionEntreObstaculos = 150;
 var separacion = 120;
 var iniciodereaparicion = -100;
 //primero haremos que aparezca el background
-var pausa = false;
+var pausa = true;
 let  estadodelJuego = false;
 //ajustes del teclado
 teclaprecionada = 0;
@@ -53,18 +53,21 @@ function draw()
     dibujarAve();
     dibujarMarcador();
     //que es la ave este dentro de los juegos
+    dibujarPausa();
+    if(pausa !=false)
+    {
     if(posicionYdelave<=largodelescenario+60 && posicionYdelave>=0)
     {
       animacionDevolar();
       detectarColision();
       aumentarmarcador();
       recorrido_de_los_pipes();
-
       posicionYdelave = posicionYdelave + gravedad; //me permite  que el ave se mantenga bajando para asi poder detectar las caidas
   }else {
     document.removeEventListener('keyup', detectarSalto,false);
     pantalladederrota();
     setTimeout(recargarpagina,2000);
+  }
   }
 }
 
@@ -109,8 +112,29 @@ function detectarSalto(e)
     {
           estadodelJuego = !estadodelJuego;
     }
+    if(e.keyCode==80)
+    {
+        pausa = !pausa;
+    }
+
 
 }
+
+function dibujarPausa()
+{
+  //333,141
+  //346,141
+  //346-333= 13
+  //333,156
+  //156-141 = 15
+  if(pausa!=false)
+  {
+    ctx.drawImage(imagen,333,141,15,15,canvas.width-40, 10, 30,32);
+  }else{
+      ctx.drawImage(imagen,120,305,15,15,canvas.width-40, 10, 30,32);
+  }
+}
+
 //void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
 function dibujarBackGround()
 {
@@ -157,11 +181,12 @@ function getRandomInt(min, max) {
 
 
 //nos permite permutar entre imagenes de la ave para parecer que vuela
+let auxiliardevuelo = avepos+2
 function animacionDevolar()
 {
     //ctx.clearRect(posicionXdelobstaculo,0,45, 240);
     avepos++;
-    if(avepos>=3)
+    if(avepos>=auxiliardevuelo)
     {
         avepos = 0;
     }
@@ -211,7 +236,7 @@ function detectarColision()
 
 function dibujarMarcador(){
     ctx.font="bold 48px serif";
-    ctx.fillStyle="#000000";
+    ctx.fillStyle="#FDFEFE";
     ctx.fillText(marcador,canvas.width/2,40);
     //ctx.font="20px ComicSans";
     //ctx.fillStyle="#000000";
@@ -221,7 +246,7 @@ function dibujarMarcador(){
 function pantalladederrota()
 {
   ctx.font="bold 48px serif";
-  ctx.fillStyle="#000000";
+  ctx.fillStyle="#FDFEFE";
   ctx.fillText(marcador,canvas.width/2,canvas.height/2);
   //392,58
   ctx.drawImage(imagen,392,58,100,24,canvas.width/2-150,canvas.height/2,300,100);
@@ -252,6 +277,27 @@ function pantalladeInicio()
   dibujarBackGround();
   dibujarObstaculos();
   dibujarAve();
+  ctx.drawImage(imagen,348,89,93,27, canvas.width/2-150, canvas.height/2-250, 300,100);
+  //293,57
+  //388,57
+  //388-293=95
+  //293,81
+  //81-57 = 25
+  ctx.drawImage(imagen,293,57,96,25, canvas.width/2-125, canvas.height/2-120, 250,80);
+  //291,109
+  //349,109
+  //349-291 = 58
+  //291,140
+  //140-109 = 31
+  ctx.drawImage(imagen,291,109,58,31, canvas.width/2-50, canvas.height/2+10, 100,50);
+  //351,116
+  //407,116
+  //407-351 =
+  //351,147
+  //147-116 = 32
+
+
+  ctx.drawImage(imagen,351,116,57,32, canvas.width/2-50, canvas.height/2+80, 100,50);
 }
 
 function mainprincipal()
@@ -260,7 +306,6 @@ function mainprincipal()
   //document.removeEventListener('keyup', detectarSalto,false);
   if(estadodelJuego != false)
   {
-  draw();
+    draw();
   }
-
 }
