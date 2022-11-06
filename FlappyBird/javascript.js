@@ -46,7 +46,10 @@ imagen.src ="imagenes/flappybirdimage.png";
 var marcador=0;
 //inicio del juego
 
+var imagenMario = new Image();
+imagenMario.src = "imagenes/mario.png";
 
+var estadoMario = false;
 function draw()
 {
     dibujarBackGround();
@@ -61,7 +64,7 @@ function draw()
     {
       aumentarmarcador();
       animacionDevolar();
-      detectarColision();
+      //detectarColision();
       recorrido_de_los_pipes();
       posicionYdelave = posicionYdelave + gravedad; //me permite  que el ave se mantenga bajando para asi poder detectar las caidas
   }else {
@@ -145,6 +148,8 @@ function dibujarBackGround()
     //esta parte es para dibujar la parte inferior
     ctx.drawImage(imagen,291,0,170,57,0,anchodelesenario,largodelescenario,100);
 }
+
+
 
 function dibujarAve()
 {
@@ -312,19 +317,18 @@ function aumentarmarcador()
     {
       escenario=1;
     }
-    if(marcador==30 )
+    if(marcador==20 )
     {
       avepos = 0;
       auxiliardevuelo = avepos+2
       restablecedor = avepos;
     }
-    if(marcador==60)
-    {
-      avepos = 6;
-      auxiliardevuelo = avepos+2
-      restablecedor = avepos;
-
+    if (marcador==60) {
+        avepos = 6;
+        auxiliardevuelo = avepos+2;
+        restablecedor = avepos;
     }
+
     // /console.log(marcador);
 }
 
