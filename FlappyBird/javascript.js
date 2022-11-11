@@ -70,12 +70,12 @@ function draw()
     {
       aumentarmarcador();       //Aumentar marcador al pasar por un tubo
       animacionDevolar();       //Permite parecer como si el ave volara
-      //detectarColision();     //Detectar las coliciones
+      detectarColision();     //Detectar las coliciones
       recorrido_de_los_pipes(); //Mover los tubos de izquierda a derecha
       posicionYdelave = posicionYdelave + gravedad; //me permite  que el ave se mantenga bajando para asi poder detectar las caidas
   }else {
-    document.removeEventListener('keyup', detectarSalto,false);   //Cuando pierde desabilitamos las teclas 
-    pantalladederrota();       //mandamos a llamar la pantalla de derrota     
+    document.removeEventListener('keyup', detectarSalto,false);   //Cuando pierde desabilitamos las teclas
+    pantalladederrota();       //mandamos a llamar la pantalla de derrota
     setTimeout(recargarpagina,2000);  //
   }
   }
@@ -89,7 +89,7 @@ function recorrido_de_los_pipes()
       alturadeltubo1partedeabajo = getRandomInt(min,max);     //Para generar la altura aleatoria del tubo de la parte de abajo
       alturadeltubo1partedearriba = getRandomInt(min,max2);   //Gereamos la altura del tubo 1 de la parte de arriba
   }
-  if(pos2<0)                                                  //si el tuvo 2 esta dentro de la panttalla 
+  if(pos2<0)                                                  //si el tuvo 2 esta dentro de la panttalla
   {
       pos2 = canvas.width;                                    //lo regresamos al inicio
       alturadeltubo2partedeabajo = getRandomInt(min,max)      //generamos la altura aleatoria para el tuvo de abajo
@@ -117,9 +117,9 @@ function detectarSalto(e)                               //escuchar las entrada d
     if(e.keyCode==38)              //conocer si preciono la flecha de hacia arrina
     {
             posicionYdelave -=(50);   //salto del ave
-    } 
+    }
     if(e.keyCode==13)             //saber si presiono la tecla enter para inciar el juego
-    { 
+    {
           estadodelJuego = !estadodelJuego; //negamos el estado del juego
     }
     if(e.keyCode==80)             //letra P para conocer si hace pausa
@@ -169,13 +169,13 @@ let alturadeltubo2partedeabajo=150;
 let alturadeltubo1partedeabajo=100
 let alturadeltubo1partedearriba = 100;
 let alturadeltubo2partedearriba = 150;
-//variables para controlas las diversos largos de los tubos 
+//variables para controlas las diversos largos de los tubos
 function dibujarObstaculos()
 {
     //llamamos a la funcion para tener numeros aleatorios
     //tubos derechos
     ctx.drawImage(imagen, 56,322,27,161,pos1, 0,50,alturadeltubo1partedearriba);    //dibujamos los primeros tubos este es el de la parte de arriba
-    //dibujamos los tubos en la parte de abajo este es el primer tubo 
+    //dibujamos los tubos en la parte de abajo este es el primer tubo
     //largodelescenario-alturadeltubo1partedeabajo+100
     //el largo del escenario controla donde terminan las nubes le restamos la altura del tubo y le sumamos 100 para colocar
     //el tubo arras de piso
@@ -200,14 +200,14 @@ function getRandomInt(min, max) {
 //nos permite permutar entre imagenes de la ave para parecer que vuela
 var auxiliardevuelo = avepos+2
 var restablecedor = avepos;
-//funcion de animacion de volar 
+//funcion de animacion de volar
 function animacionDevolar()
 {
     //ctx.clearRect(posicionXdelobstaculo,0,45, 240);
     avepos++;           //aumentamos el ave para dar el efecto de vuelo
     if(avepos>=auxiliardevuelo)   //evita que pasemos a la siguiente ave
     {
-        avepos = restablecedor;   //restablecemos a la posicion correcta del arreglo 
+        avepos = restablecedor;   //restablecemos a la posicion correcta del arreglo
     }
 }
 
@@ -273,7 +273,7 @@ function recargarpagina2()
 function detectarColision()
 {
     //pipes de arriba
-    //saber si chocamos con los diferentes partes del tubo 
+    //saber si chocamos con los diferentes partes del tubo
     //el -25 es por el ancho del ave que es de 50
     //cada variable me permite comparar si estoy tocando el espacio del tubo
     if(pos2-25==posicionXdelave && posicionYdelave<=alturadeltubo2partedearriba || pos2+25==posicionXdelave && posicionYdelave<=alturadeltubo2partedearriba)
@@ -282,7 +282,7 @@ function detectarColision()
 
       animaciondeperder();
     }
-  
+
     //tubo de arriba
     if(pos1-25==posicionXdelave && posicionYdelave<=alturadeltubo1partedearriba || pos1+25==posicionXdelave && posicionYdelave<=alturadeltubo1partedearriba)
     {
@@ -361,7 +361,7 @@ function pantalladeInicio()
   ctx.drawImage(imagen,348,89,93,27, canvas.width/2-150, canvas.height/2-250, 300,100);
   //imagen de get Ready
   ctx.drawImage(imagen,293,57,96,25, canvas.width/2-125, canvas.height/2-120, 250,80);
-  
+
   //imagen de Play
   ctx.drawImage(imagen,291,109,58,31, canvas.width/2-50, canvas.height/2+10, 100,50);
 
@@ -369,7 +369,7 @@ function pantalladeInicio()
   ctx.drawImage(imagen,351,116,57,32, canvas.width/2-50, canvas.height/2+80, 100,50);
 }
 
-//nos permite conocer si el juego esta en inicio o no 
+//nos permite conocer si el juego esta en inicio o no
 //ademas de llamar a la funcion principal
 function mainprincipal()
 {
