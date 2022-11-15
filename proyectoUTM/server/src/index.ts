@@ -1,21 +1,30 @@
-
-import indexRoutes from './routes/indexRoutes';
-import { Router } from 'express';
-class IndexRoutes
+//import express, {Application} from 'express';
+//import indexRoutes from './routes/indexRoutes';
+import ClienteRoutes from './routes/clienteRoutes';
+import morgan from 'morgan';
+import cors from 'cors';
+import express, {Application} from 'express';
+class Server
 {
-public router: Router=Router();
+public app: Application;
 constructor()
 {
-this.config();
+    this.app= express();
+    this.config();
+    this.routes();
 }
-config() : void
+config (): void
 {
-this.router.get('/',(req,res) => res.send('probando ruta'));
+    this.app.set('port',process.env.PORT|| 3000);
 }
-}
-const indexRoutes= new IndexRoutes();
-export default indexRoutes.router;
-routes (): void
+routes (): void{}
+    start (): void
 {
-this.app.use(indexRoutes);
+this.app.listen(this.app.get('port'), () =>
+{
+    console.log('Server on port',this.app.get('port'));
+});
 }
+}
+const server = new Server();
+server.start();
