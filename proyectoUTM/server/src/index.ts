@@ -1,6 +1,4 @@
-//import express, {Application} from 'express';
-//import indexRoutes from './routes/indexRoutes';
-import ClienteRoutes from './routes/clienteRoutes';
+//import ClienteRoutes from './routes/clienteRoutes';
 import morgan from 'morgan';
 import cors from 'cors';
 import express, {Application} from 'express';
