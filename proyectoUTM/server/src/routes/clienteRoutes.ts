@@ -1,13 +1,25 @@
-import { Request, Response } from "express"; 
-import key from "../keys";
-import mysql from "promise-mysql";
-import  pool  from '../database';
+import {Request,Response} from 'express';
+import pool from '../database';
+import { Router } from 'express';
+import { clientesController } from '../controllers/clienteControllers';
 
-class ClienteRoutes
+class ClientesRoutes
 {
-    public async list(req: Request, res: Response): Promise<void>
+
+    public router: Router=Router();
+    constructor()
     {
-        const respuesta  = await pool.query('SELECT * FROM clientes');
-        res.json(respuesta);
+    this.config();
     }
+    config() : void
+        {
+        this.router.get('/',clientesController.list);
+        this.router.get('/:id1',clientesController.listOne);
+        this.router.get('/:fechaIni/:fechaFin',clientesController.listFecha);
+        this.router.get('/:id1/:id2',clientesController.listRange);
+        }
+
 }
+export const clientesRoutes = new ClientesRoutes();
+
+export default clientesRoutes.router;

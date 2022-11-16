@@ -107,7 +107,7 @@
   },
   "scripts": {
     "build": "tsc -w",
-    "dev": "nodemon src/build/index.js"
+    "dev": "nodemon ./build/index.js"
   },
   "keywords": [],
   "author": "",
