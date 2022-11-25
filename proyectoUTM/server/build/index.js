@@ -7,14 +7,21 @@ const express_1 = __importDefault(require("express")); //libreria
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const clienteRoutes_1 = __importDefault(require("./routes/clienteRoutes"));
 const institutosRoutes_1 = __importDefault(require("./routes/institutosRoutes"));
+const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
+const membresiaRoutes_1 = __importDefault(require("./routes/membresiaRoutes"));
+const productosRoutes_1 = __importDefault(require("./routes/productosRoutes"));
+const categoriaRoutes_1 = __importDefault(require("./routes/categoriaRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const swagger_json_1 = __importDefault(require("./swagger.json"));
 class Server //clase
  {
     constructor() {
         this.app = (0, express_1.default)(); //ejecutar servidor
         this.config();
         this.routes();
+        this.app.use('/documentacion', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_json_1.default));
     }
     config() {
         this.app.set('port', process.env.PORT || 3000);
@@ -27,6 +34,10 @@ class Server //clase
         this.app.use(indexRoutes_1.default);
         this.app.use('/api/institutos', institutosRoutes_1.default);
         this.app.use('/api/clientes', clienteRoutes_1.default);
+        this.app.use('/api/usuarios', usuarioRoutes_1.default);
+        this.app.use('/api/membresias', membresiaRoutes_1.default);
+        this.app.use('/api/productos', productosRoutes_1.default);
+        this.app.use('/api/categoria', categoriaRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

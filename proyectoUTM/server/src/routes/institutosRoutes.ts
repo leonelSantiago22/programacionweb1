@@ -8,7 +8,7 @@ this.config();
 }
 config() : void
 {
-this.router.get('/',(req,res) => res.send('probando institutos'));
+    this.router.get('/',(req,res) => res.send('probando institutos'));
 }
 }
 const institutosRoutes= new InstitutosRoutes();

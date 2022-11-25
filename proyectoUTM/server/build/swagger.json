@@ -1,0 +1,100 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "REST API GIMNASIO",
+        "description": "<html><body>Esta es la documentación de la API para el sistema de Gimnasio utm.<p>Para poder usar esta API es necesario solicitar el token y con esto poder utilizar los servicios proporcionados.</p><br><p><b>Autenticación y token de API</b></p><p>La Universidad Tecnológica de la Mixteca (UTM) proporciona el api-token. Una vez que haya creado y confirmado su cuenta.</p></body></html>",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "clientes",
+            "description": "API para obtener informacin acerca del los clientes del establecimiento"
+        },
+        {
+            "name": "usuarios",
+            "description": "API para obtener información de las usuarios del gimnasio"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/clientes": {
+            "get": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Listado de todos los institutos que existen en la UTM.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los institutos que existen en la UTM.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los institutos existentes en la UTM?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "sexo": "M",
+                                    "nombre": "Juan perez"
+                                },
+                                {
+                                    "id": 2,
+                                    "sexo": "F",
+                                    "nombre": "Alejandre guzman"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/clientes"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        }
+    },
+    "definition": {
+        "type": "array",
+        "items": {
+            "$ref": "#/definitions/usuarios"
+        }
+    },
+    "usuarios": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "number",
+                "description": "identificador"
+            },
+            "nombre": {
+                "type": "string",
+                "description": "Describe el nombre de los usuarios"
+            },
+            "tipo": {
+                "type": "number",
+                "description": "El tipo de memebresia del cliente"
+            },
+            "passerod": {
+                "type": "text",
+                "description": "contrasena del cliente en cuestios"
+            },
+            "correo": {
+                "type": "string",
+                "description": "Correo de comunicacion del cliente"
+            }
+        }
+    }
+}

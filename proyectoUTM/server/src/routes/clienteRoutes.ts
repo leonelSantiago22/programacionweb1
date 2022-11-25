@@ -17,6 +17,9 @@ class ClientesRoutes
         this.router.get('/:id1',clientesController.listOne);
         this.router.get('/:fechaIni/:fechaFin',clientesController.listFecha);
         this.router.get('/:id1/:id2',clientesController.listRange);
+        this.router.post('/', clientesController.create);
+        this.router.delete('/:id', clientesController.eliminar);
+        this.router.put('/:id', clientesController.actualizar);
         }
 
 }
