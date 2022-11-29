@@ -64,6 +64,32 @@
                     }
                 }
             }
+        },
+        "api/usuarios/create":{
+            "post":{
+                "summary":"Agregar....",
+                "description": "<p>Crear un nuevo usuario</p>",
+                "operationID": "create",
+                "produce":["application/json"],
+                "parameters":[
+                    {
+                    "name":"usuarios",
+                    "in":"body",
+                    "description":"inserte los datos",
+                    "requires":true,
+                    "schema":{
+                        "sref":"#/definition/menuUsuario"
+                    }
+
+                    }
+                ],
+                "tags":["Usuario"],
+                "repuses":{
+                    "200":{
+                        "description":"servicio solicitado"
+                    }
+                }
+            }
         }
     },
     "definition":
