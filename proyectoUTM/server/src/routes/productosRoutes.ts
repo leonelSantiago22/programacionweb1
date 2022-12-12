@@ -14,6 +14,7 @@ class ProductosRoutes
     config(): void
     {
         this.router.get('/', productosController.list);
+        this.router.post('/', productosController.create);
     }
 }
 export const productosRoutes = new ProductosRoutes();

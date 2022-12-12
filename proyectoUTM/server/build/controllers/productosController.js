@@ -25,5 +25,12 @@ class ProductosController {
             res.json(respuesta);
         });
     }
+    create(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req);
+            const resp = yield database_1.default.query("INSERT INTO productos set ?", [req.body]); //recibira los parametros por el body
+            res.json(resp);
+        });
+    }
 }
 exports.productosController = new ProductosController();

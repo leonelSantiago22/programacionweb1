@@ -10,6 +10,7 @@ class ProductosRoutes {
     }
     config() {
         this.router.get('/', productosController_1.productosController.list);
+        this.router.post('/', productosController_1.productosController.create);
     }
 }
 exports.productosRoutes = new ProductosRoutes();

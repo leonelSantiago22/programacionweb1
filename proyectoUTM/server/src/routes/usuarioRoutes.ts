@@ -16,7 +16,7 @@ class UsuarioRoutes
             this.router.get('/usuarios', UsuarioController.list);
             this.router.get('/verificarUsuario/', UsuarioController.verificarUsario);
             this.router.get('/esActivo/:id1', UsuarioController.esActivo);
-            
+            this.router.post('/', UsuarioController.create);
         }
 
 }

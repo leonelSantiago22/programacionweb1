@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "REST API GIMNASIO",
-        "description": "<html><body>Esta es la documentación de la API para el sistema de Gimnasio utm.<p>Para poder usar esta API es necesario solicitar el token y con esto poder utilizar los servicios proporcionados.</p><br><p><b>Autenticación y token de API</b></p><p>La Universidad Tecnológica de la Mixteca (UTM) proporciona el api-token. Una vez que haya creado y confirmado su cuenta.</p></body></html>",
+        "title": "REST API Gimnasio",
+        "description": "<html><body>Esta es la documentación de la API para un sistema de control de un gimnasio. <p>Para poder usar esta API es necesario solicitar el token y con esto poder utilizar los  servicios proporcionados.</p> <br> <p> <b>Autenticación y token de API</b></p><p>El administrador del sistema del gimnasio proporciona el api-token. Una vez que haya creado y confirmado su cuenta.</p></body></html>",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"
@@ -13,16 +13,26 @@
     "basePath": "",
     "tags": [
         {
-            "name": "clientes",
-            "description": "API para obtener informacin acerca del los clientes del establecimiento"
+            "name": "Usuarios",
+            "description": "API para obtener información de los usuarios del gimnasio"
         },
         {
-            "name": "usuarios",
-            "description": "API para obtener información de las usuarios del gimnasio"
+            "name": "Clientes",
+            "description": "API para obtener información de los clientes del gimnasio"
+        },
+        {
+            "name": "Categoria",
+            "description": "API para obtener información de las categorias de los productos que vende el gimnasio"
+
+        },
+        {
+            "name": "Productos",
+            "description": "API para obtener información de las categorias de los productos que vende el gimnasio"
         }
     ],
     "schemes": [
-        "http"
+        "http",
+        "https"
     ],
     "consumes": [
         "application/json"
@@ -31,13 +41,13 @@
         "application/json"
     ],
     "paths": {
-        "/api/clientes": {
+        "/api/clientes/": {
             "get": {
                 "tags": [
-                    "clientes"
+                    "Clientes"
                 ],
-                "summary": "Listado de todos los institutos que existen en la UTM.",
-                "description": "<p>Servicio que devuelve la información detallada de todos los institutos que existen en la UTM.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los institutos existentes en la UTM?</strong></em></p>",
+                "summary": "Listado de todos los clientes que existen en el gimnasio.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -45,18 +55,114 @@
                             "application/json": [
                                 {
                                     "id": 1,
-                                    "sexo": "M",
-                                    "nombre": "Juan perez"
+                                    "nombre": "Juan Ramiro Espinoza Gutierrez",
+                                    "edad": 50,
+                                    "tipoMembresia": 1,
+                                    "fechaIni": "2022-11-10",
+                                    "fechaFin": "2022-12-26",
+                                    "sexo": "masculino"
                                 },
                                 {
                                     "id": 2,
-                                    "sexo": "F",
-                                    "nombre": "Alejandre guzman"
+                                    "nombre": "Karen Vasquez Corro",
+                                    "edad": 18,
+                                    "tipoMembresia": 2,
+                                    "fechaIni": "2022-12-15",
+                                    "fechaFin": "2023-02-02",
+                                    "sexo": "Femenino"
                                 }
                             ]
                         },
                         "schema": {
-                            "$ref": "#/definitions/clientes"
+                            "$ref": "#/definitions/Clientes"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Usuarios"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/clientes/{id}": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Muestra la información de un cliente, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "nombre": "Juan Ramiro Espinoza Gutierrez",
+                                    "edad": 50,
+                                    "tipoMembresia": 1,
+                                    "fechaIni": "2022-11-10",
+                                    "fechaFin": "2022-12-26",
+                                    "sexo": "masculino"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Cliente"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required": true,
+                        "description":"required id del cliente",
+                        "type":"string",
+                        "default":"1"
+                    }
+                ]
+            }
+        },
+        "/api/usuarios/usuarios": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Listado de todos los usuarios que existen en el gimnasio.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los usuarios?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "nombre": "Juan Ramiro Espinoza Gutierrez",
+                                    "edad": 50,
+                                    "tipoMembresia": 1,
+                                    "fechaIni": "2022-11-10",
+                                    "fechaFin": "2022-12-26",
+                                    "sexo": "masculino"
+                                },
+                                {
+                                    "id": 2,
+                                    "nombre": "Karen Vasquez Corro",
+                                    "edad": 18,
+                                    "tipoMembresia": 2,
+                                    "fechaIni": "2022-12-15",
+                                    "fechaFin": "2023-02-02",
+                                    "sexo": "Femenino"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Usuarios"
                         }
                     },
                     "403": {
@@ -65,63 +171,225 @@
                 }
             }
         },
-        "api/usuarios/create":{
-            "post":{
-                "summary":"Agregar....",
-                "description": "<p>Crear un nuevo usuario</p>",
-                "operationID": "create",
-                "produce":["application/json"],
+        "/api/usuarios/": {
+            "post": {
+                
+                "summary": "Agregar un usuario al gimnsaio.",
+                "description": "<p>Servicio que ingresa un usuario mas al  sistema del gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cual usuario se agrega?</strong></em></p>",
+                "operationId":"create",
+                "produces":["application/json"],
                 "parameters":[
                     {
-                    "name":"usuarios",
-                    "in":"body",
-                    "description":"inserte los datos",
-                    "requires":true,
-                    "schema":{
-                        "sref":"#/definition/menuUsuario"
-                    }
-
+                        "name":"usuario",
+                        "in":"body",
+                        "description":"Ingrese los datos del usuario",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/NuevoUsuario"
+                        }
                     }
                 ],
-                "tags":["Usuario"],
-                "repuses":{
-                    "200":{
-                        "description":"servicio solicitado"
+                "tags": [
+                    "Usuarios"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario creado",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Usuarios"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+
+        "/api/clientes/": {
+            "post": {
+                
+                "summary": "Agregar un cliente al gimnsaio.",
+                "description": "<p>Servicio que ingresa un cliente mas al  sistema del gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cual usuario se agrega?</strong></em></p>",
+                "operationId":"create",
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"Clientes",
+                        "in":"body",
+                        "description":"Ingrese los datos del cliente",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/Nuevocliente"
+                        }
+                    }
+                ],
+                "tags": [
+                    "clientes"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente creado",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fieldCount": 0,
+                                    "affectedRows": 1,
+                                    "insertId": 4,
+                                    "serverStatus": 2,
+                                    "warningCount": 0,
+                                    "message": "",
+                                    "protocol41": true,
+                                    "changedRows": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Cliente"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
                     }
                 }
             }
         }
+    
     },
-    "definition":
-    {
-        "type": "array",
-        "items":{
-            "$ref":"#/definitions/usuarios"
+    "/api/productos/": {
+        "post": {
+            
+            "summary": "Agregar un producto al gimnsaio.",
+            "description": "<p>Servicio que ingresa un producto mas al  sistema del gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cual producto se agrega?</strong></em></p>",
+            "operationId":"create",
+            "produces":["application/json"],
+            "parameters":[
+                {
+                    "name":"Productos",
+                    "in":"body",
+                    "description":"Ingrese los datos del producto",
+                    "required":true,
+                    "schema":{
+                        "$ref":"#/definitions/NuevoProducto"
+                    }
+                }
+            ],
+            "tags": [
+                "Productos"
+            ],
+            "responses": {
+                "200": {
+                    "description": "Producto creado",
+                    "examples": {
+                        "application/json": [
+                            {
+                                "fieldCount": 0,
+                                "affectedRows": 1,
+                                "insertId": 4,
+                                "serverStatus": 2,
+                                "warningCount": 0,
+                                "message": "",
+                                "protocol41": true,
+                                "changedRows": 0
+                            }
+                        ]
+                    },
+                    "schema": {
+                        "$ref": "#/definitions/Productos"
+                    }
+                },
+                "403": {
+                    "description": "Prohibido"
+                }
+            }
         }
     },
-    "usuarios":
-    {
-        "type":"object",
-        "properties":{
-            "id":{
-                "type":"number",
-                "description":"identificador"
-            },
-            "nombre":{
-                    "type":"string",
-                    "description": "Describe el nombre de los usuarios"
-            },
-            "tipo":{
-                "type":"number",
-                "description":"El tipo de memebresia del cliente"
-            },
-            "passerod":{
-                "type": "text",
-                "description": "contrasena del cliente en cuestios"
-            },
-            "correo":{
-                "type": "string",
-                "description": "Correo de comunicacion del cliente"
+
+    "definitions": {
+        "Usuarios": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Usuario"
+            }
+        },
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de un usuario"
+                    
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de los usuarios"
+                },
+                "tipo": {
+                    "type": "number",
+                    "description": "tipo de cargo dentro del gimnasio"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "contraseña de acceso al sistema"
+                },
+                "correo": {
+                    "type": "string",
+                    "description": "correo para acceder al sistema (unico del usuario)"
+                }
+            }
+        },
+        "Clientes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Cliente"
+            }
+        },
+        "Cliente": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Identificador único de un cliente"
+                    
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "describe el nombre de los clientes"
+                },
+                "edad": {
+                    "type": "number",
+                    "description": "describe la edad de los clientes"
+                },
+                "tipoMembresia": {
+                    "type": "number",
+                    "description": "describe el tipo de membresia del cliente"
+                },
+                "fechaIni": {
+                    "type": "string",
+                    "description": "describe la fecha de inicio"
+                },
+                "fechaFin": {
+                    "type": "string",
+                    "description": "describe la fecha fin"
+                },
+                "sexo": {
+                    "type": "string",
+                    "description": "describe el sexo del cliente"
+                }
             }
         }
     }

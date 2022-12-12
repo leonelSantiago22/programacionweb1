@@ -13,7 +13,13 @@ class ProductosController
         console.log(respuesta);
         res.json(respuesta);
         
-    }        
+    }
+    public async create(req: Request, res: Response ): Promise<void>
+    {
+        console.log(req);
+        const resp = await pool.query("INSERT INTO productos set ?", [req.body]); //recibira los parametros por el body
+        res.json(resp);   
+    }
 }
 
 export const productosController = new ProductosController();

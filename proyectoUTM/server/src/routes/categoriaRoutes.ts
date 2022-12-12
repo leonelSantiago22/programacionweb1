@@ -14,6 +14,7 @@ class CategoriaRoutes
     config(): void
     {
         this.router.get('/', categoriaController.list);
+        this.router.post('/', categoriaController.create);
     }
 }
 export const categoriaRoutes = new CategoriaRoutes();

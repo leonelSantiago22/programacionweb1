@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.usuarioController = void 0;
 const database_1 = __importDefault(require("../database"));
 class UsuarioController {
+    //funcion para listar a los usuarios 
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
@@ -23,6 +24,42 @@ class UsuarioController {
             const respuesta = yield database_1.default.query(consulta);
             console.log(respuesta);
             res.json(respuesta);
+        });
+    }
+    listOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { id1 } = req.params;
+            const consulta = 'SELECT * FROM usuarios WHERE id_usuario = ' + id1;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length > 0) {
+                res.json(respuesta[0]);
+                return;
+            }
+            res.status(404).json({ 'mensaje': 'usuario no encontrado' });
+        });
+    }
+    crear_usuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const resp = yield database_1.default.query("INSERT INTO usuarios set ?", [req.body]);
+            res.json(resp);
+        });
+    }
+    actualizar_usuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            console.log(req.params);
+            const resp = yield database_1.default.query("UPDATE usuarios set ? WHERE correo = ?", [req.body, id]);
+            res.json(resp);
+        });
+    }
+    eliminar_usuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const resp = yield database_1.default.query(`DELETE FROM usuarios WHERE correo = ${id}`);
+            res.json(resp);
         });
     }
 }

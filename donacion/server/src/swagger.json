@@ -1,0 +1,743 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "REST API Donacion de sangre",
+        "description": "<html><body>Esta es la documentación de la API para un sistema de control de donaciones <p>Para poder usar esta API es necesario solicitar el token y con esto poder utilizar los  servicios proporcionados.</p> <br> <p> <b>Autenticación y token de API</b></p><p>El administrador del sistema de donaciones proporciona el api-token. Una vez que haya creado y confirmado su cuenta.</p></body></html>",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "Donadores",
+            "description": "API para obtener informacion acerca de los donadores"
+        },
+        {
+            "name": "Bancos",
+            "description": "API para obtener informacion acerca de los bancos de sangre"
+        },
+        {
+            "name": "Solicitud",
+            "description": "API para obtener información de las solicitudes realizadas"
+
+        },
+        {
+            "name": "Paciente",
+            "description": "API para obtener información de los pacientes"
+        },
+        {
+            "name": "Bolsa",
+            "description": "API para obtener información de las bolsas de sangre"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": 
+    {
+        "/api/donador": {
+            "get": {
+                "tags": [
+                    "Donadores"
+                ],
+                "summary": "Listado de todos los donadores",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "iddonador": 1,
+                                    "tipodesangre": "O-Rh+",
+                                    "idpersona": 2
+                                  },
+                                  {
+                                    "iddonador": 2,
+                                    "tipodesangre": "A-Rh+",
+                                    "idpersona": 3
+                                  }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/donador"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "donador"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/donador/{id}": {
+            "get": {
+                "tags": [
+                    "Donadores"
+                ],
+                "summary": "Muestra la información de un cliente, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "nombre": "Juan Ramiro Espinoza Gutierrez",
+                                    "edad": 50,
+                                    "tipoMembresia": 1,
+                                    "fechaIni": "2022-11-10",
+                                    "fechaFin": "2022-12-26",
+                                    "sexo": "masculino"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/donador"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required": true,
+                        "description":"required id del cliente",
+                        "type":"string",
+                        "default":"1"
+                    }
+                ]
+            }
+        },
+        "/api/update/donador/{iddonador}":{
+            "put":{
+                "summary":"Modificar los datos de un donador",
+                "description":"<p>Servicio que modifica la información de un donador</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"iddonador",
+                        "in":"path",
+                        "description":"Ingrese el id del donador",
+                        "required":true,
+                        "default":1
+                    },
+                    {
+                        "name":"Donador",
+                        "in":"body",
+                        "description":"Ingrese la info del donador",
+                        "required":true,
+                        "schema":{"$ref":"#/definitions/donadorold"}
+                    }
+                ],
+                "tags":["Donadores"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+            }
+            }
+        },
+        "/api/donador/delete/{iddonador}":{
+            "delete":{
+                "summary":"Modificar los datos de un producto",
+                "description":"<p>Servicio que modifica la información de un producto que pertenece al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"iddonador",
+                        "in":"path",
+                        "description":"Ingrese el id del producto",
+                        "required":true,
+                        "default":1
+                    }
+                ],
+                "tags":["Donadores"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+            }
+            }
+
+        },"/api/banco": {
+            "get": {
+                "tags": [
+                    "Bancos"
+                ],
+                "summary": "Listado de todos los bancos",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idbanco": 1,
+                                    "nombre": "SANGREMEX",
+                                    "direccion": "Av. Emiliano Zapata",
+                                    "numTelefonico": 9531567890
+                                  },
+                                  {
+                                    "idbanco": 2,
+                                    "nombre": "Banco de sangre",
+                                    "direccion": "Calle rosaura zapata no2.",
+                                    "numTelefonico": 955634567
+                                  }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/banco"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Bancos"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/banco/{id}": {
+            "get": {
+                "tags": [
+                    "Bancos"
+                ],
+                "summary": "Muestra la información de un banco, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idbanco": 1,
+                                    "nombre": "SANGREMEX",
+                                    "direccion": "Av. Emiliano Zapata",
+                                    "numTelefonico": 9531567890
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/banco"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required": true,
+                        "description":"required id del cliente",
+                        "type":"string",
+                        "default":"1"
+                    }
+                ]
+            }
+        },
+        "/api/update/banco/{idbanco}":{
+            "put":{
+                "summary":"Modificar los datos de un banco",
+                "description":"<p>Servicio que modifica la información de un banco</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"idbanco",
+                        "in":"path",
+                        "description":"Ingrese el id del donador",
+                        "required":true,
+                        "default":1
+                    },
+                    {
+                        "name":"banco",
+                        "in":"body",
+                        "description":"Ingrese la info del banco",
+                        "required":true,
+                        "schema":{"$ref":"#/definitions/bancoold"}
+                    }
+                ],
+                "tags":["Bancos"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+            }
+            }
+        },
+        "/api/banco/delete/{idbanco}":{
+            "delete":{
+                "summary":"Modificar los datos de un banco",
+                "description":"<p>Servicio que modifica la información de un banco </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"iddonador",
+                        "in":"path",
+                        "description":"Ingrese el id de un banco",
+                        "required":true,
+                        "default":1
+                    }
+                ],
+                "tags":["Bancos"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+             }
+            }
+        },"/api/solicitud": {
+            "get": {
+                "tags": [
+                    "Solicitud"
+                ],
+                "summary": "Listado de todos las solicitudes",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idsolicitud": 1,
+                                    "idbanco": 2,
+                                    "fecha": "10-12-2022",
+                                    "estado": 2
+                                  },
+                                  {
+                                    "idsolicitud": 2,
+                                    "idbanco": 1,
+                                    "fecha": "13-12-2022",
+                                    "estado": 2
+                                  }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/banco"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Bancos"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/solicitud/{id}": {
+            "get": {
+                "tags": [
+                    "Solicitud"
+                ],
+                "summary": "Muestra la información de una solicitud, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idbanco": 1,
+                                    "nombre": "SANGREMEX",
+                                    "direccion": "Av. Emiliano Zapata",
+                                    "numTelefonico": 9531567890
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/solicitud"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required": true,
+                        "description":"required id del cliente",
+                        "type":"string",
+                        "default":"1"
+                    }
+                ]
+            }
+        },
+        "/api/solicitud/update/{idbanco}":{
+            "put":{
+                "summary":"Modificar los datos de un banco",
+                "description":"<p>Servicio que modifica la información de un banco</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"idsolicitud",
+                        "in":"path",
+                        "description":"Ingrese el id de la solicitud",
+                        "required":true,
+                        "default":1
+                    },
+                    {
+                        "name":"Solicitud",
+                        "in":"body",
+                        "description":"Ingrese la info del banco",
+                        "required":true,
+                        "schema":{"$ref":"#/definitions/solicitudold"}
+                    }
+                ],
+                "tags":["Solicitud"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+            }
+            }
+        },
+        "/api/solicitud/delete/{idbanco}":{
+            "delete":{
+                "summary":"Modificar los datos de un banco",
+                "description":"<p>Servicio que modifica la información de un banco </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"iddonador",
+                        "in":"path",
+                        "description":"Ingrese el id de un banco",
+                        "required":true,
+                        "default":1
+                    }
+                ],
+                "tags":["Solicitud"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+             }
+            }
+        },"/api/solicitud/listar/{idbanco}/{idsolicitud}": {
+            "get": {
+                "tags": [
+                    "Solicitud"
+                ],
+                "summary": "Muestra la información de una solicitud, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idbanco": 1,
+                                    "nombre": "SANGREMEX",
+                                    "direccion": "Av. Emiliano Zapata",
+                                    "numTelefonico": 9531567890,
+                                    "idsolicitud": 2,
+                                    "fecha": "13-12-2022",
+                                    "estado": 2
+                                  }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/solicitud"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required": true,
+                        "description":"required id de la solicitud",
+                        "type":"string",
+                        "default":"1"
+                    }
+                ]
+            }
+        },"/api/paciente": {
+            "get": {
+                "tags": [
+                    "Paciente"
+                ],
+                "summary": "Listado de todos los pacientes",
+                "description": "<p>Servicio que devuelve la información detallada de todos los pacientes que esperan o ya tienen una transfucion</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idpaciente": 1,
+                                    "idpersona": 2,
+                                    "tipodesangre": "A-Rh+"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/paciente"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Bancos"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/paciente/{id}": {
+            "get": {
+                "tags": [
+                    "Paciente"
+                ],
+                "summary": "Muestra la información de un banco, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idbanco": 1,
+                                    "nombre": "SANGREMEX",
+                                    "direccion": "Av. Emiliano Zapata",
+                                    "numTelefonico": 9531567890
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/banco"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required": true,
+                        "description":"required id del cliente",
+                        "type":"string",
+                        "default":"1"
+                    }
+                ]
+            }
+        },
+        "/api/paciente/update/{idbanco}":{
+            "put":{
+                "summary":"Modificar los datos de un banco",
+                "description":"<p>Servicio que modifica la información de un banco</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"idbanco",
+                        "in":"path",
+                        "description":"Ingrese el id del donador",
+                        "required":true,
+                        "default":1
+                    },
+                    {
+                        "name":"banco",
+                        "in":"body",
+                        "description":"Ingrese la info del banco",
+                        "required":true,
+                        "schema":{"$ref":"#/definitions/bancoold"}
+                    }
+                ],
+                "tags":["Paciente"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+            }
+            }
+        },
+        "/api/paciente/delete/{idpaciente}":{
+            "delete":{
+                "summary":"Modificar los datos de un banco",
+                "description":"<p>Servicio que modifica la información de un banco </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"iddonador",
+                        "in":"path",
+                        "description":"Ingrese el id de un banco",
+                        "required":true,
+                        "default":1
+                    }
+                ],
+                "tags":["Paciente"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+             }
+            }
+        },"/api/bolsa": {
+            "get": {
+                "tags": [
+                    "Bolsa"
+                ],
+                "summary": "Listado de todos los pacientes",
+                "description": "<p>Servicio que devuelve la información detallada de todos los pacientes que esperan o ya tienen una transfucion</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idbolsa": 1,
+                                    "cantidad": 500,
+                                    "tipodesangre": "A-Rh+",
+                                    "idregistro": 1
+                                  },
+                                  {
+                                    "idbolsa": 2,
+                                    "cantidad": 200,
+                                    "tipodesangre": "O-Rh+",
+                                    "idregistro": 2
+                                  }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/bolsa"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Bolsa"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/bolsa/{id}": {
+            "get": {
+                "tags": [
+                    "Bolsa"
+                ],
+                "summary": "Muestra la información de un banco, dado su id.",
+                "description": "<p>Servicio que devuelve la información detallada de todos los clientes que pertenecen al gimnasio </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "idbolsa": 1,
+                                    "cantidad": 500,
+                                    "tipodesangre": "A-Rh+",
+                                    "idregistro": 1
+                                  }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/bolsa"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required": true,
+                        "description":"required id del cliente",
+                        "type":"string",
+                        "default":"1"
+                    }
+                ]
+            }
+        },
+        "/api/bolsa/update/{idbolsa}":{
+            "put":{
+                "summary":"Modificar los datos de una bolsa de sangre",
+                "description":"<p>Servicio que modifica la información de una bolsa de sangre</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"idbolsa",
+                        "in":"path",
+                        "description":"Ingrese el id del donador",
+                        "required":true,
+                        "default":1
+                    },
+                    {
+                        "name":"bolsa",
+                        "in":"body",
+                        "description":"Ingrese la info del banco",
+                        "required":true,
+                        "schema":{"$ref":"#/definitions/bolsaold"}
+                    }
+                ],
+                "tags":["Bolsa"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+            }
+            }
+        },
+        "/api/bolsa/delete/{idpaciente}":{
+            "delete":{
+                "summary":"Modificar los datos de un banco",
+                "description":"<p>Servicio que modifica la información de un banco </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "consumes":["application/json"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                        "name":"iddonador",
+                        "in":"path",
+                        "description":"Ingrese el id de un banco",
+                        "required":true,
+                        "default":1
+                    }
+                ],
+                "tags":["Bolsa"],
+                "responses":{
+                    "200":{
+                        "description":"servicio OK"
+                }
+             }
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ class CategoriaRoutes {
     }
     config() {
         this.router.get('/', categoriaControllers_1.categoriaController.list);
+        this.router.post('/', categoriaControllers_1.categoriaController.create);
     }
 }
 exports.categoriaRoutes = new CategoriaRoutes();

@@ -2,8 +2,10 @@ import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
+import datosRoutes from './routes/datosRoutes';
 import usuarioRoutes from './routes/usuarioRoutes';
-
+import ingresoRoutes from './routes/ingresosRoutes';
+import automovilRoutes from './routes/automovilRoutes';
 class Server {
     public app : Application;
     constructor() {
@@ -20,7 +22,10 @@ class Server {
     }
     routes() : void {
         this.app.use(indexRoutes);
+        this.app.use('/api/datos', datosRoutes);
         this.app.use('/api/usuarios', usuarioRoutes);
+        this.app.use('/api/ingresos', ingresoRoutes);
+        this.app.use('/api/automovil', automovilRoutes);
     }
     start() : void {
         this.app.listen(this.app.get('port'), () => {
