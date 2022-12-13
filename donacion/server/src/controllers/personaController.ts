@@ -32,6 +32,19 @@ class PersonaController
         const resp = await pool.query("UPDATE persona set ? WHERE idpersona = ?", [req.body, id]);
         res.json(resp);
     }
+    public async listOne(req: Request, res: Response): Promise <void>
+    {
+        console.log(req.params);
+        const {id1} = req.params;
+        const consulta = 'SELECT * FROM persona WHERE idpersona = '+ id1;
+        console.log(consulta)
+        const respuesta = await pool.query(consulta);
+        if(respuesta.length>0){
+        res.json(respuesta[0]);
+        return ;
+        }
+        res.status(404).json({'mensaje': 'Donador no encontrado'});
+    }
 }
 
 export const  personaController = new PersonaController();

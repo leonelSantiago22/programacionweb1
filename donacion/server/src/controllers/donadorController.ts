@@ -24,7 +24,7 @@ class DonadorController
         res.json(respuesta[0]);
         return ;
         }
-        res.status(404).json({'mensaje': 'Cliente no encontrado'});
+        res.status(404).json({'mensaje': 'Donador no encontrado'});
     }
     public async create(req: Request, res: Response ): Promise<void>
     {

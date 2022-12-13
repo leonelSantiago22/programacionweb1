@@ -15,6 +15,7 @@ class PersonaRoutes
         this.router.delete('/delete/:idpersona', personaController.delete);
         this.router.post('/', personaController.create);
         this.router.put('/update/:idpersona', personaController.update);
+        this.router.get('/:id1', personaController.listOne);
     }
 }
 

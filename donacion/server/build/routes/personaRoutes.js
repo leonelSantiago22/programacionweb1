@@ -13,6 +13,7 @@ class PersonaRoutes {
         this.router.delete('/delete/:idpersona', personaController_1.personaController.delete);
         this.router.post('/', personaController_1.personaController.create);
         this.router.put('/update/:idpersona', personaController_1.personaController.update);
+        this.router.get('/:id1', personaController_1.personaController.listOne);
     }
 }
 exports.personaRoutes = new PersonaRoutes();

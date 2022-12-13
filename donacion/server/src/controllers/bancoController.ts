@@ -43,8 +43,9 @@ class BancoController
         res.json(respuesta[0]);
         return ;
         }
-        res.status(404).json({'mensaje': 'Cliente no encontrado'});
+        res.status(404).json({'mensaje': 'Banco no encontrado'});
     }
+    
 }
 
 export const  bancoController = new BancoController();

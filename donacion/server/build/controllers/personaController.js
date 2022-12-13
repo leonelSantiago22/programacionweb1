@@ -47,5 +47,19 @@ class PersonaController {
             res.json(resp);
         });
     }
+    listOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { id1 } = req.params;
+            const consulta = 'SELECT * FROM persona WHERE idpersona = ' + id1;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length > 0) {
+                res.json(respuesta[0]);
+                return;
+            }
+            res.status(404).json({ 'mensaje': 'Donador no encontrado' });
+        });
+    }
 }
 exports.personaController = new PersonaController();

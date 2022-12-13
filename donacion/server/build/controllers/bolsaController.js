@@ -58,7 +58,7 @@ class BolsaController {
                 res.json(respuesta[0]);
                 return;
             }
-            res.status(404).json({ 'mensaje': 'Cliente no encontrado' });
+            res.status(404).json({ 'mensaje': 'Bolsa no encontrado' });
         });
     }
 }
