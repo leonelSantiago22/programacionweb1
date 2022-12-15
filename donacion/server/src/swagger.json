@@ -76,13 +76,13 @@
                             ]
                         },
                         "schema": {
-                            "$ref": "#/definitions/donador"
+                            "$ref": "#/definitions/Donador"
                         }
                     },
                     "403": {
                         "description": "Prohibido",
                         "tags": [
-                            "donador"
+                            "Donador"
                         ]
                     }
                 }
@@ -112,7 +112,7 @@
                             ]
                         },
                         "schema": {
-                            "$ref": "#/definitions/donador"
+                            "$ref": "#/definitions/Donador"
                         }
                     },
                     "403": {
@@ -150,7 +150,7 @@
                         "in":"body",
                         "description":"Ingrese la info del donador",
                         "required":true,
-                        "schema":{"$ref":"#/definitions/donadorold"}
+                        "schema":{"$ref":"#/definitions/Donador"}
                     }
                 ],
                 "tags":["Donadores"],
@@ -263,7 +263,7 @@
                 ]
             }
         },
-        "/api/update/banco/{idbanco}":{
+        "/api/banco/update/{idbanco}":{
             "put":{
                 "summary":"Modificar los datos de un banco",
                 "description":"<p>Servicio que modifica la información de un banco</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
@@ -394,10 +394,10 @@
                 ]
             }
         },
-        "/api/solicitud/update/{idbanco}":{
+        "/api/solicitud/update/{idsolicitud}":{
             "put":{
-                "summary":"Modificar los datos de un banco",
-                "description":"<p>Servicio que modifica la información de un banco</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
+                "summary":"Modificar los datos de la solicitud",
+                "description":"<p>Servicio que modifica la información de la solicitud</p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
                 "consumes":["application/json"],
                 "produces":["application/json"],
                 "parameters":[
@@ -424,15 +424,15 @@
             }
             }
         },
-        "/api/solicitud/delete/{idbanco}":{
+        "/api/solicitud/delete/{idsolicitud}":{
             "delete":{
-                "summary":"Modificar los datos de un banco",
+                "summary":"Elimina solicitudes de sangre",
                 "description":"<p>Servicio que modifica la información de un banco </p><p>&nbsp;</p><p><em><strong>¿Cuál es ese producto?</strong></em></p>",
                 "consumes":["application/json"],
                 "produces":["application/json"],
                 "parameters":[
                     {
-                        "name":"iddonador",
+                        "name":"idsolicitud",
                         "in":"path",
                         "description":"Ingrese el id de un banco",
                         "required":true,
