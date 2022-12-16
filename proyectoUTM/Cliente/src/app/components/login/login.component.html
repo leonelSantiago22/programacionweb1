@@ -1,8 +1,7 @@
 
     <input class="browser-default" type="email"
-    name="email" id="email" placeholder="correo" autocomplete="off">
-    <input class="browser-default" type="password"
-    name="password" id="password" placeholder="contraseña" autocomplete="off">
+    name="email" id="email" placeholder="correo" autocomplete="off" [(ngModel)]="usuario.correo"  value="usuario.correo">
+    <input class="browser-default" type="password" [(ngModel)]="usuario.password" name="password"value="usuario.password" id="password" placeholder="contraseña" autocomplete="off">
     <button   (click)="verificarUsuario()">
     LOGIN 
     </button>
