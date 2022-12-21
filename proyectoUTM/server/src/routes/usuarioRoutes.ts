@@ -13,8 +13,8 @@ class UsuarioRoutes
     }
     config() : void
         {
-            this.router.get('/usuarios', UsuarioController.list);
-            this.router.get('/verificarUsuario/', UsuarioController.verificarUsario);
+            this.router.get('/', UsuarioController.list);
+            this.router.post('/verificarUsuario/', UsuarioController.verificarUsario);
             this.router.get('/esActivo/:id1', UsuarioController.esActivo);
             this.router.post('/', UsuarioController.create);
         }

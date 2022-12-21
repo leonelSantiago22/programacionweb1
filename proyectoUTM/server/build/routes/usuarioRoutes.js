@@ -9,8 +9,8 @@ class UsuarioRoutes {
         this.config();
     }
     config() {
-        this.router.get('/usuarios', usuariocontrollers_1.UsuarioController.list);
-        this.router.get('/verificarUsuario/', usuariocontrollers_1.UsuarioController.verificarUsario);
+        this.router.get('/', usuariocontrollers_1.UsuarioController.list);
+        this.router.post('/verificarUsuario/', usuariocontrollers_1.UsuarioController.verificarUsario);
         this.router.get('/esActivo/:id1', usuariocontrollers_1.UsuarioController.esActivo);
         this.router.post('/', usuariocontrollers_1.UsuarioController.create);
     }

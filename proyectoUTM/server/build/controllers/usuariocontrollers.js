@@ -19,9 +19,15 @@ class usuarioController {
     verificarUsario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            const consulta = `SELECT *  FROM usuario WHERE id `;
+            const consulta = `SELECT *  FROM usuarios WHERE correo=${req.body} and password=${req.body}`;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length = 0) {
+                res.json(null);
+            }
+            else {
+                res.json(respuesta[0]);
+            }
             console.log(respuesta);
             res.json(respuesta);
             express_1.response.json('1');
