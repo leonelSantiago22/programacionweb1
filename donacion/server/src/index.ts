@@ -15,6 +15,7 @@ import donacionRoutes from './routes/donacionRoutes';
 import inventarioRoutes from './routes/inventarioRoutes';
 import registroRoutes from './routes/registroRoutes';
 import transfucionRoutes from './routes/transfucionRoutes';
+import enfermeraRoutes from './routes/enfermeraRoutes';
 class Server {
     public app : Application;
     constructor() {
@@ -43,6 +44,7 @@ class Server {
         this.app.use('/api/inventario', inventarioRoutes);
         this.app.use('/api/registro',registroRoutes);
         this.app.use('/api/transfucion', transfucionRoutes);
+        this.app.use('/api/enfermera', enfermeraRoutes);
     }
     start() : void {
         this.app.listen(this.app.get('port'), () => {

@@ -89,10 +89,21 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/bootstrap/dist/boostrap.min.js",
+                        "node_modules/jquery/dist/jquery.min.js",
+                        "node_modules/jquery-easing/dist/jquery.easing.min.js",
+                        "js/sb-admin2.min.js",
+                        "vendor/chart.js/Chart.min.js",
+                        "js/demo/chart-area-demo.js",
+                        "js/demo/char-pie-demo.js",
+                        "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+                      ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "68e4e877-0643-4267-96e4-09bfc23e954d"
   }
 }
