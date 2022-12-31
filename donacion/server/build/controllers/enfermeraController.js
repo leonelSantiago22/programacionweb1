@@ -15,6 +15,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.enfermeraController = void 0;
 const database_1 = __importDefault(require("../database"));
 class EnfermeraController {
+    verificar(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const consulta = `SELECT numero_trabajador FROM enfermera WHERE numero_trabajador="${req.body.numero_trabajador}" and password="${req.body.password}"`;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            console.log(respuesta);
+            res.json(respuesta);
+        });
+    }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);

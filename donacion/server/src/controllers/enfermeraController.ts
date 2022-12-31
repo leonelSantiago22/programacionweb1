@@ -4,6 +4,15 @@ import pool from '../database';
 
 class EnfermeraController 
 {   
+    public async verificar(req:Request, res:Response): Promise<void>
+    {
+        console.log(req.body)
+        const consulta = `SELECT numero_trabajador FROM enfermera WHERE numero_trabajador="${req.body.numero_trabajador }" and password="${req.body.password}"`;
+        console.log(consulta)
+        const respuesta = await pool.query(consulta);
+        console.log(respuesta);
+        res.json( respuesta );
+    }
     public async list(req:Request,res:Response): Promise<void>
     {
         console.log(req.params);

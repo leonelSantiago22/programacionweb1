@@ -38,6 +38,12 @@
             "name": "Personas",
             "description": "Persona que se pueden convertir en donadores o en pacientes"
         }
+        ,
+        {
+            "name": "Enfermera",
+            "description": "Enfermera"
+        }
+        
     ],
     "schemes": [
         "http",
@@ -1172,6 +1178,46 @@
             }
             }
 
+        },"/api/enfermera": {
+            "get": {
+                "tags": [
+                    "Enfermera"
+                ],
+                "summary": "Listado de todos los trabajadores de distintos hospitales inscritos",
+                "description": "<p>Servicio que devuelve la información detallada de todas las persona que estan registradas </p><p>&nbsp;</p><p><em><strong>¿Cuáles son los clientes?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                [
+                                    {
+                                        "numero_trabajador": 1,
+                                        "idhospital": 1,
+                                        "idpersona": 6,
+                                        "password": "password"
+                                    },
+                                    {
+                                        "numero_trabajador": 234312,
+                                        "idhospital": 2,
+                                        "idpersona": 7,
+                                        "password": "holamundo"
+                                    }
+                                ]
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Enfermera"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido",
+                        "tags": [
+                            "Enfermera"
+                        ]
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -1462,6 +1508,55 @@
                 "genero": {
                     "type": "string",
                     "description": "Genero de la persona"
+                }
+            }
+        },
+        "EnfermeraNueva": {
+            "type": "object",
+            "properties": {
+                "numero_trabajador": {
+                    "type": "number",
+                    "description": "Identificador unico del trabajador como unico"
+                    
+                },
+                "idhospital": {
+                    "type": "number",
+                    "description": "Lugar en donde trabaja dicho trabajador"
+                    
+                },
+                "idpersona": {
+                    "type": "number",
+                    "description": "Es lo que lo identifica como persona, su nombre y otra informacion"
+                    
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Clave de acceso de la persona"
+                }
+            }
+        }
+        ,
+        "Enfermera": {
+            "type": "object",
+            "properties": {
+                "numero_trabajador": {
+                    "type": "number",
+                    "description": "Identificador unico del trabajador como unico"
+                    
+                },
+                "idhospital": {
+                    "type": "number",
+                    "description": "Lugar en donde trabaja dicho trabajador"
+                    
+                },
+                "idpersona": {
+                    "type": "number",
+                    "description": "Es lo que lo identifica como persona, su nombre y otra informacion"
+                    
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Clave de acceso de la persona"
                 }
             }
         }

@@ -10,6 +10,7 @@ class EnfermeraRoutes
         this.config();
     }
     config(): void{
+        this.router.post('/verificar', enfermeraController.verificar);
         this.router.get('/', enfermeraController.list);
         this.router.delete('/delete/:numero_trabajador', enfermeraController.delete);
         this.router.post('/', enfermeraController.create);
