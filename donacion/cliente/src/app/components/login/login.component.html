@@ -5,44 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="login.component.css" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 
 <body>
 
-    <div class="bodyLogin">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m12 l8 offset-l2 loginDiv">
-                    <div class="row loginContainer">
-                        <div class="col s12 m6 l6">
-                            <div class="col s11 offset-s1">
-                                <img src="assets/img/utm_ova.gif" class="responsive-img" alt="">
-                            </div>
-                        </div>
-                        <div class="col s12 m5 l5 offset-l1 offset-m1">
-                            <div class="loginTitulo">
-                                <h5>Iniciar Sesión</h5>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 customInput">
-                                    <i class="material-icons prefix">email</i>
-                                    <input [(ngModel)]="enfermera.numero_trabajador" type="number" name="numerp_trabajador" id="numero_trabajador_input" placeholder="numero_trabajador" autocomplete="off">
-                                </div>
-                                <div class="col s12 customInput">
-                                    <i class="material-icons prefix">vpn_key</i>
-                                    <input  [(ngModel)]="enfermera.password" type="password" name="password" id="password" placeholder="contraseña" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button class="btn col l12 s12 m12 btnLogin " (click)="verificarEnfermera()">LOGIN</button>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="login">
+        <form class="custom-form" method="post">
+            <h1>Iniciar Sesión</h1>
+            <input [(ngModel)]="enfermera.numero_trabajador" type="number" name="numerp_trabajador" id="numero_trabajador_input" placeholder="numero_trabajador" autocomplete="off">
+            <input  [(ngModel)]="enfermera.password" type="password" name="password" id="password" placeholder="password" autocomplete="off">
+            <button type="submit" (click)="verificarEnfermera()">LOGIN</button>
+        </form>
     </div>
 </body>
 

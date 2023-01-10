@@ -17,6 +17,9 @@ export class LoginComponent {
 
   }
   verificarEnfermera() {
+    console.log(this.enfermera.numero_trabajador);
+    console.log(this.enfermera.password);
+    
     this.usuarioService.VerificarEnfermera(this.enfermera.numero_trabajador, this.enfermera.password).subscribe((resUsuario: any) => {
       console.log(resUsuario);
     if (resUsuario == null){
