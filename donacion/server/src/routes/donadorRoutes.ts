@@ -14,7 +14,7 @@ class DonadorRoutes
         this.router.delete('/delete/:iddonador', donadorController.delete);
         this.router.post('/', donadorController.create);
         this.router.put('/update/:iddonador', donadorController.update);
-        this.router.get('/:id1', donadorController.listOne);
+        this.router.get('/:iddonador', donadorController.listOne);
     }
 }
 

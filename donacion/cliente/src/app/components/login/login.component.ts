@@ -32,7 +32,7 @@ export class LoginComponent {
       })
     }else{
       console.log("el usuario existe");
-      this.router.navigate(['encargado'])
+      this.router.navigate(['main']);
     }
 },
       (err: any) => console.error(err)

@@ -6,20 +6,20 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="main.component.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" >
         <div class="tutorial">
           <ul>
-            <li>Registro donador</li>
-            <li>Registro paciente</li>
-            <li>Solicitudes<i class="fa fa-angle-down"></i>
+            <li (click)="changeDonadores()">Registro donador</li>
+            <li (click)="changePaciente()">Registro paciente</li>
+            <li >Solicitudes<i class="fa fa-angle-down"></i>
               <ul>
-                <li>Solicitud de sangre</li>
+                <li  (click)="changeSolicitud()">Solicitud de sangre</li>
               </ul>
             </li>
-            <li>Contacto</li>
+            <li >Inventario</li>
           </ul>
           <div class="slider"></div>
           <div class="information">

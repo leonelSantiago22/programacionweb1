@@ -16,8 +16,8 @@ export class UsuarioService {
       'correo':numero_trabajador,
       'password': password
     }
-    console.log(`${environment.API_URI}/enfermera/verificar`);
-    return this.http.post(`${environment.API_URI}/enfermera/verificar`,enfermera);
+    console.log(`${environment.API_URI}/api/enfermera/verificar`);
+    return this.http.post(`${environment.API_URI}/api/enfermera/verificar`,enfermera);
     }
   List()
   {

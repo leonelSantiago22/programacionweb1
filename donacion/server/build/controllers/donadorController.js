@@ -28,8 +28,8 @@ class DonadorController {
     listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
-            const { id1 } = req.params;
-            const consulta = 'SELECT * FROM donador WHERE iddonador = ' + id1;
+            const { iddonador } = req.params;
+            const consulta = 'SELECT * FROM donador WHERE iddonador = ' + iddonador;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {
@@ -48,16 +48,16 @@ class DonadorController {
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idsolicitud } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM donador WHERE iddonador= ${idsolicitud}`);
+            const { iddonador } = req.params;
+            const resp = yield database_1.default.query(`DELETE FROM donador WHERE iddonador= ${iddonador}`);
             res.json(resp);
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
+            const { iddonador } = req.params;
             console.log(req.params);
-            const resp = yield database_1.default.query("UPDATE donador set ? WHERE iddonador = ?", [req.body, id]);
+            const resp = yield database_1.default.query("UPDATE donador set ? WHERE iddonador = ?", [req.body, iddonador]);
             res.json(resp);
         });
     }

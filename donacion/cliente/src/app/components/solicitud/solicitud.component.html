@@ -1,1 +1,38 @@
-<p>solicitud works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Solicitud</title>
+</head>
+<body>
+    <table class="styled-table" align="center" style="margin: 0px auto;">
+        <thead>
+            <h2>Solicitudes</h2>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Idsolicitud</th>
+                <th>Idbanco</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Idhospital</th>
+                <th>Numero de trabajador</th>
+            </tr>
+            <tr class="active-row" *ngFor="let solicitudes of solicitud">
+                <td>{{solicitudes.idsolicitud}}</td>
+                <td>{{solicitudes.idbanco}}</td>
+                <td>{{solicitudes.fecha}}</td>
+                <td>{{solicitudes.estado}}</td>
+                <td>{{solicitudes.idhospital}}</td>
+                <td>{{solicitudes.numero_trabajador}}</td>
+                <td><a (click)="eliminarSolicitud(solicitudes.idsolicitud)"><i class="material-icons prefix">delete_forever</i></a>
+                    <a><i class="material-icons prefix">remove_red_eye</i></a>
+                    <a><i class="material-icons prefix">edit</i></a></td>  
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

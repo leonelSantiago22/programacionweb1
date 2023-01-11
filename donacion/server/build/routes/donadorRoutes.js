@@ -13,7 +13,7 @@ class DonadorRoutes {
         this.router.delete('/delete/:iddonador', donadorController_1.donadorController.delete);
         this.router.post('/', donadorController_1.donadorController.create);
         this.router.put('/update/:iddonador', donadorController_1.donadorController.update);
-        this.router.get('/:id1', donadorController_1.donadorController.listOne);
+        this.router.get('/:iddonador', donadorController_1.donadorController.listOne);
     }
 }
 exports.donadorRoutes = new DonadorRoutes();

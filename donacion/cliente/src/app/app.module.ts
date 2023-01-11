@@ -10,6 +10,7 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { DonadoresComponent } from './components/donadores/donadores.component';
 import { BolsaComponent } from './components/bolsa/bolsa.component';
 import { MainComponent } from './components/main/main.component';
+import { InventarioComponent } from './components/inventario/inventario.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MainComponent } from './components/main/main.component';
     SolicitudComponent,
     DonadoresComponent,
     BolsaComponent,
-    MainComponent
+    MainComponent,
+    InventarioComponent
   ],
   imports: [
     BrowserModule,

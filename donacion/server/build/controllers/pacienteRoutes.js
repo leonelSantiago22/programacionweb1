@@ -28,8 +28,8 @@ class PacienteController {
     listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
-            const { id1 } = req.params;
-            const consulta = 'SELECT * FROM paciente WHERE ipaciente = ' + id1;
+            const { idpaciente } = req.params;
+            const consulta = 'SELECT * FROM paciente WHERE ipaciente = ' + idpaciente;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {
@@ -48,16 +48,16 @@ class PacienteController {
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idsolicitud } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM paciente WHERE idpaciente= ${idsolicitud}`);
+            const { idpaciente } = req.params;
+            const resp = yield database_1.default.query(`DELETE FROM paciente WHERE idpaciente= ${idpaciente}`);
             res.json(resp);
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
+            const { idpaciente } = req.params;
             console.log(req.params);
-            const resp = yield database_1.default.query("UPDATE paciente set ? WHERE idpaciente = ?", [req.body, id]);
+            const resp = yield database_1.default.query("UPDATE paciente set ? WHERE idpaciente = ?", [req.body, idpaciente]);
             res.json(resp);
         });
     }

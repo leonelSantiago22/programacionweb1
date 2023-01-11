@@ -15,7 +15,7 @@ class PacienteRoutes
         this.router.delete('/delete/:idpaciente', pacienteController.delete);
         this.router.post('/', pacienteController.create);
         this.router.put('/update/:idpaciente', pacienteController.update);
-        this.router.get('/:id1', pacienteController.listOne);
+        this.router.get('/:idpaciente', pacienteController.listOne);
     }
 }
 

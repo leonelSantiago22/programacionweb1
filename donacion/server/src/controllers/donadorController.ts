@@ -2,8 +2,8 @@ import { json } from 'body-parser';
 import {Request,response,Response} from 'express';
 import pool from '../database';
 
-class DonadorController 
-{   
+class DonadorController
+{
     public async list(req:Request,res:Response): Promise<void>
     {
         console.log(req.params);
@@ -16,8 +16,8 @@ class DonadorController
     public async listOne(req: Request, res: Response): Promise <void>
     {
         console.log(req.params);
-        const {id1} = req.params;
-        const consulta = 'SELECT * FROM donador WHERE iddonador = '+ id1;
+        const {iddonador} = req.params;
+        const consulta = 'SELECT * FROM donador WHERE iddonador = '+ iddonador;
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if(respuesta.length>0){
@@ -30,19 +30,19 @@ class DonadorController
     {
         console.log(req);
         const resp = await pool.query("INSERT INTO donador set ?", [req.body]); //recibira los parametros por el body
-        res.json(resp);   
+        res.json(resp);
     }
     public async delete(req: Request, res: Response ): Promise<void>
     {
-        const { idsolicitud } = req.params;
-        const resp = await pool.query(`DELETE FROM donador WHERE iddonador= ${idsolicitud}`);
+        const { iddonador } = req.params;
+        const resp = await pool.query(`DELETE FROM donador WHERE iddonador= ${iddonador}`);
         res.json(resp);
     }
     public async update(req: Request, res: Response ): Promise<void>
     {
-        const { id } = req.params;
+        const { iddonador } = req.params;
         console.log(req.params);
-        const resp = await pool.query("UPDATE donador set ? WHERE iddonador = ?", [req.body, id]);
+        const resp = await pool.query("UPDATE donador set ? WHERE iddonador = ?", [req.body, iddonador]);
         res.json(resp);
     }
 }

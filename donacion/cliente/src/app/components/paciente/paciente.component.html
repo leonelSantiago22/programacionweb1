@@ -1,1 +1,34 @@
-<p>paciente works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Pacientes</title>
+</head>
+<body>
+   
+    <table class="styled-table" align="center" style="margin: 0px auto;">
+        <thead>
+            <h2>Pacientes</h2>
+        </thead>
+        <tbody>
+            <tr>
+                <th>id paciente</th>
+                <th>id persona </th>
+                <th>tipo de sangre</th>
+                <th>Acciones </th>
+            </tr>
+            <tr class="active-row" *ngFor="let paciente of paciente">
+                <td>{{paciente.idpaciente}}</td>
+                <td>{{paciente.idpersona}}</td>
+                <td>{{paciente.tipodesangre}}</td>
+                <td><a (click)="eliminarPaciente(paciente.idpaciente)"><i class="material-icons prefix">delete_forever</i></a>
+                    <a><i class="material-icons prefix">remove_red_eye</i></a>
+                    <a><i class="material-icons prefix">edit</i></a></td>  
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
