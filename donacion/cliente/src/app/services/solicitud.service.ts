@@ -15,5 +15,17 @@ export class SolicitudService {
   {
     return this.http.delete(`${environment.API_URI}/api/solicitud/delete/`+idsolicitud); 
   }
+  listOne(idsolicitud:any)
+  {
+    return this.http.get(`${environment.API_URI}/api/solicitud/`+idsolicitud);
+  }
+  agregarSolicitud(solicitud: any)
+  {
+    return this.http.post(`${environment.API_URI}/api/solicitud/`,solicitud);
+  }
+  updateSolicitud(solicitud:any)
+  {
+    return this.http.put(`${environment.API_URI}/api/solicitud/update/`+solicitud.idsolicitud,solicitud);
+  }
 
 }

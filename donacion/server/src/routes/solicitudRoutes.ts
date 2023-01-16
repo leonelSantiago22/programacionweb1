@@ -15,7 +15,9 @@ class SolicitudRoutes
         this.router.delete('/delete/:idsolicitud', solicitudController.delete);
         this.router.post('/', solicitudController.create);
         this.router.put('/update/:idsolicitud', solicitudController.update);
+        this.router.get('/:idsolicitud', solicitudController.listOne);
         this.router.get('/listar/:idbanco/:idsolicitud', solicitudController.listarconBanco);
+
     }
 }
 

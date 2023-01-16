@@ -25,6 +25,16 @@ class PersonaController {
             res.json(respuesta);
         });
     }
+    listMax(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const consulta = 'SELECT * FROM persona WHERE idpersona = (SELECT max(idpersona) FROM persona)';
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            console.log(respuesta);
+            res.json(respuesta);
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req);
@@ -34,8 +44,8 @@ class PersonaController {
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idsolicitud } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM persona WHERE idpersona= ${idsolicitud}`);
+            const { idpersona } = req.params;
+            const resp = yield database_1.default.query(`DELETE FROM persona WHERE idpersona= ${idpersona}`);
             res.json(resp);
         });
     }

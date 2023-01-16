@@ -16,6 +16,7 @@ import inventarioRoutes from './routes/inventarioRoutes';
 import registroRoutes from './routes/registroRoutes';
 import transfucionRoutes from './routes/transfucionRoutes';
 import enfermeraRoutes from './routes/enfermeraRoutes';
+import administradorRoutes from "./routes/administradorRoutes";
 class Server {
     public app : Application;
     constructor() {
@@ -45,12 +46,14 @@ class Server {
         this.app.use('/api/registro',registroRoutes);
         this.app.use('/api/transfucion', transfucionRoutes);
         this.app.use('/api/enfermera', enfermeraRoutes);
+        this.app.use('/api/administrador', administradorRoutes);
+
     }
     start() : void {
         this.app.listen(this.app.get('port'), () => {
             console.log('Server on port', this.app.get('port'));
         });
-    } 
+    }
 }
 
 const server = new Server();

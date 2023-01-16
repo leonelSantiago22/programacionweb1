@@ -25,9 +25,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/materialize-css/dist/css/materialize.css",
+              "src/assets/materialize/css/materialize.css",
+              "src/assets/materialize/css/materialize.min.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/materialize/js/materialize.js",
+            "node_modules/jquery/dist/jquery.min.js",
+            "node_modules/jquery/dist/jquery.js",
+            "./node_modules/materialize-css/dist/js/materialize.js",
+            "src/assets/materialize/js/materialize.js",
+            "src/assets/materialize/js/materialize.min.js"]
           },
           "configurations": {
             "production": {
@@ -87,7 +95,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/materialize-css/dist/css/materialize.css",
+              "./src/assets/materialize/css/materialize.css",
+              "./src/assets/materialize/css/materialize.min.css"
             ],
             "scripts": ["node_modules/bootstrap/dist/boostrap.min.js",
                         "node_modules/jquery/dist/jquery.min.js",
@@ -96,8 +107,11 @@
                         "vendor/chart.js/Chart.min.js",
                         "js/demo/chart-area-demo.js",
                         "js/demo/char-pie-demo.js",
-                        "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
-                      ]
+                        "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+                        "src/assets/materialize/js/materialize.js",
+                        "src/assets/materialize/js/materialize.min.js",
+                        "./node_modules/materialize-css/dist/js/materialize.js"
+            ]
           }
         }
       }

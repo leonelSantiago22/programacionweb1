@@ -64,8 +64,8 @@ class SolicitudController {
     listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
-            const { id1 } = req.params;
-            const consulta = 'SELECT * FROM solicitud WHERE idsolicitud = ' + id1;
+            const { idsolicitud } = req.params;
+            const consulta = 'SELECT * FROM solicitud WHERE idsolicitud = ' + idsolicitud;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {

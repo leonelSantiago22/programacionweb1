@@ -21,8 +21,15 @@ class EnfermeraController {
             const consulta = `SELECT numero_trabajador FROM enfermera WHERE numero_trabajador="${req.body.numero_trabajador}" and password="${req.body.password}"`;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
-            console.log(respuesta);
-            res.json(respuesta);
+            if (respuesta.length == 0) {
+                console.log("null");
+                res.json(null);
+                return;
+            }
+            else {
+                res.json(respuesta[0]);
+                return;
+            }
         });
     }
     list(req, res) {

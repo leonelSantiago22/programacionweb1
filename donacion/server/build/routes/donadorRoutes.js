@@ -14,6 +14,7 @@ class DonadorRoutes {
         this.router.post('/', donadorController_1.donadorController.create);
         this.router.put('/update/:iddonador', donadorController_1.donadorController.update);
         this.router.get('/:iddonador', donadorController_1.donadorController.listOne);
+        this.router.get('/:iddonador/:idpersona', donadorController_1.donadorController.listOneCartesiano);
     }
 }
 exports.donadorRoutes = new DonadorRoutes();

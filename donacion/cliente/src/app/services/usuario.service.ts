@@ -13,14 +13,22 @@ export class UsuarioService {
   //informacion para verificar un usuario
   VerificarEnfermera(numero_trabajador:any, password:any) {
     let enfermera = {
-      'correo':numero_trabajador,
+      'numero_trabajador':numero_trabajador,
       'password': password
     }
-    console.log(`${environment.API_URI}/api/enfermera/verificar`);
-    return this.http.post(`${environment.API_URI}/api/enfermera/verificar`,enfermera);
+    console.log(numero_trabajador,password);
+    return this.http.post(`${environment.API_URI}/api/enfermera/verificar/`,enfermera);
     }
   List()
   {
     return this.http.get(`${environment.API_URI}/api/enfermera/List/`);
   }
+  VerificarAdministrador(numero_trabajador:any, password:any) {
+    let administrador = {
+      'numero_trabajador':numero_trabajador,
+      'password': password
+    }
+    console.log(numero_trabajador,password);
+    return this.http.post(`${environment.API_URI}/api/administrador/verificar/`,administrador);
+    }
 }

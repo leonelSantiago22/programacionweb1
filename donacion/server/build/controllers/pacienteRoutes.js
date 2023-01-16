@@ -29,7 +29,21 @@ class PacienteController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
             const { idpaciente } = req.params;
-            const consulta = 'SELECT * FROM paciente WHERE ipaciente = ' + idpaciente;
+            const consulta = 'SELECT * FROM paciente WHERE idpaciente = ' + idpaciente;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length > 0) {
+                res.json(respuesta[0]);
+                return;
+            }
+            res.status(404).json({ 'mensaje': 'Cliente no encontrado' });
+        });
+    }
+    listOneCartesiano(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { idpaciente, idpersona } = req.params;
+            const consulta = `SELECT * FROM paciente,persona WHERE paciente.idpersona =${idpersona} and persona.idpersona=${idpersona} and paciente.idpaciente=${idpaciente}`;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {
@@ -46,6 +60,8 @@ class PacienteController {
             res.json(resp);
         });
     }
+    //INSERT INTO persona (idpersona, nombre, edad, genero) VALUES (NULL, 'Pedro picos piedra', '134', 'M');
+    //INSERT INTO paciente(idpaciente, idpersona, tipodesangre) VALUES(NULL, SELECT max(idpersona) FROM persona, 'AR+H')
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idpaciente } = req.params;

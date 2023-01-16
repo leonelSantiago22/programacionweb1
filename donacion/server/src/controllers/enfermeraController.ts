@@ -2,16 +2,23 @@ import { json } from 'body-parser';
 import {Request,response,Response} from 'express';
 import pool from '../database';
 
-class EnfermeraController 
-{   
+class EnfermeraController
+{
     public async verificar(req:Request, res:Response): Promise<void>
     {
         console.log(req.body)
         const consulta = `SELECT numero_trabajador FROM enfermera WHERE numero_trabajador="${req.body.numero_trabajador }" and password="${req.body.password}"`;
-        console.log(consulta)
+        console.log(consulta);
         const respuesta = await pool.query(consulta);
-        console.log(respuesta);
-        res.json( respuesta );
+        if (respuesta.length == 0) {
+            console.log("null");
+            res.json(null );
+            return ;
+        }else{
+
+          res.json( respuesta[0] );
+          return;
+        }
     }
     public async list(req:Request,res:Response): Promise<void>
     {
@@ -39,7 +46,7 @@ class EnfermeraController
     {
         console.log(req);
         const resp = await pool.query("INSERT INTO enfermera set ?", [req.body]); //recibira los parametros por el body
-        res.json(resp);   
+        res.json(resp);
     }
     public async delete(req: Request, res: Response ): Promise<void>
     {

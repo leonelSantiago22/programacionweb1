@@ -39,6 +39,20 @@ class DonadorController {
             res.status(404).json({ 'mensaje': 'Donador no encontrado' });
         });
     }
+    listOneCartesiano(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { iddonador, idpersona } = req.params;
+            const consulta = `SELECT * FROM donador,persona WHERE donador.idpersona =${idpersona} and persona.idpersona=${idpersona} and donador.iddonador=${iddonador}`;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length > 0) {
+                res.json(respuesta[0]);
+                return;
+            }
+            res.status(404).json({ 'mensaje': 'Donador no encontrado' });
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req);

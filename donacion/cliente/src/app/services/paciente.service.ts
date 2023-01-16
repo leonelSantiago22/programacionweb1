@@ -15,5 +15,16 @@ export class PacienteService {
   {
     return this.http.delete(`${environment.API_URI}/api/paciente/delete/`+idpaciente); 
   }
-  
+  updatePaciente(paciente:any)
+  {
+    return this.http.put(`${environment.API_URI}/api/paciente/update/`+paciente.idpaciente,paciente); 
+  }
+  insertPaciente(paciente:any)
+  {
+    return this.http.post(`${environment.API_URI}/api/paciente/`,paciente);
+  }
+  listOne(idpaciente:any, idpersona:any)
+  {
+    return this.http.get(`${environment.API_URI}/api/paciente/`+idpaciente+'/'+idpersona);
+  }
 }

@@ -2,8 +2,8 @@ import { json } from 'body-parser';
 import {Request,response,Response} from 'express';
 import pool from '../database';
 
-class SolicitudController 
-{   
+class SolicitudController
+{
     public async list(req:Request,res:Response): Promise<void>
     {
         console.log(req.params);
@@ -31,7 +31,7 @@ class SolicitudController
     {
         console.log(req);
         const resp = await pool.query("INSERT INTO solicitud set ?", [req.body]); //recibira los parametros por el body
-        res.json(resp);   
+        res.json(resp);
     }
     public async delete(req: Request, res: Response ): Promise<void>
     {
@@ -49,8 +49,8 @@ class SolicitudController
     public async listOne(req: Request, res: Response): Promise <void>
     {
         console.log(req.params);
-        const {id1} = req.params;
-        const consulta = 'SELECT * FROM solicitud WHERE idsolicitud = '+ id1;
+        const {idsolicitud} = req.params;
+        const consulta = 'SELECT * FROM solicitud WHERE idsolicitud = '+ idsolicitud;
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if(respuesta.length>0){

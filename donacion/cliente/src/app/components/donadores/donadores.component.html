@@ -5,11 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/css/materialize.min.css"  media="screen,projection"/>
     <title>Registo de donadores</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <table class="styled-table" align="center" style="margin: 0px auto;">
-        <thead>
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            <img src="../../../assets/imagenes/medicine.png" width="50px" height="50px" class="logo">
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a (click)="changeSolicitud()">Solicitud</a></li>
+            <li><a (click)="changePaciente()">Registro de pacientes</a></li>
+            <li></li>
+          </ul>
+        </div>
+      </nav>
+
+    <table class="styled-table mt-4"  style="margin: 0px auto;">
+        <thead >
             <h2>Donadores</h2>
         </thead>
         <tbody>
@@ -23,11 +45,49 @@
                 <td>{{donador.iddonador}}</td>
                 <td>{{donador.tipodesangre}}</td>
                 <td>{{donador.idpersona}}</td>
-                <td><a><i class="material-icons prefix" (click)="eliminarDonador(donador.iddonador)">delete_forever</i></a>
-                    <a><i class="material-icons prefix">remove_red_eye</i></a>
-                    <a><i class="material-icons prefix">edit</i></a></td>  
+                <td><a (click)="eliminarDonador(donador.iddonador)"><i class="material-icons prefix">delete_forever</i></a>
+                    <a (click)="visualizarDonador(donador.iddonador, donador.idpersona)"><i class="material-icons prefix">remove_red_eye</i></a>
+                    <a data-target="myModal"  ><i class="material-icons prefix">edit</i></a></td>  
             </tr>
         </tbody>
     </table>
+    <!-- Modal Structure -->
+
+    <form  id="msform">
+        <fieldset>
+           <h2 class="fs-title">Ingresar donador</h2>
+           <h3 class="fs-subtitle">Ingresa los datos abajo</h3>
+           <input type="text" class="email" [(ngModel)]="donadores.tipodesangre"  name="tipodesangre" placeholder="tipo de sangre" />
+           <input type="text" class="email" [(ngModel)]="personas.nombre" name="nombrepaciente" placeholder="nombre del paicente">
+           <input type="text" class="email" [(ngModel)]="personas.edad" name="edad" placeholder="Edad del paciente">
+           <input type="text" class="email" [(ngModel)]="personas.genero" name="genero" placeholder="Genero del paciente">
+           <input type="button" name="next" class="next action-button" value="Agregar" (click)="agregarDonador()"/>
+           <input type="button" name="next" class="next action-button" value="Actualizar" (click)="actualizarDonador()"/>
+           <input type="button" value="Limpiar" name="next" class="btn modal-trigger col-2"  data-target="myModal" >
+         </fieldset>
+       </form>
+
+
+       <div class="modal" id="myModal" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+           <div class="modal-content">
+           <div class="modal-header">
+             <h4 class="modal-title">Title of my Modal</h4>
+           </div>
+           <div class="modal-body">
+              <p> Here is some text for the modal </p>
+             <div class="buttonSelect">
+               <button id="cancelConsentButton" class="btn btn success" onclick = "$('.modal').removeClass('show').addClass('fade');">Cancel</button>
+               <button id="acceptConsentButton" class="btn btn success" onclick = "$('.modal').removeClass('show').addClass('fade');">I Agree</button>
+             </div>
+           </div>
+           </div>
+        </div>
+       </div>
+   
+      <script>
+        $('myModal').modal('show');
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
 </body>
 </html>

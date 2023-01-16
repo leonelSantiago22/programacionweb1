@@ -8,8 +8,20 @@
     <title>Pacientes</title>
 </head>
 <body>
-   
-    <table class="styled-table" align="center" style="margin: 0px auto;">
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            <img src="Logo" class="logo">
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a (click)="changeDonadores()">Donadores</a></li>
+            <li><a (click)="changeSolicitud()">solicitud de sangre</a></li>
+            <li></li>
+          </ul>
+        </div>
+      </nav>
+
+    <table class="styled-table mt-3" align="center" style="margin: 0px auto;">
         <thead>
             <h2>Pacientes</h2>
         </thead>
@@ -25,10 +37,24 @@
                 <td>{{paciente.idpersona}}</td>
                 <td>{{paciente.tipodesangre}}</td>
                 <td><a (click)="eliminarPaciente(paciente.idpaciente)"><i class="material-icons prefix">delete_forever</i></a>
-                    <a><i class="material-icons prefix">remove_red_eye</i></a>
+                    <a (click)="visualizarPaciente(paciente.idpaciente, paciente.idpersona)"><i class="material-icons prefix">remove_red_eye</i></a>
                     <a><i class="material-icons prefix">edit</i></a></td>  
             </tr>
         </tbody>
     </table>
+    <form  id="msform">
+     <fieldset>
+        <h2 class="fs-title">Ingresar paciente</h2>
+        <h3 class="fs-subtitle">Ingresa los datos abajo</h3>
+        <input disabled type="number" class="email" placeholder="idpersona" name="persona" [(ngModel)]="pacienteVar.idpersona" />
+        <input type="text" class="email" [(ngModel)]="pacienteVar.tipodesangre"  name="tipodesangre" placeholder="tipo de sangre" />
+        <input type="text" class="email" [(ngModel)]="personas.nombre" name="nombrepaciente" placeholder="nombre del paicente">
+           <input type="text" class="email" [(ngModel)]="personas.edad" name="edad" placeholder="Edad del paciente">
+           <input type="text" class="email" [(ngModel)]="personas.genero" name="genero" placeholder="Genero del paciente">
+        <input type="button" name="next" class="next action-button" value="Agregar" (click)="agregarPaciente()"/>
+        <input type="button" name="next" class="next action-button" value="Actualizar" (click)="actualizarPaciente()"/>
+      </fieldset>
+    </form>
+
 </body>
 </html>

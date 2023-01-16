@@ -17,7 +17,20 @@ class PacienteController
     {
         console.log(req.params);
         const {idpaciente} = req.params;
-        const consulta = 'SELECT * FROM paciente WHERE ipaciente = '+ idpaciente;
+        const consulta = 'SELECT * FROM paciente WHERE idpaciente = '+ idpaciente;
+        console.log(consulta)
+        const respuesta = await pool.query(consulta);
+        if(respuesta.length>0){
+        res.json(respuesta[0]);
+        return ;
+        }
+        res.status(404).json({'mensaje': 'Cliente no encontrado'});
+    }
+    public async listOneCartesiano(req: Request, res: Response): Promise <void>
+    {
+        console.log(req.params);
+        const {idpaciente,idpersona} = req.params;
+        const consulta = `SELECT * FROM paciente,persona WHERE paciente.idpersona =${idpersona} and persona.idpersona=${idpersona} and paciente.idpaciente=${idpaciente}`;
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if(respuesta.length>0){
@@ -32,6 +45,9 @@ class PacienteController
         const resp = await pool.query("INSERT INTO paciente set ?", [req.body]); //recibira los parametros por el body
         res.json(resp);
     }
+
+    //INSERT INTO persona (idpersona, nombre, edad, genero) VALUES (NULL, 'Pedro picos piedra', '134', 'M');
+    //INSERT INTO paciente(idpaciente, idpersona, tipodesangre) VALUES(NULL, SELECT max(idpersona) FROM persona, 'AR+H')
     public async delete(req: Request, res: Response ): Promise<void>
     {
         const {idpaciente} = req.params;

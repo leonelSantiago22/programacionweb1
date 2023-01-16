@@ -24,12 +24,24 @@ export class LoginComponent {
       console.log(resUsuario);
     if (resUsuario == null){
       console.log("el trabajador no existe")
-      Swal.fire({
-        position:"center",
-        icon:"error",
-        title:"correo o contraseña inválido",
-        showConfirmButton:true
-      })
+      this.usuarioService.VerificarAdministrador(this.enfermera.numero_trabajador, this.enfermera.password).subscribe((resUsuario: any) => {
+        console.log(resUsuario);
+      if (resUsuario == null){
+        console.log("el trabajador no existe")
+        
+        Swal.fire({
+          position:"center",
+          icon:"error",
+          title:"correo o contraseña inválido",
+          showConfirmButton:true
+        })
+      }else{
+        console.log("el usuario existe");
+        this.router.navigate(['enfermera']);
+      }
+        },
+        (err: any) => console.error(err)
+      );
     }else{
       console.log("el usuario existe");
       this.router.navigate(['main']);

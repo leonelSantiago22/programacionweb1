@@ -12,6 +12,7 @@ class PersonaRoutes
     }
     config(): void{
         this.router.get('/', personaController.list);
+        this.router.get('/max', personaController.listMax);
         this.router.delete('/delete/:idpersona', personaController.delete);
         this.router.post('/', personaController.create);
         this.router.put('/update/:idpersona', personaController.update);

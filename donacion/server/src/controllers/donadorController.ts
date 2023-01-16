@@ -26,6 +26,20 @@ class DonadorController
         }
         res.status(404).json({'mensaje': 'Donador no encontrado'});
     }
+    public async listOneCartesiano(req: Request, res: Response): Promise <void>
+    {
+        console.log(req.params);
+        const {iddonador,idpersona} = req.params;
+        const consulta = `SELECT * FROM donador,persona WHERE donador.idpersona =${idpersona} and persona.idpersona=${idpersona} and donador.iddonador=${iddonador}`
+        console.log(consulta)
+        const respuesta = await pool.query(consulta);
+        if(respuesta.length>0){
+        res.json(respuesta[0]);
+        return ;
+      }
+        res.status(404).json({'mensaje': 'Donador no encontrado'});
+    }
+
     public async create(req: Request, res: Response ): Promise<void>
     {
         console.log(req);

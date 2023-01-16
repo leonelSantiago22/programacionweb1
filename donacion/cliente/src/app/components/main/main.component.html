@@ -14,14 +14,14 @@
           <ul>
             <li (click)="changeDonadores()">Registro donador</li>
             <li (click)="changePaciente()">Registro paciente</li>
-            <li >Solicitudes<i class="fa fa-angle-down"></i>
-              <ul>
-                <li  (click)="changeSolicitud()">Solicitud de sangre</li>
-              </ul>
-            </li>
-            <li >Inventario</li>
+            <li (click)="changeSolicitud()">Solicitudes</li>
+            <li [routerLink]="['/login']">Salir</li>
           </ul>
-          <div class="slider"></div>
+          <div class="slider" >
+            <div aling="center">
+              <img src="../../../assets/imagenes/img.jpg" width="100%" height="100%" >
+            </div>
+          </div>
           <div class="information">
             <p>Menu para seleccionar las diferentes tareas</p>
           </div>

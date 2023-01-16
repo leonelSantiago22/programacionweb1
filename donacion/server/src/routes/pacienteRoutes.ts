@@ -16,6 +16,7 @@ class PacienteRoutes
         this.router.post('/', pacienteController.create);
         this.router.put('/update/:idpaciente', pacienteController.update);
         this.router.get('/:idpaciente', pacienteController.listOne);
+        this.router.get('/:idpaciente/:idpersona', pacienteController.listOneCartesiano);
     }
 }
 

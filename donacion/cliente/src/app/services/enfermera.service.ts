@@ -15,4 +15,5 @@ export class EnfermeraService {
   {
     return this.http.delete(`${environment.API_URI}/api/enfermera/`+numero_trabajador); 
   }
+  
 }
