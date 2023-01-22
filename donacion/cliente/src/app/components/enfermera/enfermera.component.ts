@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Enfermera } from 'src/app/models/enfermera';
 import { EnfermeraService } from 'src/app/services/enfermera.service';
+import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
+import { Router } from '@angular/router';
+declare var $: any;
 @Component({
   selector: 'app-enfermera',
   templateUrl: './enfermera.component.html',
@@ -9,7 +12,7 @@ import { EnfermeraService } from 'src/app/services/enfermera.service';
 export class EnfermeraComponent {
   enfermera:any;
   enfermeras = new Enfermera();
-  constructor(private enfermeraService: EnfermeraService){
+  constructor(private enfermeraService: EnfermeraService, private router: Router){
     this.listarEnfermeras();
    }
   listarEnfermeras()
@@ -30,4 +33,14 @@ export class EnfermeraComponent {
     console.log("enfermera");
     
   }
+  preparar(){
+    $('#Mymodal').modal({
+          dismissible: false
+    });
+    $('#Mymodal').modal('open');
+  }
+  static()
+    {
+      this.router.navigate(['enfermera']);
+    }
 }

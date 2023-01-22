@@ -4,20 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <!-- Compiled and minified CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-     <!-- Compiled and minified JavaScript -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
     <title>Solicitud</title>
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo">
-            <img src="" class="logo">
-          </a>
+        <div class="nav-wrapper" id="navbarclass">
+          <a class="brand-logo" [routerLink]="['/main']"> <img src="../../../assets/imagenes/medicine.png" width="50px" height="50px" class="logo"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a (click)="changeDonadores()">Donadores</a></li>
             <li><a (click)="changePaciente()">Registro de pacientes</a></li>
@@ -26,69 +19,79 @@
         </div>
       </nav>
 
-    <table class="styled-table" align="center" style="margin: 0px auto;">
-        <thead>
-            <h2>Solicitudes</h2>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Idsolicitud</th>
-                <th>Idbanco</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-                <th>Idhospital</th>
-                <th>Numero de trabajador</th>
-            </tr>
-            <tr class="active-row" *ngFor="let solicitud of solicitud">
-                <td>{{solicitud.idsolicitud}}</td>
-                <td>{{solicitud.idbanco}}</td>
-                <td>{{solicitud.fecha}}</td>
-                <td>{{solicitud.estado}}</td>
-                <td>{{solicitud.idhospital}}</td>
-                <td>{{solicitud.numero_trabajador}}</td>
-                <td><a (click)="eliminarSolicitud(solicitud.idsolicitud)"><i class="material-icons prefix">delete_forever</i></a>
-                    <a (click)="visualizarSolicitud(solicitud.idsolicitud)"><i class="material-icons prefix">remove_red_eye</i></a>
-                    <a data-target="myModal"><i class="material-icons prefix">edit</i></a></td>  
-            </tr>
-        </tbody>
-    </table>
-    
-    <form  id="msform" class="col s12">
-      <fieldset>
-         <h2 class="fs-title">Ingresar donador</h2>
-         <h3 class="fs-subtitle">Ingresa los datos abajo</h3>
-        <div class="row">
-         <div class="input-field col s12"> 
-            <label class="form-label" for="tipodesangre">Numero de solicitud</label>
-            <input disabled  value="Alvin" class="form-control" type="text" id="tipodesangre"  [(ngModel)]="solicitudes.idsolicitud"  name="tipodesangre"  />
-          </div>
-        </div>
-        <div class="input-field col s12">
-          <label for="idbanco" class="activate">Id del banco</label>
-          <input value="Alvin" type="text" class="validate" id="idbanco" [(ngModel)]="solicitudes.idbanco" name="idbanco" >
-          
-        </div>
-         <div class="input-field col s6">
-            <input type="date" value="Alvin" class="validate" id="fechasolicitud" [(ngModel)]="solicitudes.fecha" name="fecha">
-            <label for="fechasolicitud" class="activate">Fecha de la solicitud</label>
-         </div>
-          <div class="input-field col s6">
-              <input value="Alvin" type="text" class="validate" id="estadosolicitud" [(ngModel)]="solicitudes.estado" name="estadosolicitud" >
-              <label for="estadosolicitud" class="activate" >Estado de la solicitud</label>
-          </div>
-          <div class="input-field col s6">
-              <input value="Alvin" type="text" class="validate" id="idhospital" [(ngModel)]="solicitudes.idhospital" name="idhospital" >
-              <label for="idhospital" class="activate">Id del hospital</label>
-          </div>
-          <div class="input-field col s6">
-              <input value="Alvin" type="text" class="validate" id="trabajador" [(ngModel)]="solicitudes.numero_trabajador" name="trabajador" >
-              <label for="trabajador" class="activate">Numero de trabajador</label>
-          </div>
-         <input type="button" name="next" class="next action-button" (click)="agregarSolicitud()" value="Agregar" />
-         <input type="button" name="next" class="next action-button" value="Actualizar" />
-         
-       </fieldset>
-     </form>
+    <main>
+      
 
+    <section class="table__body">
+      <section class="table__header">
+        <h1>Solicitudes</h1>
+      </section>
+        <table>
+            <thead>
+              <th>Idsolicitud</th>
+              <th>Idbanco</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Idhospital</th>
+              <th>Numero de trabajador</th>
+              <th>Acciones</th>
+            </thead>
+            <tbody>
+              <tr class="active-row" *ngFor="let solicitud of solicitud">
+                <td >{{solicitud.idsolicitud}}</td>
+                <td >{{solicitud.idbanco}}</td>
+                <td >{{solicitud.fecha}}</td>
+                <td >{{solicitud.estado}}</td>
+                <td >{{solicitud.idhospital}}</td>
+                <td >{{solicitud.numero_trabajador}}</td>
+                <td ><a (click)="eliminarSolicitud(solicitud.idsolicitud)"><i class="material-icons prefix">delete_forever</i></a>
+                  <a (click)="visualizarSolicitud(solicitud.idsolicitud); preparar();"><i class="material-icons prefix">remove_red_eye</i></a>
+                  <a (click)="preparar();"><i class="material-icons prefix">edit</i></a></td>
+            </tr>
+            </tbody>
+            
+        </table>
+    </section>
+    </main>
+    <div id="mymodal" class="modal" >
+      <div class="modal-dialog">
+         <div class="modal-content">
+         <div class="modal-header">
+           <h4 class="modal-title">Informacion Donadores</h4>
+           <a (click)="static()" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a> 
+         </div>
+         <div class="modal-body">
+          <div class="container" id="formulario">
+            <div class="col-12">
+              <label for="idbanco" class="form-label">Id del banco</label>
+              <input  type="number" class="validate" id="idbanco" [(ngModel)]="solicitudes.idbanco" name="idbanco" >
+            </div>
+             <div class="col-6">
+                <label for="fechasolicitud" class="form-label">Fecha de la solicitud</label>
+                <input type="date"  class="validate" id="fechasolicitud" [(ngModel)]="solicitudes.fecha" name="fecha">
+             </div>
+              <div class=" col-6">
+                  <label for="estadosolicitud" class="activate" >Estado de la solicitud</label>
+                  <input  type="number" class="validate" id="estadosolicitud" [(ngModel)]="solicitudes.estado" name="estadosolicitud" >
+              </div>
+              <div class=" col s6">
+                  <label for="idhospital" class="form-label">Id del hospital</label>
+                  <input type="number" class="validate" id="idhospital" [(ngModel)]="solicitudes.idhospital" name="idhospital" >
+              </div>
+              <div class=" col s6">
+                  <label for="trabajador" class="activate">Numero de trabajador</label>
+                  <input  type="number" class="validate" id="trabajador" [(ngModel)]="solicitudes.numero_trabajador" name="trabajador" >
+              </div>
+          </div>
+            <div class="buttonSelect">
+              <a (click)="static()" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>  
+             <input type="button" name="next" class=" modal-action modal-close waves-effect waves-green btn-flat" (click)="agregarSolicitud()" value="Agregar" />
+             <input type="button" name="next" class=" modal-action modal-close waves-effect waves-green btn-flat" (click)="updateSolicitud()" value="Actualizar" />
+            </div>
+         </div>
+         </div>
+      </div>
+     </div>
+    
 </body>
 </html>

@@ -26,14 +26,14 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/materialize-css/dist/css/materialize.css",
+              "node_modules/materialize-css/dist/css/materialize.css",
               "src/assets/materialize/css/materialize.css",
               "src/assets/materialize/css/materialize.min.css"
             ],
             "scripts": ["src/assets/materialize/js/materialize.js",
             "node_modules/jquery/dist/jquery.min.js",
             "node_modules/jquery/dist/jquery.js",
-            "./node_modules/materialize-css/dist/js/materialize.js",
+            "node_modules/materialize-css/dist/js/materialize.js",
             "src/assets/materialize/js/materialize.js",
             "src/assets/materialize/js/materialize.min.js"]
           },
@@ -110,7 +110,7 @@
                         "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
                         "src/assets/materialize/js/materialize.js",
                         "src/assets/materialize/js/materialize.min.js",
-                        "./node_modules/materialize-css/dist/js/materialize.js"
+                        "node_modules/materialize-css/dist/js/materialize.js"
             ]
           }
         }

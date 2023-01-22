@@ -10,6 +10,10 @@ import { EnfermeraComponent } from './components/enfermera/enfermera.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { TransfucionesComponent } from './components/transfuciones/transfuciones.component';
 import { HospitalComponent } from './components/hospital/hospital.component';
+import { RegistrosComponent } from './components/registros/registros.component';
+import { PersonaComponent } from './components/persona/persona.component';
+import { DonacionComponent } from './components/donacion/donacion.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -56,6 +60,14 @@ const routes: Routes = [
   {
     path: 'hospital',
     component: HospitalComponent
+  },
+  {
+    path: 'registros',
+    component: RegistrosComponent
+  },
+  {
+    path:'persona',
+    component:PersonaComponent
   },
 ];
 @NgModule({

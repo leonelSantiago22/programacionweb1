@@ -36,9 +36,9 @@ class PersonaController
     }
     public async update(req: Request, res: Response ): Promise<void>
     {
-        const { id } = req.params;
-        console.log(req.params);
-        const resp = await pool.query("UPDATE persona set ? WHERE idpersona = ?", [req.body, id]);
+        const { idpersona } = req.params;
+        console.log(req.body);
+        const resp = await pool.query("UPDATE persona set ? WHERE idpersona = ?", [req.body, idpersona]);
         res.json(resp);
     }
     public async listOne(req: Request, res: Response): Promise <void>

@@ -4,6 +4,7 @@ import { Paciente } from 'src/app/models/paciente';
 import { Persona } from 'src/app/models/persona';
 import { PersonaService } from 'src/app/services/persona.service';
 import { Router } from '@angular/router';
+declare var  $:any;
 @Component({
   selector: 'app-paciente',
   templateUrl: './paciente.component.html',
@@ -88,5 +89,11 @@ export class PacienteComponent {
   changeSolicitud()
     {
       this.router.navigate(['solicitud']);
+    }
+    preparar(){
+      $('#mymodal').modal({
+            dismissible: false
+      });
+      $('#mymodal').modal('open');
     }
 }

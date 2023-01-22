@@ -51,9 +51,9 @@ class PersonaController {
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            console.log(req.params);
-            const resp = yield database_1.default.query("UPDATE persona set ? WHERE idpersona = ?", [req.body, id]);
+            const { idpersona } = req.params;
+            console.log(req.body);
+            const resp = yield database_1.default.query("UPDATE persona set ? WHERE idpersona = ?", [req.body, idpersona]);
             res.json(resp);
         });
     }

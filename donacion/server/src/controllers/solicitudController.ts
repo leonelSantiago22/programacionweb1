@@ -41,9 +41,9 @@ class SolicitudController
     }
     public async update(req: Request, res: Response ): Promise<void>
     {
-        const { id } = req.params;
+        const { idsolicitud } = req.params;
         console.log(req.params);
-        const resp = await pool.query("UPDATE solicitud set ? WHERE idsolicitud = ?", [req.body, id]);
+        const resp = await pool.query("UPDATE solicitud set ? WHERE idsolicitud = ?", [req.body, idsolicitud]);
         res.json(resp);
     }
     public async listOne(req: Request, res: Response): Promise <void>

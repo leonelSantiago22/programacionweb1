@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SolicitudService } from 'src/app/services/solicitud.service';
 import { Router } from '@angular/router';
 import { Solicitud } from 'src/app/models/solicitud';
+declare var  $:any;
 @Component({
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
@@ -59,6 +60,26 @@ export class SolicitudComponent {
     this.solicitudService.listOne(idsolicitud).subscribe((resClientes: any) => {
       console.log(resClientes);
       this.solicitudes=resClientes;
+  },
+      (err: any) => console.error(err)
+    );
+  }
+  preparar(){
+    $('#mymodal').modal({
+          dismissible: false
+    });
+    $('#mymodal').modal('open');
+  }
+  static()
+  {
+    this.router.navigate(['solicitud']);
+  }
+  updateSolicitud()
+  {
+    this.solicitudService.updateSolicitud(this.solicitudes).subscribe((resClientes: any) => {
+      console.log(resClientes);
+      this.solicitudes=resClientes;
+      this.listarSolicitudes(); 
   },
       (err: any) => console.error(err)
     );

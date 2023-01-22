@@ -30,7 +30,7 @@ class DonadorController
     {
         console.log(req.params);
         const {iddonador,idpersona} = req.params;
-        const consulta = `SELECT * FROM donador,persona WHERE donador.idpersona =${idpersona} and persona.idpersona=${idpersona} and donador.iddonador=${iddonador}`
+        const consulta = `SELECT persona.idpersona,donador.iddonador,donador.tipodesangre,persona.nombre,persona.edad,persona.genero FROM donador,persona WHERE donador.idpersona =${idpersona} and persona.idpersona=${idpersona} and donador.iddonador=${iddonador}`
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if(respuesta.length>0){
@@ -52,12 +52,15 @@ class DonadorController
         const resp = await pool.query(`DELETE FROM donador WHERE iddonador= ${iddonador}`);
         res.json(resp);
     }
+
     public async update(req: Request, res: Response ): Promise<void>
     {
         const { iddonador } = req.params;
-        console.log(req.params);
+        console.log("se actualizan los datos:",req.body);
         const resp = await pool.query("UPDATE donador set ? WHERE iddonador = ?", [req.body, iddonador]);
         res.json(resp);
+        console.log(resp);
+        
     }
 }
 

@@ -16,4 +16,19 @@ export class PersonaService {
   {
     return this.http.get(`${environment.API_URI}/api/persona/max`);
   }
+  updatePersona(persona:any)
+  {
+    let personas = {
+      'idpersona':persona.idpersona,
+      'nombre':persona.nombre,
+      'edad':persona.edad,
+      'genero': persona.genero
+    }
+    console.log(personas);
+    return this.http.put(`${environment.API_URI}/api/persona/update/`+personas.idpersona,personas); 
+  }
+  deletePersona(idpersona:any)
+  {
+    return this.http.delete(`${environment.API_URI}/api/persona/delete/`+idpersona); 
+  }
 }

@@ -14,6 +14,9 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { EnfermeraComponent } from './components/enfermera/enfermera.component';
 import { HospitalComponent } from './components/hospital/hospital.component';
 import { TransfucionesComponent } from './components/transfuciones/transfuciones.component';
+import { DonacionComponent } from './components/donacion/donacion.component';
+import { RegistrosComponent } from './components/registros/registros.component';
+import { PersonaComponent } from './components/persona/persona.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { TransfucionesComponent } from './components/transfuciones/transfuciones
     InventarioComponent,
     EnfermeraComponent,
     HospitalComponent,
-    TransfucionesComponent
+    TransfucionesComponent,
+    DonacionComponent,
+    RegistrosComponent,
+    PersonaComponent
   ],
   imports: [
     BrowserModule,

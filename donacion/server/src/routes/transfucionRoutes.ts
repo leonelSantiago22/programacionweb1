@@ -15,6 +15,7 @@ class TransfucionRoutes
         this.router.delete('/delete/:idsolicitud/:idpaciente', transfucionController.delete);
         this.router.post('/', transfucionController.create);
         this.router.put('/update/:id/:id2', transfucionController.update);
+        this.router.get('/:idtransfucion/:idpaciente', transfucionController.listOne);
     }
 }
 

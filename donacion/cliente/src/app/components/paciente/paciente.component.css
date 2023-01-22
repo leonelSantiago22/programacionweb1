@@ -1,4 +1,10 @@
 @import '~material-design-icons/iconfont/material-icons.css';
+#navbarclass
+{
+  background-color: cadetblue;
+  color: black;
+  font-size: medium;
+}
 .styled-table {
     margin-left: auto;
     margin-right: auto;

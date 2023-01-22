@@ -9,7 +9,8 @@ class DonadorRoutes
     {
         this.config();
     }
-    config(): void{
+    config(): void
+    {
         this.router.get('/', donadorController.list);
         this.router.delete('/delete/:iddonador', donadorController.delete);
         this.router.post('/', donadorController.create);

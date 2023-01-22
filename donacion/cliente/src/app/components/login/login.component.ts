@@ -32,7 +32,7 @@ export class LoginComponent {
         Swal.fire({
           position:"center",
           icon:"error",
-          title:"correo o contraseña inválido",
+          title:"Número de trabajador o contraseña inválido",
           showConfirmButton:true
         })
       }else{

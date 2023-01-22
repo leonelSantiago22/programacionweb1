@@ -43,7 +43,7 @@ class DonadorController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
             const { iddonador, idpersona } = req.params;
-            const consulta = `SELECT * FROM donador,persona WHERE donador.idpersona =${idpersona} and persona.idpersona=${idpersona} and donador.iddonador=${iddonador}`;
+            const consulta = `SELECT persona.idpersona,donador.iddonador,donador.tipodesangre,persona.nombre,persona.edad,persona.genero FROM donador,persona WHERE donador.idpersona =${idpersona} and persona.idpersona=${idpersona} and donador.iddonador=${iddonador}`;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {
@@ -70,9 +70,10 @@ class DonadorController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { iddonador } = req.params;
-            console.log(req.params);
+            console.log("se actualizan los datos:", req.body);
             const resp = yield database_1.default.query("UPDATE donador set ? WHERE iddonador = ?", [req.body, iddonador]);
             res.json(resp);
+            console.log(resp);
         });
     }
 }

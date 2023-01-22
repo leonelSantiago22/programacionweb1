@@ -1,3 +1,4 @@
+@import '~material-design-icons/iconfont/material-icons.css';
 #eye{
    font-size: 25px;
    color:#0E1114;
@@ -6,3 +7,17 @@
     font-size: 40px;
     color:#0E1114;
  }
+#formulario
+{
+   width: 70%;
+}
+#tabla
+{
+   border-color: #0E1114;
+   width: 80%;
+   margin: 0 auto ;
+}
+#navbar
+{
+   background-color: azure;
+}

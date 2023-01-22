@@ -13,6 +13,7 @@ class TransfucionRoutes {
         this.router.delete('/delete/:idsolicitud/:idpaciente', tranfucionController_1.transfucionController.delete);
         this.router.post('/', tranfucionController_1.transfucionController.create);
         this.router.put('/update/:id/:id2', tranfucionController_1.transfucionController.update);
+        this.router.get('/:idtransfucion/:idpaciente', tranfucionController_1.transfucionController.listOne);
     }
 }
 exports.transfucionRoutes = new TransfucionRoutes();

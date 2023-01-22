@@ -27,4 +27,8 @@ export class PacienteService {
   {
     return this.http.get(`${environment.API_URI}/api/paciente/`+idpaciente+'/'+idpersona);
   }
+  listOnepaciente(idpaciente:any)
+  {
+    return this.http.get(`${environment.API_URI}/api/paciente/list/`+idpaciente);
+  }
 }

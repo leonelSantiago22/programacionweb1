@@ -36,13 +36,31 @@ class PacienteController {
                 res.json(respuesta[0]);
                 return;
             }
-            res.status(404).json({ 'mensaje': 'Cliente no encontrado' });
+            res.status(404).json({ 'mensaje': 'Paciente no encontrado' });
         });
     }
     listOneCartesiano(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
             const { idpaciente, idpersona } = req.params;
+            const consulta = `SELECT * FROM paciente,persona WHERE paciente.idpersona =${idpersona} and persona.idpersona=${idpersona} and paciente.idpaciente=${idpaciente}`;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length > 0) {
+                res.json(respuesta[0]);
+                return;
+            }
+            res.status(404).json({ 'mensaje': 'Cliente no encontrado' });
+        });
+    }
+    listOnepaciente(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { idpaciente } = req.params;
+            const consulta2 = 'SELECT * FROM paciente WHERE idpaciente = ' + idpaciente;
+            const respuesta2 = yield database_1.default.query(consulta2);
+            console.log(respuesta2[0].idpersona);
+            let idpersona = respuesta2[0].idpersona;
             const consulta = `SELECT * FROM paciente,persona WHERE paciente.idpersona =${idpersona} and persona.idpersona=${idpersona} and paciente.idpaciente=${idpaciente}`;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);

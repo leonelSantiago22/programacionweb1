@@ -47,5 +47,19 @@ class TransfucionController {
             res.json(resp);
         });
     }
+    listOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { idsolicitud, idpaciente } = req.params;
+            const consulta = 'SELECT * FROM transfucion WHERE idsolicitud = ' + idtransfucion + 'and idpaciente=' + idpaciente;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length > 0) {
+                res.json(respuesta[0]);
+                return;
+            }
+            res.status(404).json({ 'mensaje': 'Solicitud no encontrada' });
+        });
+    }
 }
 exports.transfucionController = new TransfucionController();
