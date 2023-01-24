@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container">
+          <h1>
+            Universidad
+            <small class="text-muted">Tecnologica de la Mixteca</small>
+          </h1>
+          <a class="navbar-brand" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+                <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
+      
+      <div class="container-fluid" id="container">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#divdatospersonales" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Datos Personales</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Datos del tutor</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Ingresos Mensuales</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" >Dependientes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" >Recibos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" >Observaciones</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" >Confirmacion</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" >Área de Privacidad</button>
+            </li>
+          </ul>
+
+
+        <!--Div de los contenidos-->
+          <div class="tab-content" id="pills-tabContent">
+            <!--Contenido de los datos personales-->
+            <div class="tab-pane fade show active" id="divdatospersonales" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">@example.com</span>
+              </div>
+              
+              <div class="mb-3">
+                <label for="basic-url" class="form-label">Your vanity URL</label>
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="form-text">Example help text goes outside the input group.</div>
+              </div>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+              </div>
+              
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+              </div>
+              
+              <div class="input-group">
+                <span class="input-group-text">With textarea</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Nombre</span>
+                <input type="text" class="form-control" aria-label="Nombre" aria-describedby="basic-addon1">
+              </div>
+
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Parentesco" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">Parentesco</span>
+              </div>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Calle</span>
+                <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon2">
+              </div>
+              
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="No. Calle" aria-label="No. Calle">
+                <span class="input-group-text">#</span>
+                <input type="text" class="form-control" placeholder="Colonia" aria-label="Colonia">
+                <span class="input-group-text">#</span>
+                <input type="text" class="form-control" placeholder="Telefono" aria-label="Telefono">
+              </div>
+
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Estado" aria-label="Estado">
+                <span class="input-group-text">#</span>
+                <input type="text" class="form-control" placeholder="Codigo Postal" aria-label="Codigo Postal">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-text">Situacion de la Vivienda</span>
+                <textarea class="form-control" aria-label="Situacion de la Vivienda"></textarea>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="button">Guardar</button>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
+            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+          </div>
+      </div>
+</body>
+</html>

@@ -9,8 +9,9 @@ const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const datosRoutes_1 = __importDefault(require("./routes/datosRoutes"));
 const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
-const ingresosRoutes_1 = __importDefault(require("./routes/ingresosRoutes"));
+const ingresoRoutes_1 = __importDefault(require("./routes/ingresoRoutes"));
 const automovilRoutes_1 = __importDefault(require("./routes/automovilRoutes"));
+const empleadoRoutes_1 = __importDefault(require("./routes/empleadoRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -28,8 +29,9 @@ class Server {
         this.app.use(indexRoutes_1.default);
         this.app.use('/api/datos', datosRoutes_1.default);
         this.app.use('/api/usuarios', usuarioRoutes_1.default);
-        this.app.use('/api/ingresos', ingresosRoutes_1.default);
+        this.app.use('/api/ingresos', ingresoRoutes_1.default);
         this.app.use('/api/automovil', automovilRoutes_1.default);
+        this.app.use('/api/empleado', empleadoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

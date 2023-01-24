@@ -13,8 +13,8 @@ class UsuarioController {
     }
     public async listOne(req: Request, res: Response): Promise<void> {
         console.log(req.params);
-        const { id1 } = req.params;
-        const consulta = 'SELECT * FROM usuarios WHERE id_usuario = ' + id1;
+        const { idusuario } = req.params;
+        const consulta = 'SELECT * FROM usuarios WHERE idusuario = ' + idusuario;
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if (respuesta.length > 0) {
@@ -41,7 +41,21 @@ class UsuarioController {
         const resp = await pool.query(`DELETE FROM usuarios WHERE correo = ${id}`);
         res.json(resp);
     }
-
+    public async verificar(req:Request, res:Response): Promise<void>
+    {
+        console.log(req.body)
+        const consulta = `SELECT tipo FROM usuarios WHERE correo="${req.body.correo }" and password="${req.body.password}"`;
+        console.log(consulta);
+        const respuesta = await pool.query(consulta);
+        if (respuesta.length == 0) {
+            console.log("null");
+            res.json(null );
+      
+        }else{
+          res.json( respuesta[0] );
+       
+        }
+    }
 }
 export const usuarioController = new UsuarioController();
 

@@ -47,7 +47,7 @@ class IngresoController {
             res.json(resp);
         });
     }
-    read(req, res) {
+    listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
             const { id1 } = req.params;

@@ -29,8 +29,8 @@ class UsuarioController {
     listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
-            const { id1 } = req.params;
-            const consulta = 'SELECT * FROM usuarios WHERE id_usuario = ' + id1;
+            const { idusuario } = req.params;
+            const consulta = 'SELECT * FROM usuarios WHERE idusuario = ' + idusuario;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {
@@ -60,6 +60,21 @@ class UsuarioController {
             const { id } = req.params;
             const resp = yield database_1.default.query(`DELETE FROM usuarios WHERE correo = ${id}`);
             res.json(resp);
+        });
+    }
+    verificar(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const consulta = `SELECT tipo FROM usuarios WHERE correo="${req.body.correo}" and password="${req.body.password}"`;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            if (respuesta.length == 0) {
+                console.log("null");
+                res.json(null);
+            }
+            else {
+                res.json(respuesta[0]);
+            }
         });
     }
 }

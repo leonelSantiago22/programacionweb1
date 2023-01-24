@@ -10,10 +10,10 @@ class IngresoRoutes {
     }
     config() {
         this.router.get('/', ingresoController_1.ingresoController.list);
-        this.router.get('/:id', ingresoController_1.ingresoController.read);
+        this.router.get('/:id1', ingresoController_1.ingresoController.read);
         this.router.post('/', ingresoController_1.ingresoController.create);
-        this.router.delete('/:id', ingresoController_1.ingresoController.delete);
-        this.router.put('/:id', ingresoController_1.ingresoController.actualizar);
+        this.router.delete('/:id1', ingresoController_1.ingresoController.delete);
+        this.router.put('/:id1', ingresoController_1.ingresoController.actualizar);
     }
 }
 exports.ingresoRoutes = new IngresoRoutes();

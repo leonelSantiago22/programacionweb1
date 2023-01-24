@@ -1,0 +1,45 @@
+<div class="bodyLogin">
+    <div class="container" id="main">
+        <div class="row">
+            <div class="col s12 m12 l8 offset-l2 loginDiv">
+                <div class="row loginContainer">
+                    <div class="col s12 m5 l5 offset-l1 offset-m1">
+                        <div class="loginTitulo">
+                            <h5>Usuario: </h5>
+                        </div>
+                        <div class="row">
+                        
+                            <div class="input-field col s12 customInput">
+                                <i class="material-icons prefix">email</i>
+                                <input [ngModel]="usuario1.correo" class="browser-default " type="email" name="email" id="email"  placeholder="correo"
+                                    autocomplete="off">  <!--aqui se extrae la informacion necesitafa para mandarlo, ademas de que se usa el modelo de usuario definido en models   -->
+                                    <label for="email">Email</label>
+                             </div>
+                            <div class="input-field col s12 customInput">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input [ngModel]="usuario1.password" class="browser-default " type="password"    name="password" id="password" 
+                                    placeholder="contraseña" autocomplete="off">
+                                    <label for="password">contraseña</label>
+                            </div>
+                            <div class="input-field col s12 customInput">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input [ngModel]="usuario1.tipo" class="browser-default " type="number"    name="rol" id="rol1" 
+                                    placeholder="rol" autocomplete="off">
+                                <label for="rol1">rol </label>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <button   class="btn col l12 s12 m12 btnLogin ">
+                                LOGIN
+                            </button>
+                            <div class="col s12 m12 l12 divOlvide">
+                                <a href="">Olvidé mi contraseña!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

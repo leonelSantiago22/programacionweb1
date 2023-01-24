@@ -28,7 +28,7 @@ class IngresoController {
         const resp = await pool.query("UPDATE ingresos_mensuales set ? WHERE id_ingresos = ?", [req.body, id]);
         res.json(resp);
     }
-    public async read(req: Request, res: Response): Promise <void>
+    public async listOne(req: Request, res: Response): Promise <void>
     {
         console.log(req.params);
         const {id1} = req.params;
