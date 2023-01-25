@@ -19,13 +19,11 @@
         <div class="row gx-lg-5 align-items-center">
           <div class="col-lg-6 mb-5 mb-lg-0">
             <h1 class="my-5 display-3 fw-bold ls-tight">Registro de becas <br />
-              <span class="text-primary">Universidad tecnologica de la mixteca</span>
+              <span class="text-primary">Universidad tecnologica de la Mixteca</span>
             </h1>
             <p style="color: hsl(217, 10%, 50.8%)">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-              quibusdam tempora at cupiditate quis eum maiores libero
-              veritatis? Dicta facilis sint aliquid ipsum atque?
+              Registro de solicitud para solicitar el porcentaje de beca asignado por 
+              servicios escolares y el comite de becas
             </p>
           </div>
   
@@ -38,40 +36,24 @@
   
                   <!-- Email input -->
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3">Email address</label>
-                    <input type="email" id="form3Example3" class="form-control" />
+                    <label class="form-label" for="form3Example3">Correo institucional</label>
+                    <input type="email" id="form3Example3" class="form-control" name="correo" [(ngModel)]="usuario.correo"/>
                   </div>
   
                   <!-- Password input -->
                   <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4" class="form-control" />
-                    <label class="form-label" for="form3Example4">Password</label>
+                    <label class="form-label" for="form3Example4">Contrasena</label>
+                    <input type="password" id="form3Example4" class="form-control" name="password" [(ngModel)]="usuario.password"/> 
                   </div>
   
                   
   
                   <!-- Submit button -->
-                  <button type="submit" class="btn btn-primary btn-block mb-4">
-                    Sign up
-                  </button>
-  
+                  
                   <!-- Register buttons -->
                   <div class="text-center">
-                    <p>or sign up with:</p>
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-facebook-f"></i>
-                    </button>
-  
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-google"></i>
-                    </button>
-  
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-twitter"></i>
-                    </button>
-  
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-github"></i>
+                    <button type="submit" class="btn btn-primary btn-block mb-4"(click)="verificarUsuario();">
+                    Ingresar
                     </button>
                   </div>
                 </form>

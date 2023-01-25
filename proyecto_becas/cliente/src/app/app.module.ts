@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FempleadosComponent } from './components/fempleados/fempleados.component';
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 @NgModule({
   declarations: [
     AppComponent,

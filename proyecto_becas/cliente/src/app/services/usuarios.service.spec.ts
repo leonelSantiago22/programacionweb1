@@ -36,21 +36,30 @@ describe('UsuariosService', () => {
   it('deberia de retornar a un usuario ',() => {
 
     const expectedResponse = {
-      "idusuario" :1, 
-      "correo": "asds@gmail.com",
-      "password":"2343434",
-      "tipo": 2
+      
+        "idusuario": 3,
+        "correo": "motomami.com",
+        "password": "12345",
+        "tipo": 1
+    
     }
 
     const responseObject={
+      
+      "idusuario": 3,
+      "correo": "motomami.com",
+      "password": "12345",
+      "tipo": 1
+    
 
     }
 
-    service.obtenerUnUsuario(1).subscribe( res => {
+    service.obtenerUnUsuario(3).subscribe( res => {
       console.log(res);
+      expect(res).toEqual(expectedResponse);
     });
     
-     const req =httpMock.expectOne(`${environment.API_URI}/api/usuarios/${1}`)
+     const req =httpMock.expectOne(`${environment.API_URI}/api/usuarios/${3}`)
  
      req.flush(responseObject)
   })

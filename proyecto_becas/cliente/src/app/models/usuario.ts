@@ -1,5 +1,5 @@
 export class Usuario {
-    idUsuario?:number;
+    idusuario?:number;
     idRelacional?:number;
     correo:string;
     password:string;

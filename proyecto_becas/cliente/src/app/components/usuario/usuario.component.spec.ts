@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { UsuariosService } from '../../services/usuarios.service';
 import { UsuarioComponent } from './usuario.component';
-import { Router , ActivatedRoute} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UsuarioComponent', () => {
   let component: UsuarioComponent;
@@ -14,7 +16,11 @@ describe('UsuarioComponent', () => {
     
     await TestBed.configureTestingModule({
       declarations: [ UsuarioComponent ],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule,
+        RouterTestingModule],
+      providers:[UsuariosService
+  
+      ]
     })
     .compileComponents();
   });

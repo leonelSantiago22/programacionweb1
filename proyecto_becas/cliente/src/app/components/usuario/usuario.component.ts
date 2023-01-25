@@ -2,12 +2,16 @@ import { Component, OnInit  } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Usuario } from 'src/app/models/usuario';
+import { NgModel } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css']
 })
+
 export class UsuarioComponent implements OnInit {
   edit: boolean = false;
   
@@ -33,7 +37,7 @@ export class UsuarioComponent implements OnInit {
   
 
   agregarp(){
-    delete this.usuario1.idUsuario;
+    delete this.usuario1.idusuario;
     
     this.usuarioService.IngresarUsuario(this.usuario1).subscribe((resUsuario: any)=> {
       console.log(resUsuario);

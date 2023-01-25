@@ -35,7 +35,7 @@ export class UsuariosService {
   }
   //modifica un usuario 
   modificarUsuario(usuario:Usuario){
-    return this.http.put(`${environment.API_URI}/api/usuarios/update/${usuario.idUsuario}`,usuario);
+    return this.http.put(`${environment.API_URI}/api/usuarios/update/${usuario.idusuario}`,usuario);
   }
 
 }

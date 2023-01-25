@@ -8,10 +8,11 @@ class DatosRoutes {
     }
     config() : void {
         this.router.get('/', datosController.list);
-        this.router.get('/:matricul',datosController.read);
+        this.router.get('/:matricula',datosController.read);
+        this.router.post('/existencia',datosController.existencia);
         this.router.post('/', datosController.create);
-        this.router.delete('/:matricul', datosController.delete);
-        this.router.put('/:matricul', datosController.actualizar);
+        this.router.delete('/:matricula', datosController.delete);
+        this.router.put('/:matricula', datosController.actualizar);
 
     }
 }

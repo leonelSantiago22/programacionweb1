@@ -1,1 +1,41 @@
-<p>usuario-admin works!</p>
+
+  <div class="consainer1 s12">
+    <h3>Lista de Usuarios:</h3>
+      <table class="striped">
+          <thead>
+            <tr >
+                <th>id </th>
+                <th>rol</th>
+                <th>correo</th>
+            </tr>
+    
+          </thead>
+         
+          <tbody>
+            <tr *ngFor="let  usuario1 of listarUsuarios">
+              <td>{{usuario1.idusuario}}</td>
+              <td>{{usuario1.rol}}</td>
+              <td>{{usuario1.correo}}</td>
+             <td>
+              <button [routerLink]="['/modificarUsuario',usuario1.idusuario]"   class="btn col l12 s8 m12 btnLogin ">
+                  MODIFICAR
+                 </button>
+             </td>
+             <td>
+              <button  (click)="eliminarUsuarios(usuario1.idusuario)"  class="btn col l12 s8 m12 btnLogin ">
+               ELIMINAR
+              </button>
+             </td>
+            </tr>
+          </tbody>
+        </table>
+  
+    </div>
+    
+  
+   
+  
+    <div class="container">
+      <button class="btn col l12 s8 m12 btnLogin black" ><a routerLink="/ingresarUsuario" ><i class="tiny material-icons left">face</i>Ingresar Usuario</a></button>
+     </div>
+  

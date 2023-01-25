@@ -10,10 +10,11 @@ class DatosRoutes {
     }
     config() {
         this.router.get('/', datosController_1.datosController.list);
-        this.router.get('/:matricul', datosController_1.datosController.read);
+        this.router.get('/:matricula', datosController_1.datosController.read);
+        this.router.post('/existencia', datosController_1.datosController.existencia);
         this.router.post('/', datosController_1.datosController.create);
-        this.router.delete('/:matricul', datosController_1.datosController.delete);
-        this.router.put('/:matricul', datosController_1.datosController.actualizar);
+        this.router.delete('/:matricula', datosController_1.datosController.delete);
+        this.router.put('/:matricula', datosController_1.datosController.actualizar);
     }
 }
 exports.datosRoutes = new DatosRoutes();
