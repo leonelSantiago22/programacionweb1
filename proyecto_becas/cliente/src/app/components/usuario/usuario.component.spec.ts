@@ -10,6 +10,8 @@ describe('UsuarioComponent', () => {
   let fixture: ComponentFixture<UsuarioComponent>;
 
   beforeEach(async () => {
+    //ya no le muevas voy a regresar a una version que funcione va
+    
     await TestBed.configureTestingModule({
       declarations: [ UsuarioComponent ],
       imports: [HttpClientTestingModule]

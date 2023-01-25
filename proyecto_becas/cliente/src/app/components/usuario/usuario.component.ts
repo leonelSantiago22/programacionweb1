@@ -45,7 +45,7 @@ export class UsuarioComponent implements OnInit {
  
   }
 
-  modificarp(){
+  modificar(){
 
     this.usuarioService.modificarUsuario(this.usuario1).subscribe(
       res => {
