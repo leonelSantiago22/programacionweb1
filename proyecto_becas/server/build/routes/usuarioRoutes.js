@@ -12,8 +12,8 @@ class UsuariosRoutes {
         this.router.get('/', usuarioController_1.usuarioController.list); //obtener la lista de usuarios en la base de datos 
         this.router.get('/:idusuario', usuarioController_1.usuarioController.listOne); //obtener solo un usuario dependiendo de su id
         this.router.post('/', usuarioController_1.usuarioController.crear_usuario); //crear un nuevo usuario 
-        this.router.put('/update/:id', usuarioController_1.usuarioController.actualizar_usuario); //actualizar un usuario
-        this.router.delete('/delete/:id', usuarioController_1.usuarioController.eliminar_usuario); //eliminar a un usuario
+        this.router.put('/update/:idusuario', usuarioController_1.usuarioController.actualizar_usuario); //actualizar un usuario
+        this.router.delete('/delete/:idusuario', usuarioController_1.usuarioController.eliminar_usuario); //eliminar a un usuario
         this.router.post('/verificar/', usuarioController_1.usuarioController.verificar);
         //this.router.get('/:id1/:id2',usuarioController.listRange);
     }

@@ -11,17 +11,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css']
 })
-
 export class UsuarioComponent implements OnInit {
+  listarUsuarios:any;
   edit: boolean = false;
   
-  constructor(private usuarioService: UsuariosService, private router:Router,private activatedRoute: ActivatedRoute){}
+  constructor(private usuarioService: UsuariosService, private router:Router,private activatedRoute: ActivatedRoute){ this.listaUsuarios() }
   usuario1 = new Usuario();
   
 
   ngOnInit() {
     const params = this.activatedRoute.snapshot.params;
-    //si hay un parametro y es un id  entonces es el metodo de modificar 
+    //si hay un parametro y es un id  entonces el metodo que se realizara es el de modificar  
     if (params['id']) {
       this.usuarioService.obtenerUnUsuario(params['id'])
         .subscribe((res: any) => {
@@ -35,8 +35,8 @@ export class UsuarioComponent implements OnInit {
   }
 
   
-
-  agregarp(){
+  //funcion para agregar nuevo usuario 
+  agregaru(){
     delete this.usuario1.idusuario;
     
     this.usuarioService.IngresarUsuario(this.usuario1).subscribe((resUsuario: any)=> {
@@ -49,12 +49,21 @@ export class UsuarioComponent implements OnInit {
  
   }
 
-  modificar(){
+  modificaru(){
 
     this.usuarioService.modificarUsuario(this.usuario1).subscribe(
       res => {
         console.log("paciente modificado con exito");
-        //this.router.navigate(['modificarapnp',this.paciente1.id_paciente]);
+        
        }, err => console.error(err));
+  }
+
+  listaUsuarios(){
+    this.usuarioService.list().subscribe((resUsuario: any) => {
+      console.log(resUsuario);
+    this.listarUsuarios = resUsuario;
+    },
+      (err: any) => console.error(err));
+
   }
 }

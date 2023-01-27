@@ -25,11 +25,11 @@ class DatosController {
             res.json(respuesta);
         });
     }
-    listOne(req, res) {
+    listOnePorId(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
-            const { matricula } = req.params;
-            const consulta = 'SELECT * FROM datos_personales_alumno WHERE matricula = ' + matricula;
+            const { idusuario } = req.params;
+            const consulta = 'SELECT * FROM datos_personales_alumno WHERE idusuario = ' + idusuario;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {

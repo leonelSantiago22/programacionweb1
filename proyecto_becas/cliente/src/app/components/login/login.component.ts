@@ -17,7 +17,8 @@ export class LoginComponent {
     //console.log(this.usuario);
     //el servicio hace de puente entre el cliente y el servidor 
     this.usuariosService.validar(this.usuario.correo, this.usuario.password).subscribe((resUsuario: any) => {
-      console.log(resUsuario);
+   
+      this.usuario = resUsuario;
       if (resUsuario == null ) {
       console.log("el usuario no existe ");
       Swal.fire({
@@ -35,7 +36,10 @@ export class LoginComponent {
           console.log("el usuario si existe ");
           //guardar la variable de entorno 
           console.log(resUsuario.tipo);
-          localStorage.setItem("tipoUsuario", resUsuario.tipo + " ");
+          console.log(resUsuario.idusuario);
+          localStorage.setItem("idUsuario", resUsuario.idusuario + " "); //guardar el id del alumno 
+
+
           this.router.navigate(['home']);
            //se concatena con cadena vacia para que se vuelva cadena
 

@@ -14,7 +14,7 @@ export class UsuariosService {
       'correo':correo,
       'password':password
     }
-    console.log(`${environment.API_URI}/api/usuarios/verificar`)
+    console.log(`${environment.API_URI}/api/usuarios/verificar/`)
     return this.http.post(`${environment.API_URI}/api/usuarios/verificar/`,usuario);
   }
   list(){
@@ -30,8 +30,9 @@ export class UsuariosService {
     return this.http.post(`${environment.API_URI}/api/usuarios/`,usuario);
   }
   //elimina un usuario
-  eliminarUsuario(id:number){
-    return this.http.delete(`${environment.API_URI}/api/usuarios/delete/${id}`);
+  eliminarUsuario(idusuario:number)
+  {
+    return this.http.delete(`${environment.API_URI}/api/usuarios/delete/${idusuario}`);
   }
   //modifica un usuario 
   modificarUsuario(usuario:Usuario){

@@ -11,6 +11,7 @@ class DatosRoutes {
     config() {
         this.router.get('/', datosController_1.datosController.list);
         this.router.get('/:matricula', datosController_1.datosController.read);
+        this.router.get('/listid/:idusuario', datosController_1.datosController.listOnePorId);
         this.router.post('/existencia', datosController_1.datosController.existencia);
         this.router.post('/', datosController_1.datosController.create);
         this.router.delete('/:matricula', datosController_1.datosController.delete);

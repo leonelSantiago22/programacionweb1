@@ -1,12 +1,27 @@
 
-  <div class="consainer1 s12">
-    <h3>Lista de Usuarios:</h3>
-      <table class="striped">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios</title>
+</head>
+<body>
+
+  <div class="container">
+      <div class="table-responsive">
+        <h3>Lista de Usuarios:</h3>
+        <div class="container">
+          <button routerLink="/ingresarUsuario" type="button" class="btn btn-dark">Ingresar Usuario</button>
+        </div>
+        <table class="table table-striped">
           <thead>
             <tr >
-                <th>id </th>
-                <th>rol</th>
-                <th>correo</th>
+                <th>ID</th>
+                <th>TIPO</th>
+                <th>CORREO</th>
+                <th>ACCIONES</th>
             </tr>
     
           </thead>
@@ -14,28 +29,61 @@
           <tbody>
             <tr *ngFor="let  usuario1 of listarUsuarios">
               <td>{{usuario1.idusuario}}</td>
-              <td>{{usuario1.rol}}</td>
+              <td>{{usuario1.tipo}}</td>
               <td>{{usuario1.correo}}</td>
              <td>
-              <button [routerLink]="['/modificarUsuario',usuario1.idusuario]"   class="btn col l12 s8 m12 btnLogin ">
-                  MODIFICAR
-                 </button>
-             </td>
-             <td>
-              <button  (click)="eliminarUsuarios(usuario1.idusuario)"  class="btn col l12 s8 m12 btnLogin ">
-               ELIMINAR
+              <button [routerLink]="['/modificarUsuario',usuario1.idusuario]"   class="btn col l12 s8 m12 btnLogin "><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+              </svg></button>
+              <button  (click)="eliminarUsuarios(usuario1.idusuario)"  class="btn col l12 s8 m12 btnLogin "><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg></button>
+              <button (click)="listarDatos(usuario1.idusuario);" data-bs-toggle="modal" data-bs-target="#exampleModal"  class="btn col l12 s8 m12 btnLogin ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
               </button>
-             </td>
+
+            </td>
             </tr>
           </tbody>
         </table>
-  
+      </div>
+     
     </div>
+
+        
     
+
+
+       
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Informacion del usuaroi</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="exampleTipo1" class="form-label">Matricula</label>
+                <input [(ngModel)]="datos.matricula" type="text" class="form-control" id="exampleTipo1" name="matricula">
+              </div>
+              <div class="mb-3">
+                <label for="Nombre" class="form-label">Nombre</label>
+                <input [(ngModel)]="datos.nombre" type="text" class="form-control" id="Nombre" name="Nombre">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
   
-   
-  
-    <div class="container">
-      <button class="btn col l12 s8 m12 btnLogin black" ><a routerLink="/ingresarUsuario" ><i class="tiny material-icons left">face</i>Ingresar Usuario</a></button>
-     </div>
-  
+</body>
+</html>

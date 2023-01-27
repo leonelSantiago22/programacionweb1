@@ -30,6 +30,12 @@ const routes: Routes = [
     path: 'modificarUsuario/:id',
     component: UsuarioComponent
   }
+  ,
+  {
+  
+    path: 'ingresarUsuario',
+    component: UsuarioComponent
+  }
 ];
 
 @NgModule({

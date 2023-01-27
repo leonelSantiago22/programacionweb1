@@ -55,46 +55,28 @@
           <div class="tab-content" id="pills-tabContent">
             <!--Contenido de los datos personales-->
             <div class="tab-pane fade show active" id="divdatospersonales" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+              <h6>Datos Personales del Solicitante</h6>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>--Semestre--</option>
+                <option value="0">PROPEDEUTICO</option>
+                <option value="1">PRIMERO</option>
+                <option value="2">SEGUNDO</option>
+                <option value="3">TERCERO</option>
+                <option value="4">CUARTO</option>
+                <option value="5">QUINTO</option>
+                <option value="6">SEXTO</option>
+                <option value="7">SEPTIMO</option>
+                <option value="8">OCTAVO</option>
+                <option value="9">NOVENO</option>
+                <option value="10">DECIMO</option>
+              </select>
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
-                  <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/></svg></span>
-                <input type="text" class="form-control" placeholder="Nombre del alumno" aria-label="Username" aria-describedby="basic-addon1">
-              </div>
-              
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <span class="input-group-text" id="basic-addon2">@example.com</span>
-              </div>
-              
-              <div class="mb-3">
-                <label for="basic-url" class="form-label">Your vanity URL</label>
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">#</span>
                 </div>
-                <div class="form-text">Example help text goes outside the input group.</div>
+                <input type="text" class="form-control" placeholder="Grupo" aria-label="Username" aria-describedby="basic-addon1">
               </div>
-              
-              <div class="input-group mb-3">
-                <span class="input-group-text">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <span class="input-group-text">.00</span>
-              </div>
-              
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-                <span class="input-group-text">@</span>
-                <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-              </div>
-              
-              <div class="input-group">
-                <span class="input-group-text">With textarea</span>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-              </div>
-              <div class="text-center mt-3">
-                <button type="button" class="btn btn-dark btn-lg">Guardar</button>
-              </div>
+              <h6>Lugar de Nacimiento</h6>
               
             </div>
             <!--fin de la tabla de datos personales-->

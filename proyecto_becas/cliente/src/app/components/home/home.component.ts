@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import {  } from '../../services/datos.service';
+import { ActivatedRoute, Router } from "@angular/router";
+import { Datospersonales } from 'src/app/models/datos_personales';
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

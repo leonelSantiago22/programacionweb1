@@ -30,30 +30,33 @@ class UsuarioController {
     }
 
     public async actualizar_usuario(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
+        const { idusuario } = req.params;
         console.log(req.params);
-        const resp = await pool.query("UPDATE usuarios set ? WHERE correo = ?", [req.body, id]);
+        const resp = await pool.query("UPDATE usuarios set ? WHERE idusuario = ?", [req.body, idusuario]);
         res.json(resp);
     }
 
     public async eliminar_usuario(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
-        const resp = await pool.query(`DELETE FROM usuarios WHERE correo = ${id}`);
+        const { idusuario } = req.params;
+        const resp = await pool.query(`DELETE FROM usuarios WHERE idusuario= ${idusuario}`);
         res.json(resp);
     }
     public async verificar(req:Request, res:Response): Promise<void>
     {
         console.log(req.body)
-        const consulta = `SELECT tipo FROM usuarios WHERE correo="${req.body.correo }" and password="${req.body.password}"`;
+        const consulta = `SELECT idusuario,tipo FROM usuarios WHERE correo="${req.body.correo }" and password="${req.body.password}"`;
         console.log(consulta);
         const respuesta = await pool.query(consulta);
+        console.log(respuesta);
+        
         if (respuesta.length == 0) {
             console.log("null");
             res.json(null );
-      
+            return ;
         }else{
+
           res.json( respuesta[0] );
-       
+          return;
         }
     }
 }

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UsuariosService } from './usuarios.service';
-
+import { Usuario } from '../models/usuario';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from '../environments/environment';
 
@@ -27,7 +27,7 @@ describe('UsuariosService', () => {
 
 
 
-  it('should be created', () => {
+  it('Deberia de Crear ', () => {
     expect(service).toBeTruthy();
   });
 
@@ -62,6 +62,22 @@ describe('UsuariosService', () => {
      const req =httpMock.expectOne(`${environment.API_URI}/api/usuarios/${3}`)
  
      req.flush(responseObject)
-  })
+  });
+  
+
+  it('Deberia de Eliminar un Usuario', () => {
+    const userId = 3;
+    service.eliminarUsuario(userId).subscribe(response => {
+      expect(response).toEqual({ message: 'Usuario eliminado' });
+    });
+
+    const req = httpMock.expectOne(`${environment.API_URI}/api/usuarios/delete/${3}`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush({ message: 'Usuario eliminado' });
+  });
+
+
+
+  
 
 });

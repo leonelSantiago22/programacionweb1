@@ -10,11 +10,12 @@ class DatosController {
         console.log(respuesta);
         res.json(respuesta);
     }
-    public async listOne(req: Request, res: Response): Promise <void>
+
+    public async listOnePorId(req: Request, res: Response): Promise <void>
     {
         console.log(req.params);
-        const {matricula} = req.params;
-        const consulta = 'SELECT * FROM datos_personales_alumno WHERE matricula = '+ matricula;
+        const {idusuario} = req.params;
+        const consulta = 'SELECT * FROM datos_personales_alumno WHERE idusuario = '+idusuario;
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if(respuesta.length>0){
