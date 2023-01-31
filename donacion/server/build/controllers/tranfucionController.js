@@ -51,7 +51,7 @@ class TransfucionController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
             const { idsolicitud, idpaciente } = req.params;
-            const consulta = 'SELECT * FROM transfucion WHERE idsolicitud = ' + idtransfucion + 'and idpaciente=' + idpaciente;
+            const consulta = 'SELECT * FROM transfucion WHERE idsolicitud = ' + idsolicitud + 'and idpaciente=' + idpaciente;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {

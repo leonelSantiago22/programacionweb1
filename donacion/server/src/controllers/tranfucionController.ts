@@ -36,7 +36,7 @@ class TransfucionController
     {
         console.log(req.params);
         const {idsolicitud,idpaciente} = req.params;
-        const consulta = 'SELECT * FROM transfucion WHERE idsolicitud = '+ idtransfucion+'and idpaciente='+idpaciente;
+        const consulta = 'SELECT * FROM transfucion WHERE idsolicitud = '+ idsolicitud+'and idpaciente='+idpaciente;
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if(respuesta.length>0){

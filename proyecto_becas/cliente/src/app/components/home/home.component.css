@@ -8,12 +8,12 @@
 }
 
 .nav .nav-tabs .nav-item .nav-link {
-    background-color: #7B241C !important;
+    background-color: #231DEF !important;
     color: #FFF;
   }
   
   .nav-tabs .nav-item .nav-link.active {
-    color: #7B241C;
+    color: #231DEF;
   }
   
   .tab-content {
@@ -24,7 +24,7 @@
   
   .tab-content .tab-pane {
     background-color: #FFF;
-    color: #7B241C;
+    color: #231DEF;
     min-height: 200px;
     height: auto;
   }

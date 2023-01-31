@@ -17,6 +17,7 @@ import { TransfucionesComponent } from './components/transfuciones/transfuciones
 import { DonacionComponent } from './components/donacion/donacion.component';
 import { RegistrosComponent } from './components/registros/registros.component';
 import { PersonaComponent } from './components/persona/persona.component';
+import { BancoComponent } from './components/banco/banco.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PersonaComponent } from './components/persona/persona.component';
     TransfucionesComponent,
     DonacionComponent,
     RegistrosComponent,
-    PersonaComponent
+    PersonaComponent,
+    BancoComponent
   ],
   imports: [
     BrowserModule,

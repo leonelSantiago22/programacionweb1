@@ -50,8 +50,8 @@ class BancoController {
     listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
-            const { id1 } = req.params;
-            const consulta = 'SELECT * FROM banco WHERE idbanco = ' + id1;
+            const { idbanco } = req.params;
+            const consulta = 'SELECT * FROM banco WHERE idbanco = ' + idbanco;
             console.log(consulta);
             const respuesta = yield database_1.default.query(consulta);
             if (respuesta.length > 0) {
@@ -59,6 +59,17 @@ class BancoController {
                 return;
             }
             res.status(404).json({ 'mensaje': 'Banco no encontrado' });
+        });
+    }
+    listBancodonaciones(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { idbanco } = req.params;
+            const consulta = `SELECT banco.idbanco,banco.nombre,registro_de_donacion.iddonacion,registro_de_donacion.fecha_donacion,registro_de_donacion.idregistro from banco,registro_de_donacion WHERE banco.idbanco = ${idbanco} and registro_de_donacion.idbanco = ${idbanco}`;
+            console.log(consulta);
+            const respuesta = yield database_1.default.query(consulta);
+            console.log(respuesta);
+            res.json(respuesta);
         });
     }
 }

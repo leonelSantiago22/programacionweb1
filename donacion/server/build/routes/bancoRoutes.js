@@ -13,7 +13,8 @@ class BancoRoutes {
         this.router.delete('/delete/:idsolicitud', bancoController_1.bancoController.delete);
         this.router.post('/', bancoController_1.bancoController.create);
         this.router.put('/update/:idsolicitud', bancoController_1.bancoController.update);
-        this.router.get('/:id1', bancoController_1.bancoController.listOne);
+        this.router.get('/:idbanco', bancoController_1.bancoController.listOne);
+        this.router.get('/inventario/:idbanco', bancoController_1.bancoController.listBancodonaciones);
     }
 }
 exports.bancoRoutes = new BancoRoutes();

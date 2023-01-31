@@ -10,7 +10,7 @@ class DatosRoutes {
         this.router.get('/', datosController.list);
         this.router.get('/:matricula',datosController.read);
         this.router.get('/listid/:idusuario',datosController.listOnePorId);
-        this.router.post('/existencia',datosController.existencia);
+        //this.router.post('/existencia',datosController.existencia);
         this.router.post('/', datosController.create);
         this.router.delete('/:matricula', datosController.delete);
         this.router.put('/:matricula', datosController.actualizar);

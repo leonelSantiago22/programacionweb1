@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FempleadosComponent } from './components/fempleados/fempleados.component';
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { FdatosComponent } from './components/fdatos/fdatos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
     HomeComponent,
     NavbarComponent,
     FempleadosComponent,
-    UsuarioAdminComponent
+    UsuarioAdminComponent,
+    FdatosComponent
   ],
   imports: [
     BrowserModule,

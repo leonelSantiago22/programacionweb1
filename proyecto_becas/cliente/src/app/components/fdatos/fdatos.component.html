@@ -1,0 +1,98 @@
+<form>
+  <div class="form-group">
+    <h5>Datos personales del solicitante</h5>
+    <label for="semestre">Semestre:</label>
+    <select class="form-control" id="semestre">
+      <option selected>--SEMESTRE--</option>
+      <option>PROPEDEUTICO</option>
+      <option>PRIMERO</option>
+      <option>SEGUNDO</option>
+      <option>TERCERO</option>
+      <option>CUARTO</option>
+      <option>QUINTO</option>
+      <option>SEXTO</option>
+      <option>SEPTIMO</option>
+      <option>OCTAVO</option>
+      <option>NOVENO</option>
+      <option>DECIMO</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="grupo">Grupo:</label>
+    <input class="form-control" type="text" placeholder="GRUPO">
+  </div>
+  <div class="input-group">
+    <span class="input-group-text">#</span>
+    <input class="form-control" type="text" placeholder="FECHA DE NACIMIENTO">
+  </div>
+  <div class="input-group">
+    <select class="form-control" id="sexo">
+      <option selected>--SEXO--</option>
+      <option>Hombre</option>
+      <option>Mujer</option>
+    </select>
+    <select class="form-control" id="estadoCivil">
+      <option selected>--ESTADO CIVIL--</option>
+      <option>SOLTERO</option>
+      <option>CASADO</option>
+      <option>DIVORCIADO</option>
+      <option>VIUDO</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="tipoSangre">Tipo de Sangre:</label>
+    <select class="form-control" id="tipoSangre">
+      <option selected>--TIPO DE SANGRE--</option>
+      <option>ABRH+</option>
+      <option>ABRH-</option>
+      <option>ARH+</option>
+      <option>ARH-</option>
+      <option>BRH+</option>
+      <option>BRH-</option>
+      <option>ORH+</option>
+      <option>ORH-</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="enfermedad">Padece alguna enfermedad:</label>
+    <div class="input-group-text mb-3">
+      <label for="No">No</label>
+      <input type="radio" aria-label="No">
+      <label for="Si">Si</label>
+      <input type="radio" aria-label="Si">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tipoEnfermedad">¿Cual?</label>
+    <input class="form-control" type="text">
+  </div>
+  <div class="form-group">
+    <label for="lenguaIndigena">¿Habla alguna lengua indigena? (En caso de que no escriba NINGUNA)</label>
+    <input class="form-control" type="text">
+  </div>
+  <div class="input-group">
+    <label for="enfermedad">Dependencia Economica:</label>
+    <div class="input-group-text">
+      <label for="No">No</label>
+      <input type="radio" aria-label="No">
+      <label for="Si">Si</label>
+      <input type="radio" aria-label="Si">
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="enfermedad">Solicita beca alimentaria:</label>
+    <div class="input-group-text">
+      <label for="No">No</label>
+      <input type="radio" aria-label="No">
+      <label for="Si">Si</label>
+      <input type="radio" aria-label="Si">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="numeroFamiliares">Numero de Familiares</label>
+    <input class="form-group" type="number">
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+    <button class="btn btn-primary me-md-2" type="button">Guardar</button>
+  </div>
+</form>

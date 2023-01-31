@@ -14,7 +14,8 @@ class BancoRoutes
         this.router.delete('/delete/:idsolicitud', bancoController.delete);
         this.router.post('/', bancoController.create);
         this.router.put('/update/:idsolicitud', bancoController.update);
-        this.router.get('/:id1', bancoController.listOne);
+        this.router.get('/:idbanco', bancoController.listOne);
+        this.router.get('/inventario/:idbanco', bancoController.listBancodonaciones);
     }
 }
 

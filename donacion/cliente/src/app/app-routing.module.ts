@@ -13,7 +13,7 @@ import { HospitalComponent } from './components/hospital/hospital.component';
 import { RegistrosComponent } from './components/registros/registros.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { DonacionComponent } from './components/donacion/donacion.component';
-
+import { BancoComponent } from './components/banco/banco.component';
 const routes: Routes = [
   {
     path: '',
@@ -68,6 +68,10 @@ const routes: Routes = [
   {
     path:'persona',
     component:PersonaComponent
+  },
+  {
+    path : 'banco',
+    component: BancoComponent
   },
 ];
 @NgModule({
