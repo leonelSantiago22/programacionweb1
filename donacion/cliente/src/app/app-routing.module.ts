@@ -14,6 +14,7 @@ import { RegistrosComponent } from './components/registros/registros.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { DonacionComponent } from './components/donacion/donacion.component';
 import { BancoComponent } from './components/banco/banco.component';
+import { SolicitudesAdministradoComponent } from './components/solicitudes-administrado/solicitudes-administrado.component';
 const routes: Routes = [
   {
     path: '',
@@ -73,6 +74,10 @@ const routes: Routes = [
     path : 'banco',
     component: BancoComponent
   },
+  {
+    path:'solicitudadministrador',
+    component: SolicitudesAdministradoComponent
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

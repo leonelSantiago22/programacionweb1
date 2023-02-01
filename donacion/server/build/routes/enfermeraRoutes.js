@@ -14,7 +14,7 @@ class EnfermeraRoutes {
         this.router.delete('/delete/:numero_trabajador', enfermeraController_1.enfermeraController.delete);
         this.router.post('/', enfermeraController_1.enfermeraController.create);
         this.router.put('/update/:numero_trabajador', enfermeraController_1.enfermeraController.update);
-        this.router.get('/:id1', enfermeraController_1.enfermeraController.listOne);
+        this.router.get('/list/:numero_trabajador', enfermeraController_1.enfermeraController.listOne);
     }
 }
 exports.enfermeraRoutes = new EnfermeraRoutes();

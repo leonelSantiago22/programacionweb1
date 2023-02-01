@@ -32,8 +32,8 @@ class EnfermeraController
     public async listOne(req: Request, res: Response): Promise <void>
     {
         console.log(req.params);
-        const {id1} = req.params;
-        const consulta = 'SELECT * FROM enfermera WHERE numero_trabajador = '+ id1;
+        const {numero_trabajador} = req.params;
+        const consulta = 'SELECT * FROM enfermera WHERE numero_trabajador = '+ numero_trabajador;
         console.log(consulta)
         const respuesta = await pool.query(consulta);
         if(respuesta.length>0){
@@ -50,15 +50,15 @@ class EnfermeraController
     }
     public async delete(req: Request, res: Response ): Promise<void>
     {
-        const { idsolicitud } = req.params;
-        const resp = await pool.query(`DELETE FROM enfermera WHERE numero_trabajador= ${idsolicitud}`);
+        const { numero_trabajador } = req.params;
+        const resp = await pool.query(`DELETE FROM enfermera WHERE numero_trabajador= ${numero_trabajador}`);
         res.json(resp);
     }
     public async update(req: Request, res: Response ): Promise<void>
     {
-        const { id } = req.params;
+        const { numero_trabajador } = req.params;
         console.log(req.params);
-        const resp = await pool.query("UPDATE enfermera set ? WHERE numero_trabajador = ?", [req.body, id]);
+        const resp = await pool.query("UPDATE enfermera set ? WHERE numero_trabajador = ?", [req.body, numero_trabajador]);
         res.json(resp);
     }
 }

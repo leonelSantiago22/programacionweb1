@@ -31,4 +31,8 @@ export class PersonaService {
   {
     return this.http.delete(`${environment.API_URI}/api/persona/delete/`+idpersona); 
   }
+  listOnePersona(idpersona:any)
+  {
+    return this.http.get(`${environment.API_URI}/api/persona/list/`+idpersona);
+  }
 }

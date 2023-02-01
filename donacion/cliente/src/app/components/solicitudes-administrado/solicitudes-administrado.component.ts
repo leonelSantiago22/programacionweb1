@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { Solicitud } from 'src/app/models/solicitud';
 declare var  $:any;
 @Component({
-  selector: 'app-solicitud',
-  templateUrl: './solicitud.component.html',
-  styleUrls: ['./solicitud.component.css']
+  selector: 'app-solicitudes-administrado',
+  templateUrl: './solicitudes-administrado.component.html',
+  styleUrls: ['./solicitudes-administrado.component.css']
 })
-export class SolicitudComponent {
+export class SolicitudesAdministradoComponent {
   solicitud:any;
   solicitudes:any;
   constructor(private solicitudService :SolicitudService,private router: Router)

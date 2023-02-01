@@ -6,41 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enfermera</title> 
     
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
    
 </head>
 <body>  
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid" id="navbar">
-          <a class="navbar-brand" href="#">Bienvenido Administrador</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/hospital']">Hospitales</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/inventario']">Inventario</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/transfuciones']">Transfuciones</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/banco']">Bancos</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav>
+    <div class="nav-wrapper" style="background-color: cadetblue;">
+      <a [routerLink]="['/login']" class="brand-logo">Bienvenido Administrador</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a [routerLink]="['/hospital']">Hospitales</a></li>
+        <li><a [routerLink]="['/solicitudadministrador']">Solicitudes</a></li>
+        <li><a [routerLink]="['/banco']">Bancos</a></li>
+        <li><a [routerLink]="['/inventario']">Inventario global</a></li>
+      </ul>
+    </div>
+  </nav>
+        
  <div id="tabla">
     <table class="stripted" >
         <thead>
@@ -55,56 +35,88 @@
           <tbody>
             <tr class="active-row" *ngFor="let enfermera of enfermera">
                 <td>{{enfermera.numero_trabajador}}</td>
-                <td>{{enfermera.idpersona}}</td>
+                <td>{{enfermera.idpersona}}<a (click)="visualizarPersona(enfermera.idpersona); preparar();"> <i class="material-icons" style="color: black;">visibility</i></a></td>
                 <td>{{enfermera.idhospital}}</td>
                 <td>{{enfermera.password}}</td>
-                    <td><a ><i class="bi bi-eye-fill" (click)="visualizarEnfermera()" id="eye"></i></a>
-                    <a><i class="bi bi-trash2-fill" id="eye"></i></a>
-                    <a><i class="bi bi-pencil-square" id="eye"></i></a>
+                    <td>
+                    <a (click)="visualizarEnfermera(enfermera.numero_trabajador); preparar2();"><i class="material-icons" style="color: darkcyan;" width="36px" height ="36px">create</i></a>
+                    <a><i class="material-icons"style="color: darkcyan;" width="36px" height ="36px"></i></a>
                 </td>  
-            </tr>
+            </tr> 
           </tbody>
       </table>
     </div>
-      <div class="container" id="formulario" style="border-style: solid black;">
-        <form class="row g-3 mt-3">
-            <div class="col-6">
-                <label for="numero_tranajador" class="form-laber">Numero de trabajador</label>
-                <input disabled type="text" class="form-control" id="numero_trabajador" placeholder="Numero de trabajador"> 
-            </div>
-            <div class="col-6">
-                <label for="paswword" class="form-label">contrasena</label>
-                <input type="text" class="form-control" id="password"  placeholder="contrasena">
-            </div>
-            <div class="col-12">
-                <label for="nombre" class="form-label">Nombre Completo</label>
-                <input type="text" class="form-control" id="nombre" placeholder="nombre de la enfermera">
-            </div>
-            <div class="row">
-                    <div class="col-1 col-form-label" aling="center">
-                        <a data-bs-target="#modal"><i class="bi bi-file-plus-fill" id="botones"></i></a>
-                    </div>
-                    <div class="col-4" >
-                        <label for="hospital" class="form-label">Hospital </label>
-                        <input type="text" class="form-control" id="hospital" placeholder="Hospital al que pertenece">
-                    </div>
-
-                <div class="col-1 col-form-label" aling="center">
-                    <i class="bi bi-shield-plus" id="botones"  data-bs-toggel="modal" data-bs-target="modal"></i>
+   
+      <div id="mymodal2" class="modal" >
+        <div class="modal-dialog">
+           <div class="modal-content">
+           <div class="modal-header">
+             <h4 class="modal-title">Informacion Enfermera</h4>
+           </div>
+           <div class="modal-body">
+            <div class="container" id="formulario">
+                
+                  <div class="col-3">
+                    <label for="idpersona" class="form-label">idpersona</label>
+                    <input disabled  type="text" id="idpersona" [(ngModel)]="personas.idpersona"  class="email" name="idpersona">
                 </div>
-                <div class="col-4" >
-                    <label for="persona" class="form-label">Persona </label>
-                    <input type="text" class="form-control" id="persona" placeholder="Hospital al que pertenece">
-            </div>
-        </div>
-            <div class="col-12">
-                <BUTton type="submit" class="btn butn">Registrar</BUTton>
-            </div>
-        </form>
-      </div>
- 
+                  <div class="col-3">
+                      <label for="nombre" class="form-label">Nombre</label>
+                      <input  type="text" id="nombre" class="email" [(ngModel)]="personas.nombre"   name="nombrepaciente" placeholder="tipo de sangre del paicente">
+                  </div>
+                  <div class="col-2">
+                    <label for="edad" class="form-label">Nombre del paciente</label>
+                    <input  type="text" id="edad" class="email"  [(ngModel)]="personas.edad"  name="edad" placeholder="Nombre del paciente" />
+                </div>
+                  <div  class="col-3">
+                      <label for="genero">Genero de la persona</label>
+                      <input  type="text" id="genero" class="email" name="genero" [(ngModel)]="personas.genero"  placeholder="Genero del paciente">
+                  </div>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-</body>
+            </div>
+              <div class="buttonSelect">
+                <a  class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+             </div>
+           </div>
+           </div>
+        </div>
+       </div>
+
+
+       <div id="mymodal" class="modal" >
+        <div class="modal-dialog">
+           <div class="modal-content">
+           <div class="modal-header">
+             <h4 class="modal-title">Ingresar enfermera</h4>
+           </div>
+           <div class="modal-body">
+            <div class="container" id="formulario">
+                
+                  <div class="col-3">
+                    <label for="numero_empleado" class="form-label">Num de empleado</label>
+                    <input disabled  type="text" id="numero_empleado" [(ngModel)]="enfermeras.numero_trabajador"  class="email" name="numero_empleado">
+                </div>
+                  <div class="col-3">
+                      <label for="idhospital" class="form-label">idhospital</label>
+                      <input  type="text" id="idhospital" class="email" [(ngModel)]="enfermeras.idhospital"   name="idhospital" placeholder="tipo de sangre del paicente">
+                  </div>
+                  <div class="col-2">
+                    <label for="edad" class="form-label">Idpersona</label>
+                    <input  type="text" id="edad" class="email"  [(ngModel)]="enfermeras.idpersona"  name="edad" placeholder="Nombre del paciente" />
+                </div>
+                  <div  class="col-3">
+                      <label for="password">Contrasena</label>
+                      <input  type="text" id="password" class="email" name="password" [(ngModel)]="enfermeras.password"  placeholder="Genero del paciente">
+                  </div>
+
+            </div>
+              <div class="buttonSelect">
+                <a  class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                <a  class=" modal-action modal-close waves-effect waves-green btn-flat">Actualizar</a>
+             </div>
+           </div>
+           </div>
+        </div>
+       </div>
+  </body>
 </html>

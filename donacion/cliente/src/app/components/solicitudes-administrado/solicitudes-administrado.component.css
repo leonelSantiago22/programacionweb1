@@ -1,11 +1,10 @@
 @import '~material-design-icons/iconfont/material-icons.css';
-#navbar 
+#navbarclass
 {
-   background-color: cadetblue;
-   
+  background-color: cadetblue;
+  color: black;
+  font-size: medium;
 }
-
-
 main.table {
   margin: auto;
   width: 80%;
@@ -126,38 +125,6 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
   background-color: #fff6 !important;
 }
-
-.status {
-  padding: .4rem 0;
-  border-radius: 2rem;
-  text-align: center;
-}
-
-.status.delivered {
-  background-color: #86e49d;
-  color: #006b21;
-}
-
-.status.cancelled {
-  background-color: #d893a3;
-  color: #b30021;
-}
-
-.status.pending {
-  background-color: #ebc474;
-}
-
-.status.shipped {
-  background-color: #6fcaea;
-}
-
-
-@media (max-width: 1000px) {
-  td:not(:first-of-type) {
-      min-width: 12.1rem;
-  }
-}
-
 thead th span.icon-arrow {
   display: inline-block;
   width: 1.3rem;
@@ -178,80 +145,4 @@ thead th:hover span.icon-arrow{
 
 thead th:hover {
   color: #6c00bd;
-}
-
-.export__file {
-  position: relative;
-}
-
-.export__file .export__file-btn {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-
-  border-radius: 50%;
-  transition: .2s ease-in-out;
-}
-
-.export__file .export__file-btn:hover { 
-  background-color: #fff;
-  transform: scale(1.15);
-  cursor: pointer;
-}
-
-.export__file input {
-  display: none;
-}
-
-.export__file .export__file-options {
-  position: absolute;
-  right: 0;
-  
-  width: 12rem;
-  border-radius: .5rem;
-  overflow: hidden;
-  text-align: center;
-
-  opacity: 0;
-  transform: scale(.8);
-  transform-origin: top right;
-  
-  box-shadow: 0 .2rem .5rem #0004;
-  
-  transition: .2s;
-}
-
-.export__file input:checked + .export__file-options {
-  opacity: 1;
-  transform: scale(1);
-  z-index: 100;
-}
-
-.export__file .export__file-options label{
-  display: block;
-  width: 100%;
-  padding: .6rem 0;
-  background-color: #fff;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  transition: .2s ease-in-out;
-}
-
-.export__file .export__file-options label:first-of-type{
-  padding: 1rem 0;
-  background-color: #86e49d !important;
-}
-
-.export__file .export__file-options label:hover{
-  transform: scale(1.05);
-  background-color: #f2f2f2;
-  cursor: pointer;
-}
-
-.export__file .export__file-options img{
-  width: 2rem;
-  height: auto;
 }

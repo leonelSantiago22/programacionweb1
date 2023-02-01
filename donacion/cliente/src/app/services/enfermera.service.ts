@@ -15,5 +15,17 @@ export class EnfermeraService {
   {
     return this.http.delete(`${environment.API_URI}/api/enfermera/`+numero_trabajador); 
   }
+  agregarEnfermera(enfermera:any)
+  {
+    return this.http.post(`${environment.API_URI}/api/enfermera/`,enfermera);
+  }
+  listOneEnfermera(numero_trabajador:any)
+  {
+    return this.http.get(`${environment.API_URI}/api/enfermera/list/`+numero_trabajador);
+  }
+  updateEnfermera(enfermera:any)
+  {
+    return this.http.put(`${environment.API_URI}/api/enfermera/update/`+enfermera.numero_trabajador,enfermera); 
   
+  }
 }

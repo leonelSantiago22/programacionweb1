@@ -17,6 +17,7 @@ import registroRoutes from './routes/registroRoutes';
 import transfucionRoutes from './routes/transfucionRoutes';
 import enfermeraRoutes from './routes/enfermeraRoutes';
 import administradorRoutes from "./routes/administradorRoutes";
+import hospitalRoutes from "./routes/hospitalRoutes";
 class Server {
     public app : Application;
     constructor() {
@@ -47,7 +48,7 @@ class Server {
         this.app.use('/api/transfucion', transfucionRoutes);
         this.app.use('/api/enfermera', enfermeraRoutes);
         this.app.use('/api/administrador', administradorRoutes);
-
+        this.app.use('/api/hospital', hospitalRoutes);
     }
     start() : void {
         this.app.listen(this.app.get('port'), () => {

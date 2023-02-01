@@ -22,6 +22,7 @@ const registroRoutes_1 = __importDefault(require("./routes/registroRoutes"));
 const transfucionRoutes_1 = __importDefault(require("./routes/transfucionRoutes"));
 const enfermeraRoutes_1 = __importDefault(require("./routes/enfermeraRoutes"));
 const administradorRoutes_1 = __importDefault(require("./routes/administradorRoutes"));
+const hospitalRoutes_1 = __importDefault(require("./routes/hospitalRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -51,6 +52,7 @@ class Server {
         this.app.use('/api/transfucion', transfucionRoutes_1.default);
         this.app.use('/api/enfermera', enfermeraRoutes_1.default);
         this.app.use('/api/administrador', administradorRoutes_1.default);
+        this.app.use('/api/hospital', hospitalRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

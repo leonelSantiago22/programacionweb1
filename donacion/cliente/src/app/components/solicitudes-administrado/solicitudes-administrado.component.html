@@ -10,10 +10,10 @@
 <body>
     <nav>
         <div class="nav-wrapper" id="navbarclass">
-          <a class="brand-logo" [routerLink]="['/main']"> <img src="../../../assets/imagenes/medicine.png" width="50px" height="50px" class="logo"></a>
+          <a class="brand-logo" [routerLink]="['/enfermera']"> <img src="../../../assets/imagenes/medicine.png" width="50px" height="50px" class="logo"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a (click)="changeDonadores()">Donadores</a></li>
-            <li><a (click)="changePaciente()">Registro de pacientes</a></li>
+            <li><a [routerLink]="['/hospital']">Hospitales</a></li>
+            <li><a [routerLink]="['/banco']">Bancos</a></li>
             <li></li>
           </ul>
         </div>
@@ -26,7 +26,7 @@
       </div>
     <section class="table__body">
       <section class="table__header">
-        <h1>Solicitudes</h1>
+        <h1>Aceptacion de solicitudes</h1>
       </section>
         <table>
             <thead>
@@ -40,21 +40,15 @@
             </thead>
             <tbody>
               <tr class="active-row" *ngFor="let solicitud of solicitud">
-                <td >{{solicitud.idsolicitud}}</td>
-                <td >{{solicitud.idbanco}}</td>
-                <td >{{solicitud.fecha}}</td>
-                <td >{{solicitud.estado}}</td>
-                <td >{{solicitud.idhospital}}</td>
-                <td >{{solicitud.numero_trabajador}}</td>
-                <td ><a (click)="eliminarSolicitud(solicitud.idsolicitud)"><i class="material-icons prefix">delete_forever</i></a>
-                  <a (click)="visualizarSolicitud(solicitud.idsolicitud); preparar();"><i class="material-icons prefix">remove_red_eye</i></a>
-                  <a (click)="preparar();"><i class="material-icons prefix">edit</i></a></td>
+                <td *ngIf="(solicitud.estado ==1)">{{solicitud.idsolicitud}}</td>
+                <td *ngIf="(solicitud.estado ==1)">{{solicitud.idbanco}}</td>
+                <td *ngIf="(solicitud.estado ==1)">{{solicitud.fecha}}</td>
+                <td *ngIf="(solicitud.estado ==1)">{{solicitud.estado}}</td>
+                <td *ngIf="(solicitud.estado ==1)">{{solicitud.idhospital}}</td>
+                <td *ngIf="(solicitud.estado ==1)">{{solicitud.numero_trabajador}}</td>
+                <td *ngIf="(solicitud.estado ==1)"> <a  class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a></td>
             </tr>
             </tbody>
-            <a (click)="preparar()"><svg xmlns="http://www.w3.org/2000/svg" style="color: black;" width="36" height="36" fill="currentColor" class="bi bi-clipboard-plus-fill" viewBox="0 0 16 16">
-              <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
-              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm4.5 6V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5a.5.5 0 0 1 1 0Z"/>
-            </svg></a>
         </table>
     </section>
     </main>
@@ -62,7 +56,7 @@
       <div class="modal-dialog">
          <div class="modal-content">
          <div class="modal-header">
-           <h4 class="modal-title">Informacion Solicitudes</h4>
+           <h4 class="modal-title">Informacion Donadores</h4>
            <a (click)="static()" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a> 
          </div>
          <div class="modal-body">

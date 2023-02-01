@@ -3,6 +3,8 @@ import { Enfermera } from 'src/app/models/enfermera';
 import { EnfermeraService } from 'src/app/services/enfermera.service';
 import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
 import { Router } from '@angular/router';
+import { PersonaService } from 'src/app/services/persona.service';
+import {Persona} from 'src/app/models/persona';
 declare var $: any;
 @Component({
   selector: 'app-enfermera',
@@ -11,15 +13,21 @@ declare var $: any;
 })
 export class EnfermeraComponent {
   enfermera:any;
-  enfermeras = new Enfermera();
-  constructor(private enfermeraService: EnfermeraService, private router: Router){
+  enfermeras:any;
+  personas:any;
+  ngOnInit() 
+  {
+    this.personas = new Persona();
+    this.enfermeras = new Enfermera();
+  }  
+  constructor(private enfermeraService: EnfermeraService, private router: Router, private personaServices : PersonaService){
     this.listarEnfermeras();
    }
   listarEnfermeras()
   {
-    this.enfermeraService.listEnfermera().subscribe((resCategorias: any) => {
-      console.log(resCategorias);
-      this.enfermera=resCategorias;
+    this.enfermeraService.listEnfermera().subscribe((resEnfermera: any) => {
+      console.log(resEnfermera);
+      this.enfermera=resEnfermera;
   },
       (err: any) => console.error(err)
     );
@@ -28,16 +36,35 @@ export class EnfermeraComponent {
   {
     console.log("enfermera");
   }
-  visualizarEnfermera()
+  visualizarEnfermera(numero_trabajador:any)
   {
-    console.log("enfermera");
-    
+    this.enfermeraService.listOneEnfermera(numero_trabajador).subscribe((resEnfermera: any) => {
+      console.log(resEnfermera);
+      this.enfermeras=resEnfermera;
+  },
+      (err: any) => console.error(err)
+    );
+  }
+  visualizarPersona(idpersona:any)
+  {
+    this.personaServices.listOnePersona(idpersona).subscribe((resPersona: any) => {
+      console.log(resPersona);
+      this.personas=resPersona;
+  },
+      (err: any) => console.error(err)
+    );
   }
   preparar(){
-    $('#Mymodal').modal({
+    $('#mymodal2').modal({
           dismissible: false
     });
-    $('#Mymodal').modal('open');
+    $('#mymodal2').modal('open');
+  }
+  preparar2(){
+    $('#mymodal').modal({
+          dismissible: false
+    });
+    $('#mymodal').modal('open');
   }
   static()
     {

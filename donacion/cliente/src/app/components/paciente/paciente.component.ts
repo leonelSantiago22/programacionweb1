@@ -96,4 +96,10 @@ export class PacienteComponent {
       });
       $('#mymodal').modal('open');
     }
+    preparar2(){
+      $('#mymodal2').modal({
+            dismissible: false
+      });
+      $('#mymodal2').modal('open');
+    }
 }
