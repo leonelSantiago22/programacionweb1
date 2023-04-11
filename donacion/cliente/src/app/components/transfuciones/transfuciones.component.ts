@@ -4,6 +4,7 @@ import { TransfucinesService } from 'src/app/services/transfucines.service';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { Persona } from 'src/app/models/persona';
 import { Paciente } from 'src/app/models/paciente';
+import { ComunicacionService } from 'src/app/services/comunicacion.service';
 declare var  $:any;
 @Component({
   selector: 'app-transfuciones',
@@ -12,12 +13,28 @@ declare var  $:any;
 })
 export class TransfucionesComponent {
   tranfucion: any;
-  tranfuciones = new Transfucion();
-  pacienteVar = new Paciente();
-  personas = new Paciente();
-  constructor (private tranfucionService : TransfucinesService, private pacienteService : PacienteService) 
+  transfuciones:any;
+  pacienteVar:any;
+  personas :any;
+  constructor (private tranfucionService : TransfucinesService, private pacienteService : PacienteService,
+    private comunicacionService : ComunicacionService) 
   {
     this.listarTransfuciones();
+    this.comunicacionService.observador$.subscribe(
+      (msg) =>
+      {
+        if(msg.componente == 4)
+        {
+          this.listarTransfuciones();
+        }
+      }
+      );
+  }
+  ngOnInit()
+  {
+    this.transfuciones = new Transfucion();
+    this.pacienteVar = new Paciente();
+    this.personas = new Paciente();
   }
   listarTransfuciones()
   {
@@ -28,6 +45,16 @@ export class TransfucionesComponent {
       (err: any) => console.error(err)
     );
   }
+  agregarTransfucion()
+  {
+    this.tranfucionService.agregarTransfucion(this.transfuciones).subscribe((resTransfucion: any) => {
+      console.log(resTransfucion);
+      this.transfuciones=resTransfucion;
+  },
+      (err: any) => console.error(err)
+    );
+  }
+  
   visualizarPaciente(idpaciente:any)
   {
     this.pacienteService.listOnepaciente(idpaciente).subscribe((resClientes: any) => {
@@ -44,4 +71,11 @@ export class TransfucionesComponent {
     });
     $('#mymodal').modal('open');
   }
+  prepararTransfucion()
+  {
+    $('#mymodalTransfucion').modal({
+      dismissible: false
+      });
+      $('#mymodalTransfucion').modal('open');
+  } 
 }

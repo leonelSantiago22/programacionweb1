@@ -271,3 +271,37 @@ main.table {
    width: 2rem;
    height: auto;
  }
+ input[type="file"] {
+  display: none;
+}
+.imagenes {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.imagenes:hover {
+  background-color: #0062cc;
+}
+
+img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+td img {
+  width: 36px;
+  height: 36px;
+  margin-right: .5rem;
+  border-radius: 50%;
+
+  vertical-align: middle;
+}
+tbody tr td img {
+  transition: .2s ease-in-out;
+}
+img{
+  width: 2rem;
+  height: auto;
+}

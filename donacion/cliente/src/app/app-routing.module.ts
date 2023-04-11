@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PacienteComponent } from './components/paciente/paciente.component';
@@ -14,12 +14,12 @@ import { RegistrosComponent } from './components/registros/registros.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { DonacionComponent } from './components/donacion/donacion.component';
 import { BancoComponent } from './components/banco/banco.component';
+import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
 import { SolicitudesAdministradoComponent } from './components/solicitudes-administrado/solicitudes-administrado.component';
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/login',
-
     pathMatch: 'full',
   },
   {
@@ -77,7 +77,16 @@ const routes: Routes = [
   {
     path:'solicitudadministrador',
     component: SolicitudesAdministradoComponent
-  }
+  },
+  {
+    path:'donacion',
+    component: DonacionComponent
+  },
+  {
+    path:'recuperacion/:token',
+    component: RecuperacionComponent
+  },
+  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

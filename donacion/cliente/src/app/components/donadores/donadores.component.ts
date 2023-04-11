@@ -7,6 +7,7 @@ import { PersonaService } from 'src/app/services/persona.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ComunicacionService } from 'src/app/services/comunicacion.service';
 
 declare var $: any;
 @Component({
@@ -16,15 +17,29 @@ declare var $: any;
 })
 export class DonadoresComponent {
   donador : any;
-  donadores = new Donador();
-  personas = new Persona();
-  idpersona:any;
-  constructor(private  donadorService: DonadorService, private personaService: PersonaService,private router: Router){
-    this.listarDonadores();
+  donadores:any;
+  personas:any;
+
+  constructor(private  donadorService: DonadorService, private personaService: PersonaService,private router: Router,
+    private comunicacionService :ComunicacionService){
+      this.listarDonadores();
     $('.mymodal').modal();
-  
+    this.comunicacionService.observador$.subscribe(
+      (msg) =>
+      {
+        if(msg.componente == 2)
+        {
+          this.listarDonadores();
+        }
+      }
+      );
+      
   }
-  
+  ngOnInit()
+  {
+    this.donadores = new Donador();
+    this.personas = new Persona();
+  }
   eliminarDonador(iddonador:any){
     console.log("eliminar categoria "+iddonador)
     this.donadorService.deleteDonadores(iddonador).subscribe((resCategorias: any) => {
@@ -48,37 +63,21 @@ export class DonadoresComponent {
     this.donadorService.listOne(iddonador, idpaciente).subscribe((resClientes: any) => {
       console.log(resClientes);
       this.donadores=resClientes;
-      this.personas = resClientes;
   },
       (err: any) => console.error(err)
     );
-    this.preparar();
   }
   agregarDonador()
   {
       //primero insertamos a la persona
-    this.personaService.agregarPersona(this.personas).subscribe((resDonadores: any) => {
-        console.log(resDonadores);
-        this.personas = resDonadores;
-      },
-    (err: any) => console.error(err)
-    );
-    this.personaService.listPersonaMax().subscribe((resDonadores: any) => {
-      console.log(resDonadores); 
-      console.log(resDonadores[0].idpersona);
-      
+      console.log(this.donadores);
+      this.donadorService.insertarDonador(this.donadores).subscribe((resClientes: any) => {
+        console.log(resClientes);
+        this.donadores=resClientes;
     },
-      (err: any) => console.error(err)
-    );
-
-    /*
-    this.donadorService.insertarDonador(this.donadores).subscribe((resPaciente: any) => {
-      console.log(resPaciente);
-      this.donador = resPaciente;
-  },
-      (err: any) => console.error(err)
-    );*/
-    
+        (err: any) => console.error(err)
+      );
+    this.listarDonadores();
   }
 
   listOnePaciente(idpaciente:any, idpersona:any)
@@ -93,16 +92,12 @@ export class DonadoresComponent {
   }
   actualizarDonador()
   {
-    this.donadorService.updateDonadores(this.donadores).subscribe((resPaciente: any) => {
-      console.log(resPaciente);
-      this.donadores = resPaciente;
+    
+    this.donadorService.updateDonadores(this.donadores).subscribe((resClientes: any) => {
+      console.log(resClientes);
+      this.donadores=resClientes;
+
   },
-      (err: any) => console.error(err)
-    );
-    this.personaService.updatePersona(this.personas).subscribe((resPersona: any) => {
-      console.log(resPersona);
-      this.personas = resPersona;
-     },
       (err: any) => console.error(err)
     );
     this.listarDonadores();
@@ -112,6 +107,10 @@ export class DonadoresComponent {
   {
     console.log("clear");
     this.donadores.nombre = "";
+    this.donadores.idpersona = "";
+    this.donadores.tipodesangre = "";
+    this.donadores.genero = "";
+    this.donadores.edad = "";
   } 
   changePaciente()
     {
@@ -130,5 +129,11 @@ export class DonadoresComponent {
             dismissible: false
       });
       $('#mymodal').modal('open');
+    }
+    preparar2(){
+      $('#mymodal2').modal({
+            dismissible: false
+      });
+      $('#mymodal2').modal('open');
     }
 }
